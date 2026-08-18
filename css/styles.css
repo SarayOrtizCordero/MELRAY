@@ -270,3 +270,46 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 @media (max-width: 860px) {
   .problema__grid, .producto__grid { grid-template-columns: 1fr; }
 }
+
+/* ===== Planes ===== */
+.planes { padding: var(--space-8) 0; }
+.planes__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-4); align-items: stretch; }
+.plan-card {
+  background: var(--color-card);
+  border-radius: var(--radius-lg);
+  padding: var(--space-5);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+.plan-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-md); }
+.plan-card--highlight { border: 2px solid var(--color-orange-dark); }
+.plan-card--future { opacity: 0.85; }
+.plan-card__badge {
+  align-self: flex-start;
+  font-family: var(--font-heading);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  background: var(--color-orange-dark);
+  color: var(--color-white);
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-full);
+}
+.plan-card__badge--future { background: var(--color-text-muted); }
+.plan-card__features { display: flex; flex-direction: column; gap: var(--space-2); flex: 1; }
+.plan-card__features li { padding-left: var(--space-4); position: relative; color: var(--color-text); }
+.plan-card__features li::before {
+  content: "";
+  position: absolute; left: 0; top: 0.5em;
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--color-orange-light);
+}
+.plan-card__price { font-family: var(--font-heading); color: var(--color-text-muted); }
+
+@media (max-width: 860px) {
+  .planes__grid { grid-template-columns: 1fr; }
+}
