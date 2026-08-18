@@ -222,8 +222,21 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   95% { transform: scaleY(0.1); }
 }
 
+.mascot__flicker {
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+  animation: mascotFlicker 2.4s ease-in-out infinite;
+}
+@keyframes mascotFlicker {
+  0%, 100% { transform: scaleY(1) skewX(0deg); }
+  20% { transform: scaleY(1.025) skewX(-1.2deg); }
+  45% { transform: scaleY(0.98) skewX(0.8deg); }
+  70% { transform: scaleY(1.015) skewX(-0.6deg); }
+  85% { transform: scaleY(0.99) skewX(0.4deg); }
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .mascot--float, .mascot__eye { animation: none; }
+  .mascot--float, .mascot__eye, .mascot__flicker { animation: none; }
 }
 
 @media (max-width: 860px) {
