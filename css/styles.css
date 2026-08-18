@@ -419,6 +419,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   z-index: 200;
 }
 .cookie-banner p { flex: 1 1 280px; font-size: 0.9rem; }
+.cookie-banner[hidden] { display: none; }
 
 /* ===== Legal pages ===== */
 .legal { padding: var(--space-7) 0 var(--space-8); }
