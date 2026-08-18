@@ -338,3 +338,24 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 @media (max-width: 860px) {
   .mascota-showcase__grid { grid-template-columns: repeat(2, 1fr); }
 }
+
+/* ===== Nosotras ===== */
+.nosotras { padding: var(--space-8) 0; }
+.nosotras__grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-5); max-width: 760px; margin: 0 auto; }
+.founder-card { text-align: center; }
+.founder-card__avatar {
+  width: 88px; height: 88px;
+  margin: 0 auto var(--space-3);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  color: var(--color-white);
+  background: linear-gradient(160deg, var(--color-orange-light), var(--color-orange-dark));
+}
+.founder-card__avatar--alt { background: linear-gradient(160deg, var(--color-orange-dark), var(--color-red)); }
+.founder-card__role { font-family: var(--font-heading); color: var(--color-orange-dark); margin-top: var(--space-1); }
+
+@media (max-width: 640px) {
+  .nosotras__grid { grid-template-columns: 1fr; }
+}
