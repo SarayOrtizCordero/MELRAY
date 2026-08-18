@@ -325,6 +325,44 @@
     <!-- /SECTION:NOSOTRAS -->
 
     <!-- SECTION:CONTACTO -->
+    <section class="contacto" id="contacto">
+      <div class="container contacto__inner">
+        <div class="section-head reveal">
+          <p class="eyebrow">Hablemos</p>
+          <h2>Cuéntanos sobre tu negocio</h2>
+          <p>Respondemos personalmente. Sin bots, sin esperas eternas.</p>
+        </div>
+
+        <form id="contact-form" class="contact-form reveal" data-formspree-endpoint="https://formspree.io/f/TU_FORM_ID" novalidate>
+          <div class="contact-form__row">
+            <label for="cf-name">Nombre</label>
+            <input type="text" id="cf-name" name="name" required autocomplete="name">
+            <span class="contact-form__error" id="cf-name-error" aria-live="polite"></span>
+          </div>
+
+          <div class="contact-form__row">
+            <label for="cf-email">Email</label>
+            <input type="email" id="cf-email" name="email" required autocomplete="email">
+            <span class="contact-form__error" id="cf-email-error" aria-live="polite"></span>
+          </div>
+
+          <div class="contact-form__row">
+            <label for="cf-business">Tu negocio (opcional)</label>
+            <input type="text" id="cf-business" name="business" autocomplete="organization">
+          </div>
+
+          <div class="contact-form__row">
+            <label for="cf-message">Mensaje</label>
+            <textarea id="cf-message" name="message" rows="4" required></textarea>
+            <span class="contact-form__error" id="cf-message-error" aria-live="polite"></span>
+          </div>
+
+          <button type="submit" class="btn btn--primary contact-form__submit">Enviar mensaje</button>
+
+          <p class="contact-form__status" id="contact-form-status" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
     <!-- /SECTION:CONTACTO -->
   </main>
 
