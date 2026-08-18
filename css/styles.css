@@ -313,3 +313,28 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 @media (max-width: 860px) {
   .planes__grid { grid-template-columns: 1fr; }
 }
+
+/* ===== Mascota showcase ===== */
+.mascota-showcase { padding: var(--space-8) 0; background: var(--color-bg-alt); }
+.mascota-showcase__grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: var(--space-4);
+}
+.mascota-showcase__item {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
+}
+.mascota-showcase__item svg { margin: 0 auto; }
+.mascota-showcase__item figcaption {
+  font-family: var(--font-heading);
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+}
+
+@media (max-width: 860px) {
+  .mascota-showcase__grid { grid-template-columns: repeat(2, 1fr); }
+}
