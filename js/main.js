@@ -118,9 +118,33 @@ function initContactForm() {
   });
 }
 
+function initCookieBanner() {
+  const banner = document.getElementById('cookie-banner');
+  const acceptBtn = document.getElementById('cookie-banner-accept');
+  if (!banner || !acceptBtn) return;
+
+  const STORAGE_KEY = 'melray_cookie_notice_dismissed';
+
+  if (!localStorage.getItem(STORAGE_KEY)) {
+    banner.hidden = false;
+  }
+
+  acceptBtn.addEventListener('click', () => {
+    localStorage.setItem(STORAGE_KEY, 'true');
+    banner.hidden = true;
+  });
+}
+
+function initFooterYear() {
+  const el = document.getElementById('footer-year');
+  if (el) el.textContent = new Date().getFullYear();
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   initMobileNav();
   initHeaderScroll();
   initScrollReveal();
   initContactForm();
+  initCookieBanner();
+  initFooterYear();
 });

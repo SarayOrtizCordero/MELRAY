@@ -384,3 +384,38 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 .contact-form__status { font-family: var(--font-heading); }
 .contact-form__status[data-state="success"] { color: var(--color-orange-dark); }
 .contact-form__status[data-state="error"] { color: var(--color-red); }
+
+/* ===== Footer ===== */
+.site-footer { padding: var(--space-6) 0; border-top: 1px solid rgba(44, 26, 18, 0.08); }
+.site-footer__inner {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  justify-content: space-between;
+  align-items: center;
+}
+.site-footer__brand p { margin-top: var(--space-1); }
+.site-footer__links { display: flex; gap: var(--space-4); }
+.site-footer__links a:hover { color: var(--color-orange-dark); }
+.site-footer__copy { width: 100%; color: var(--color-text-muted); font-size: 0.85rem; margin-top: var(--space-3); }
+
+/* ===== Cookie banner ===== */
+.cookie-banner {
+  position: fixed;
+  bottom: var(--space-4);
+  left: var(--space-4);
+  right: var(--space-4);
+  max-width: 560px;
+  margin: 0 auto;
+  background: var(--color-card);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+  padding: var(--space-4);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  align-items: center;
+  justify-content: space-between;
+  z-index: 200;
+}
+.cookie-banner p { flex: 1 1 280px; font-size: 0.9rem; }
