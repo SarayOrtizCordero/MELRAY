@@ -231,3 +231,42 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   .hero__actions { justify-content: center; }
   .hero__art { order: -1; }
 }
+
+/* ===== Scroll reveal ===== */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 600ms ease, transform 600ms ease;
+}
+.reveal--visible { opacity: 1; transform: translateY(0); }
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+}
+
+/* ===== Section head ===== */
+.section-head { max-width: 640px; margin: 0 auto var(--space-6); text-align: center; }
+.section-head p { margin-top: var(--space-2); }
+
+/* ===== Problema ===== */
+.problema { padding: var(--space-8) 0; }
+.problema__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-4); }
+.problema__card {
+  background: var(--color-card);
+  border-radius: var(--radius-md);
+  padding: var(--space-5);
+  box-shadow: var(--shadow-sm);
+}
+.problema__quote { font-family: var(--font-heading); color: var(--color-orange-dark); margin-bottom: var(--space-2); }
+
+/* ===== Producto hoy ===== */
+.producto { padding: var(--space-8) 0; background: var(--color-bg-alt); }
+.producto__grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-4); }
+.producto__item {
+  padding: var(--space-4);
+  border-left: 3px solid var(--color-orange-light);
+}
+.producto__item h3 { margin-bottom: var(--space-2); }
+
+@media (max-width: 860px) {
+  .problema__grid, .producto__grid { grid-template-columns: 1fr; }
+}
