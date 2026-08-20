@@ -152,12 +152,20 @@ function initPlanCTAs() {
   });
 }
 
+function runSafely(fn) {
+  try {
+    fn();
+  } catch (err) {
+    console.error(`Melray: ${fn.name} failed`, err);
+  }
+}
+
 document.addEventListener('DOMContentLoaded', () => {
-  initMobileNav();
-  initHeaderScroll();
-  initScrollReveal();
-  initContactForm();
-  initCookieBanner();
-  initFooterYear();
-  initPlanCTAs();
+  runSafely(initMobileNav);
+  runSafely(initHeaderScroll);
+  runSafely(initScrollReveal);
+  runSafely(initContactForm);
+  runSafely(initCookieBanner);
+  runSafely(initFooterYear);
+  runSafely(initPlanCTAs);
 });
