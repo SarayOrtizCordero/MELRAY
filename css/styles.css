@@ -220,7 +220,11 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 .mobile-menu a { font-family: var(--font-heading); font-size: 1.1rem; }
 
 @media (max-width: 860px) {
-  .site-header__nav, .site-header__cta { display: none; }
+  .site-header__nav { display: none; }
+  /* Legal pages have no hamburger menu, so their CTA has nowhere else
+     to go — only hide it on pages that actually offer a mobile-menu
+     replacement. */
+  .site-header:not(.site-header--minimal) .site-header__cta { display: none; }
   .site-header__toggle { display: flex; }
 }
 
@@ -311,7 +315,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--space-3);
+  gap: var(--space-4);
 }
 
 /* ===== Producto hoy ===== */
@@ -321,7 +325,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   padding: var(--space-4);
   border-left: 3px solid var(--color-orange-light);
 }
-.producto__item h3 { margin-bottom: var(--space-2); }
+.producto__item h3 { margin-bottom: var(--space-3); }
 
 @media (max-width: 860px) {
   .problema__grid, .producto__grid { grid-template-columns: 1fr; }
@@ -379,7 +383,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 /* ===== Demo CTA ===== */
 .demo-cta { padding: var(--space-8) 0; }
 .demo-cta__inner { max-width: 640px; text-align: center; display: flex; flex-direction: column; align-items: center; }
-.demo-cta__note { font-family: var(--font-heading); margin-top: var(--space-2); }
+.demo-cta__note { font-family: var(--font-heading); margin-top: var(--space-4); }
 .demo-cta__button { margin-top: var(--space-5); }
 
 /* ===== Footer ===== */
@@ -425,6 +429,6 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 .legal { padding: var(--space-7) 0 var(--space-8); }
 .legal__content { max-width: 720px; }
 .legal__content h1 { margin-bottom: var(--space-3); }
-.legal__content h2 { margin-top: var(--space-6); margin-bottom: var(--space-2); font-size: 1.4rem; }
+.legal__content h2 { margin-top: var(--space-6); margin-bottom: var(--space-3); font-size: 1.4rem; }
 .legal__content p { margin-bottom: var(--space-3); }
 .legal__content a { color: var(--color-orange-dark); text-decoration: underline; }
