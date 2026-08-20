@@ -115,6 +115,22 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   outline-offset: 2px;
 }
 
+.skip-link {
+  position: absolute;
+  top: -80px;
+  left: var(--space-3);
+  z-index: 1000;
+  background: var(--color-red);
+  color: var(--color-white);
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-heading);
+  transition: top var(--transition-base);
+}
+.skip-link:focus {
+  top: var(--space-3);
+}
+
 .visually-hidden {
   position: absolute;
   width: 1px; height: 1px;

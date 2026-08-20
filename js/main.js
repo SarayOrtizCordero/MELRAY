@@ -140,6 +140,18 @@ function initFooterYear() {
   if (el) el.textContent = new Date().getFullYear();
 }
 
+function initPlanCTAs() {
+  const planLinks = document.querySelectorAll('[data-plan]');
+  const message = document.getElementById('cf-message');
+  if (!planLinks.length || !message) return;
+
+  planLinks.forEach((link) => {
+    link.addEventListener('click', () => {
+      message.value = `Hola, me interesa el plan ${link.dataset.plan}. `;
+    });
+  });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   initMobileNav();
   initHeaderScroll();
@@ -147,4 +159,5 @@ document.addEventListener('DOMContentLoaded', () => {
   initContactForm();
   initCookieBanner();
   initFooterYear();
+  initPlanCTAs();
 });
