@@ -19,7 +19,7 @@
   --space-5: 2rem;
   --space-6: 3rem;
   --space-7: 4.5rem;
-  --space-8: 6rem;
+  --space-8: 7rem;
 
   --radius-sm: 8px;
   --radius-md: 16px;
@@ -104,7 +104,7 @@ p { color: var(--color-text-muted); }
    A hairline marks where every section (after the first) begins, so the
    page reads as distinct blocks even where background colors repeat. */
 main > section + section {
-  border-top: 1px solid rgba(44, 26, 18, 0.08);
+  border-top: 1px solid rgba(44, 26, 18, 0.05);
 }
 
 .eyebrow {
