@@ -4,7 +4,6 @@
   --color-orange-dark: #df3314;
   --color-red: #b11e1b;
   --color-bg: #faf1e7;
-  --color-bg-alt: #f8f4e9;
   --color-card: #ffffff;
   --color-text: #2c1a12;
   --color-text-muted: #6b5748;
@@ -99,6 +98,13 @@ p { color: var(--color-text-muted); }
   max-width: var(--container-width);
   margin: 0 auto;
   padding: 0 var(--space-4);
+}
+
+/* ===== Section rhythm =====
+   A hairline marks where every section (after the first) begins, so the
+   page reads as distinct blocks even where background colors repeat. */
+main > section + section {
+  border-top: 1px solid rgba(44, 26, 18, 0.08);
 }
 
 .eyebrow {
@@ -199,6 +205,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 .site-header__nav ul { display: flex; gap: var(--space-5); }
 .site-header__nav a { font-family: var(--font-heading); font-size: 0.95rem; }
 .site-header__nav a:hover { color: var(--color-orange-dark); }
+.site-header__cta { padding: var(--space-2) var(--space-4); font-size: 0.85rem; }
 .site-header__toggle { display: none; flex-direction: column; gap: 4px; padding: var(--space-2); }
 .site-header__toggle-bar { width: 22px; height: 2px; background: var(--color-text); }
 
@@ -279,7 +286,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 /* ===== Section closing statement ===== */
 .section-closing {
   max-width: 640px;
-  margin: var(--space-6) auto 0;
+  margin: var(--space-7) auto 0;
   text-align: center;
   font-family: var(--font-heading);
   color: var(--color-text);
@@ -296,7 +303,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   padding: var(--space-5);
   box-shadow: var(--shadow-sm);
 }
-.problema__quote { font-family: var(--font-heading); color: var(--color-orange-dark); margin-bottom: var(--space-2); }
+.problema__quote { font-family: var(--font-heading); color: var(--color-orange-dark); margin-bottom: var(--space-3); }
 
 /* ===== Ver en acción ===== */
 .ver-accion { padding: var(--space-6) 0; }
@@ -315,7 +322,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 }
 
 /* ===== Producto hoy ===== */
-.producto { padding: var(--space-8) 0; background: var(--color-bg-alt); }
+.producto { padding: var(--space-8) 0; background: var(--color-card); }
 .producto__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-4); }
 .producto__item {
   padding: var(--space-4);
@@ -337,7 +344,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   box-shadow: var(--shadow-sm);
   display: flex;
   flex-direction: column;
-  gap: var(--space-3);
+  gap: var(--space-4);
   transition: transform var(--transition-base), box-shadow var(--transition-base);
 }
 .plan-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-md); }
@@ -362,14 +369,22 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   border-radius: 50%;
   background: var(--color-orange-light);
 }
-.plan-card__price { font-family: var(--font-heading); color: var(--color-text-muted); }
+.plan-card__price {
+  font-family: var(--font-heading);
+  font-size: 2.5rem;
+  letter-spacing: -0.02em;
+  color: var(--color-orange-dark);
+  padding-top: var(--space-4);
+  border-top: 1px solid rgba(44, 26, 18, 0.1);
+}
+.plan-card--highlight .plan-card__price { color: var(--color-red); }
 
 @media (max-width: 860px) {
   .planes__grid { grid-template-columns: 1fr; }
 }
 
 /* ===== Demo CTA ===== */
-.demo-cta { padding: var(--space-8) 0; background: var(--color-bg-alt); }
+.demo-cta { padding: var(--space-8) 0; background: var(--color-card); }
 .demo-cta__inner { max-width: 640px; text-align: center; display: flex; flex-direction: column; align-items: center; }
 .demo-cta__note { font-family: var(--font-heading); margin-top: var(--space-2); }
 .demo-cta__button { margin-top: var(--space-5); }
