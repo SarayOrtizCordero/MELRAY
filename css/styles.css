@@ -322,7 +322,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 }
 
 /* ===== Producto hoy ===== */
-.producto { padding: var(--space-8) 0; background: var(--color-card); }
+.producto { padding: var(--space-8) 0; }
 .producto__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-4); }
 .producto__item {
   padding: var(--space-4);
@@ -371,7 +371,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 }
 .plan-card__price {
   font-family: var(--font-heading);
-  font-size: 2.5rem;
+  font-size: 1.75rem;
   letter-spacing: -0.02em;
   color: var(--color-orange-dark);
   padding-top: var(--space-4);
@@ -384,7 +384,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 }
 
 /* ===== Demo CTA ===== */
-.demo-cta { padding: var(--space-8) 0; background: var(--color-card); }
+.demo-cta { padding: var(--space-8) 0; }
 .demo-cta__inner { max-width: 640px; text-align: center; display: flex; flex-direction: column; align-items: center; }
 .demo-cta__note { font-family: var(--font-heading); margin-top: var(--space-2); }
 .demo-cta__button { margin-top: var(--space-5); }
