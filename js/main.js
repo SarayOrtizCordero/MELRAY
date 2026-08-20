@@ -71,6 +71,16 @@ function initFooterYear() {
   if (el) el.textContent = new Date().getFullYear();
 }
 
+function initReducedMotionVideo() {
+  const video = document.querySelector('.hero-video');
+  if (!video) return;
+
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    video.removeAttribute('autoplay');
+    video.pause();
+  }
+}
+
 function runSafely(fn) {
   try {
     fn();
@@ -85,4 +95,5 @@ document.addEventListener('DOMContentLoaded', () => {
   runSafely(initScrollReveal);
   runSafely(initCookieBanner);
   runSafely(initFooterYear);
+  runSafely(initReducedMotionVideo);
 });

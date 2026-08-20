@@ -99,20 +99,10 @@
         </div>
 
         <div class="hero__art reveal" aria-hidden="true">
-          <svg class="mascot mascot--float" width="220" height="240" viewBox="0 0 200 220">
-            <defs>
-              <linearGradient id="heroFlameGrad" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0" stop-color="#fb7b15"/>
-                <stop offset="1" stop-color="#df3314"/>
-              </linearGradient>
-            </defs>
-            <g class="mascot__flicker">
-              <path fill="url(#heroFlameGrad)" d="M100 15C122 42 148 72 152 108C158 78 148 55 138 42C158 58 172 88 170 122C170 168 139 202 100 202C61 202 30 168 30 122C30 92 46 68 68 50C60 68 62 88 74 100C70 72 82 42 100 15Z"/>
-              <ellipse class="mascot__eye" cx="76" cy="148" rx="8" ry="10" fill="#2c1a12"/>
-              <ellipse class="mascot__eye" cx="124" cy="148" rx="8" ry="10" fill="#2c1a12"/>
-              <path class="mascot__mouth" d="M76 172c9 10 24 10 33 0" stroke="#2c1a12" stroke-width="5" stroke-linecap="round" fill="none"/>
-            </g>
-          </svg>
+          <video class="hero-video" width="600" height="600" autoplay muted loop playsinline poster="/assets/mascota-hero-poster.png">
+            <source src="/assets/mascota-hero.mp4" type="video/mp4">
+            <img src="/assets/mascota-hero-poster.png" alt="" width="220" height="220">
+          </video>
         </div>
       </div>
     </section>

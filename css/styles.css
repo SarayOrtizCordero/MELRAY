@@ -234,32 +234,10 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 .hero__actions { display: flex; gap: var(--space-3); margin-top: var(--space-5); flex-wrap: wrap; }
 .hero__art { display: flex; justify-content: center; }
 
-.mascot--float { animation: mascotFloat 4.5s ease-in-out infinite; }
-@keyframes mascotFloat {
-  0%, 100% { transform: translateY(0) rotate(0deg); }
-  50% { transform: translateY(-14px) rotate(-1.5deg); }
-}
-.mascot__eye { animation: mascotBlink 5.5s ease-in-out infinite; transform-origin: center; }
-@keyframes mascotBlink {
-  0%, 92%, 100% { transform: scaleY(1); }
-  95% { transform: scaleY(0.1); }
-}
-
-.mascot__flicker {
-  transform-box: fill-box;
-  transform-origin: 50% 100%;
-  animation: mascotFlicker 2.4s ease-in-out infinite;
-}
-@keyframes mascotFlicker {
-  0%, 100% { transform: scaleY(1) skewX(0deg); }
-  20% { transform: scaleY(1.025) skewX(-1.2deg); }
-  45% { transform: scaleY(0.98) skewX(0.8deg); }
-  70% { transform: scaleY(1.015) skewX(-0.6deg); }
-  85% { transform: scaleY(0.99) skewX(0.4deg); }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .mascot--float, .mascot__eye, .mascot__flicker { animation: none; }
+.hero-video {
+  width: min(320px, 80%);
+  height: auto;
+  aspect-ratio: 1 / 1;
 }
 
 @media (max-width: 860px) {
@@ -296,7 +274,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 
 /* ===== Problema ===== */
 .problema { padding: var(--space-8) 0; }
-.problema__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-4); }
+.problema__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-5); }
 .problema__card {
   background: var(--color-card);
   border-radius: var(--radius-md);
@@ -323,7 +301,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 
 /* ===== Producto hoy ===== */
 .producto { padding: var(--space-8) 0; }
-.producto__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-4); }
+.producto__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-6); }
 .producto__item {
   padding: var(--space-4);
   border-left: 3px solid var(--color-orange-light);
@@ -336,7 +314,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 
 /* ===== Planes ===== */
 .planes { padding: var(--space-8) 0; }
-.planes__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-4); align-items: stretch; }
+.planes__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-5); align-items: stretch; }
 .plan-card {
   background: var(--color-card);
   border-radius: var(--radius-lg);
@@ -360,7 +338,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   padding: var(--space-1) var(--space-3);
   border-radius: var(--radius-full);
 }
-.plan-card__features { display: flex; flex-direction: column; gap: var(--space-2); flex: 1; }
+.plan-card__features { display: flex; flex-direction: column; gap: var(--space-3); flex: 1; }
 .plan-card__features li { padding-left: var(--space-4); position: relative; color: var(--color-text); }
 .plan-card__features li::before {
   content: "";
