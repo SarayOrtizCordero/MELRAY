@@ -353,6 +353,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   background: rgba(44, 26, 18, 0.15);
 }
 .producto__mockup-body { padding: var(--space-5); }
+.producto__mockup-body--media { padding: 0; }
 
 /* Catálogo mockup (row 1) */
 .mockup-catalog__row {
@@ -370,7 +371,6 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 .mockup-catalog__name { color: var(--color-text); }
 .mockup-catalog__sku { color: var(--color-text-muted); font-size: 0.75rem; }
 .mockup-catalog__stock {
-  font-weight: 700;
   color: var(--color-orange-dark);
   background: rgba(251, 123, 21, 0.1);
   padding: var(--space-1) var(--space-2);
@@ -396,12 +396,10 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   display: flex;
   align-items: center;
   justify-content: center;
-  font-weight: 700;
   color: var(--color-white);
 }
 .mockup-move__row--in .mockup-move__icon { background: var(--color-orange-light); }
 .mockup-move__row--out .mockup-move__icon { background: var(--color-red); }
-.mockup-move__qty { font-weight: 700; }
 .mockup-move__row--in .mockup-move__qty { color: var(--color-orange-dark); }
 .mockup-move__row--out .mockup-move__qty { color: var(--color-red); }
 .mockup-move__date { color: var(--color-text-muted); font-size: 0.75rem; }
@@ -438,7 +436,6 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   display: block;
   font-family: var(--font-heading);
   font-size: 3rem;
-  font-weight: 700;
   color: var(--color-orange-dark);
   line-height: 1;
 }

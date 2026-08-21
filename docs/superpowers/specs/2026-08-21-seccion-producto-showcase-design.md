@@ -74,3 +74,24 @@ como "vista de la app", usando la paleta ya definida en `styles.css`
 Cuando existan capturas/videos reales, cada mockup se reemplaza por un
 `<img>` o `<video>` dentro del mismo marco de "ventana de navegador",
 manteniendo `.producto__row` sin cambios estructurales.
+
+### 6.1. Detalles técnicos para la futura migración
+
+Al reemplazar un mockup ilustrado por una captura/video real, el implementador
+debe considerar dos ajustes:
+
+1. **Relleno interno (padding)**: El `.producto__mockup-body` actual usa
+   `padding: var(--space-5)` para insetar el contenido ilustrado. Una
+   captura/video real necesita ocupar el espacio completo bajo la barra de
+   chrome (full-bleed). Para esto, se dispone del modificador
+   `.producto__mockup-body--media { padding: 0; }` — agregar esta clase al
+   elemento para remover el relleno y que la imagen/video se extienda de lado
+   a lado dentro del marco.
+
+2. **Accesibilidad**: Los 3 `.producto__mockup` wrappers actuales llevan
+   `aria-hidden="true"` porque los mockups son contenido decorativo sin valor
+   informativo. Una captura/video real es contenido significativo — debe
+   llevarse `aria-hidden="true"` (agregando la clase `--media` también
+   removerá este atributo del wrapper) y, en su lugar, debe contar con texto
+   alternativo adecuado (`alt` en `<img>`) o etiquetado accesible (en
+   `<video>`), según WCAG 2.1 nivel AA.
