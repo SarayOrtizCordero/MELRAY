@@ -144,7 +144,7 @@
     </section>
     <!-- /SECTION:VER-ACCION -->
 
-    <!-- SECTION:PRODUCTO Donde iran videos y demás de los productos, esenñandolo -->
+    <!-- SECTION:PRODUCTO Videos y capturas del producto (placeholders ilustrados hasta tener material real) -->
     <section class="producto" id="producto">
       <div class="container">
         <div class="section-head reveal">
@@ -152,20 +152,65 @@
           <p class="section-head__lead">Lo que necesitas saber, sin tener que salir a buscarlo.</p>
           <p>Melray pone orden en lo esencial para que sepas qué tienes, qué entra y qué sale, sin hojas de cálculo eternas ni sistemas que necesitas aprender antes de poder usar</p>
         </div>
-        <div class="producto__grid">
-          <div class="producto__item reveal">
+
+        <div class="producto__row reveal">
+          <div class="producto__mockup" aria-hidden="true">
+            <div class="producto__mockup-bar"><span></span><span></span><span></span></div>
+            <div class="producto__mockup-body producto__mockup-body--catalog">
+              <div class="mockup-catalog__row">
+                <span class="mockup-catalog__swatch" style="background:#fb7b15"></span>
+                <span class="mockup-catalog__name">Camiseta básica</span>
+                <span class="mockup-catalog__sku">SKU-1042</span>
+                <span class="mockup-catalog__stock">86</span>
+              </div>
+              <div class="mockup-catalog__row">
+                <span class="mockup-catalog__swatch" style="background:#df3314"></span>
+                <span class="mockup-catalog__name">Zapatillas running</span>
+                <span class="mockup-catalog__sku">SKU-2210</span>
+                <span class="mockup-catalog__stock">48</span>
+              </div>
+              <div class="mockup-catalog__row">
+                <span class="mockup-catalog__swatch" style="background:#b11e1b"></span>
+                <span class="mockup-catalog__name">Gorra clásica</span>
+                <span class="mockup-catalog__sku">SKU-0587</span>
+                <span class="mockup-catalog__stock">120</span>
+              </div>
+              <div class="mockup-catalog__row">
+                <span class="mockup-catalog__swatch" style="background:#2c1a12"></span>
+                <span class="mockup-catalog__name">Mochila urbana</span>
+                <span class="mockup-catalog__sku">SKU-3305</span>
+                <span class="mockup-catalog__stock">27</span>
+              </div>
+            </div>
+          </div>
+          <div class="producto__text">
             <h3>Todo tu catálogo. En un solo lugar.</h3>
             <p>Organiza tus productos de forma clara, con la información que realmente necesitas. Sin campos porque sí.</p>
           </div>
-          <div class="producto__item reveal">
+        </div>
+
+        <div class="producto__row producto__row--reverse reveal">
+          <div class="producto__mockup" aria-hidden="true">
+            <div class="producto__mockup-bar"><span></span><span></span><span></span></div>
+            <div class="producto__mockup-body producto__mockup-body--movements"></div>
+          </div>
+          <div class="producto__text">
             <h3>Cada movimiento, bajo control.</h3>
             <p>Registra entradas y salidas en segundos y mantén tu inventario actualizado mientras tu negocio se mueve.</p>
           </div>
-          <div class="producto__item reveal">
+        </div>
+
+        <div class="producto__row reveal">
+          <div class="producto__mockup" aria-hidden="true">
+            <div class="producto__mockup-bar"><span></span><span></span><span></span></div>
+            <div class="producto__mockup-body producto__mockup-body--lookup"></div>
+          </div>
+          <div class="producto__text">
             <h3>Lo que tienes. Cuando necesitas saberlo.</h3>
             <p>Consulta tu stock actual sin buscar archivos, revisar anotaciones o preguntarte cuándo fue la última vez que alguien actualizó el Excel.</p>
           </div>
         </div>
+
         <p class="section-closing reveal"><strong>Menos tiempo gestionando. Más tiempo haciendo crecer tu negocio.</strong></p>
       </div>
     </section>

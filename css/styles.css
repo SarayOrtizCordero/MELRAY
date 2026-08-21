@@ -320,15 +320,72 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 
 /* ===== Producto hoy ===== */
 .producto { padding: var(--space-8) 0; }
-.producto__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-6); }
-.producto__item {
-  padding: var(--space-4);
-  border-left: 3px solid var(--color-orange-light);
+
+.producto__row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-6);
+  align-items: center;
+  margin-bottom: var(--space-7);
 }
-.producto__item h3 { margin-bottom: var(--space-3); }
+.producto__row:last-of-type { margin-bottom: var(--space-6); }
+.producto__row--reverse .producto__mockup { order: 2; }
+.producto__row--reverse .producto__text { order: 1; }
+.producto__text h3 { margin-bottom: var(--space-3); }
+
+.producto__mockup {
+  background: var(--color-card);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+}
+.producto__mockup-bar {
+  display: flex;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-4);
+  background: var(--color-bg);
+  border-bottom: 1px solid rgba(44, 26, 18, 0.08);
+}
+.producto__mockup-bar span {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(44, 26, 18, 0.15);
+}
+.producto__mockup-body { padding: var(--space-5); }
+
+/* Catálogo mockup (row 1) */
+.mockup-catalog__row {
+  display: grid;
+  grid-template-columns: 20px 1fr auto auto;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-2) 0;
+  border-bottom: 1px solid rgba(44, 26, 18, 0.06);
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+}
+.mockup-catalog__row:last-child { border-bottom: none; }
+.mockup-catalog__swatch { width: 20px; height: 20px; border-radius: var(--radius-sm); }
+.mockup-catalog__name { color: var(--color-text); }
+.mockup-catalog__sku { color: var(--color-text-muted); font-size: 0.75rem; }
+.mockup-catalog__stock {
+  font-weight: 700;
+  color: var(--color-orange-dark);
+  background: rgba(251, 123, 21, 0.1);
+  padding: var(--space-1) var(--space-2);
+  border-radius: var(--radius-full);
+}
 
 @media (max-width: 860px) {
-  .problema__grid, .producto__grid { grid-template-columns: 1fr; }
+  .problema__grid { grid-template-columns: 1fr; }
+  .producto__row {
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+    margin-bottom: var(--space-6);
+  }
+  .producto__row--reverse .producto__mockup,
+  .producto__row--reverse .producto__text { order: initial; }
 }
 
 /* ===== Planes ===== */
