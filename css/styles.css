@@ -418,6 +418,37 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   .mockup-move__row--animated { animation: none; opacity: 1; transform: none; }
 }
 
+/* Consulta de stock mockup (row 3) */
+.mockup-lookup__search {
+  font-family: var(--font-body);
+  color: var(--color-text-muted);
+  background: var(--color-bg);
+  border-radius: var(--radius-full);
+  padding: var(--space-3) var(--space-4);
+  margin-bottom: var(--space-4);
+}
+.mockup-lookup__result { text-align: center; padding: var(--space-4) 0; }
+.mockup-lookup__result-name {
+  display: block;
+  font-family: var(--font-heading);
+  color: var(--color-text);
+  margin-bottom: var(--space-2);
+}
+.mockup-lookup__result-stock {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--color-orange-dark);
+  line-height: 1;
+}
+.mockup-lookup__result-label {
+  display: block;
+  color: var(--color-text-muted);
+  font-size: 0.85rem;
+  margin-top: var(--space-2);
+}
+
 @media (max-width: 860px) {
   .problema__grid { grid-template-columns: 1fr; }
   .producto__row {
