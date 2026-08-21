@@ -90,8 +90,10 @@ debe considerar dos ajustes:
 
 2. **Accesibilidad**: Los 3 `.producto__mockup` wrappers actuales llevan
    `aria-hidden="true"` porque los mockups son contenido decorativo sin valor
-   informativo. Una captura/video real es contenido significativo — debe
-   llevarse `aria-hidden="true"` (agregando la clase `--media` también
-   removerá este atributo del wrapper) y, en su lugar, debe contar con texto
-   alternativo adecuado (`alt` en `<img>`) o etiquetado accesible (en
-   `<video>`), según WCAG 2.1 nivel AA.
+   informativo. Una captura/video real es contenido significativo — al hacer
+   el reemplazo hay que **remover manualmente** `aria-hidden="true"` del
+   wrapper `.producto__mockup` (la clase `--media` solo controla el padding
+   del `.producto__mockup-body` interno; una clase CSS no puede quitar un
+   atributo HTML, así que este paso no ocurre solo). En su lugar, la
+   imagen/video debe contar con texto alternativo adecuado (`alt` en
+   `<img>`) o etiquetado accesible (en `<video>`), según WCAG 2.1 nivel AA.
