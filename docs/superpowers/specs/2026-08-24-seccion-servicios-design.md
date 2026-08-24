@@ -65,9 +65,20 @@ corrige la concordancia de número en la tarjeta de Automatizaciones
 
 Se agrega un ítem "Servicios" al menú de navegación, tanto en
 `.site-header__nav` (escritorio) como en `#mobile-menu` (mobile),
-enlazando a `#servicios`. Se ubica entre "Inventario" y "Planes" — mismo
-orden en que las secciones aparecen en la página (Inventario → Servicios
-→ Planes → Demo).
+enlazando a `#servicios`.
+
+> **Corrección post-revisión (2026-08-24):** esta sección decía
+> originalmente que el ítem se ubica "entre Inventario y Planes", con la
+> justificación (incorrecta) de que era "el mismo orden en que las
+> secciones aparecen en la página". Eso contradecía la §2, que ubica la
+> sección "entre `#planes` y `#demo`" — el orden real de scroll es
+> Inventario → Planes → Servicios → Demo. Una revisión final detectó que
+> el menú implementado según el texto original (Inventario → Servicios →
+> Planes → Demo) no coincidía con el orden real de las secciones,
+> generando un bug de navegación (el link "Servicios" saltaba el scroll
+> por delante de "Planes"). Corregido: el orden del nav es
+> **Inventario → Planes → Servicios → Demo**, coincidiendo con el orden
+> real de scroll de la página.
 
 ## 5. Detalles técnicos
 
