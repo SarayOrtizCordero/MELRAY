@@ -1,3 +1,5 @@
+import { next } from '@vercel/functions';
+
 const MAINTENANCE_HTML = `<!doctype html>
 <html lang="es">
 <head>
@@ -61,4 +63,5 @@ export default function middleware(request) {
       },
     });
   }
+  return next();
 }
