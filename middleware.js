@@ -54,12 +54,13 @@ export const config = {
 };
 
 export default function middleware(request) {
-  if (process.env.MAINTENANCE_MODE === 'true') {
+  if (String(process.env.MAINTENANCE_MODE).trim().toLowerCase() === 'true') {
     return new Response(MAINTENANCE_HTML, {
       status: 503,
       headers: {
         'Content-Type': 'text/html; charset=utf-8',
         'Retry-After': '3600',
+        'Cache-Control': 'no-store',
       },
     });
   }

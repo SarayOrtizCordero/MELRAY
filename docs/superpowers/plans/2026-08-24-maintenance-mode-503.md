@@ -4,37 +4,46 @@
 
 **Goal:** Add a sitewide maintenance mode to the Melray static site: when the `MAINTENANCE_MODE` environment variable is `"true"` on Vercel, every route responds with a brand-styled, standalone page and HTTP 503; otherwise the site behaves exactly as it does today.
 
-**Architecture:** A single root-level `middleware.js` file implementing Vercel Routing Middleware (platform-level request interception, framework-agnostic). It checks `process.env.MAINTENANCE_MODE` on every request; if `"true"` it returns a `Response` with the embedded maintenance page and status 503, otherwise it returns nothing and the request proceeds untouched.
+**Architecture:** A single root-level `middleware.js` file implementing Vercel Routing Middleware (platform-level request interception, framework-agnostic). It checks `process.env.MAINTENANCE_MODE` on every request; if `"true"` it returns a `Response` with the embedded maintenance page and status 503, otherwise it calls and returns `next()` (imported from `@vercel/functions`) to pass the request through untouched.
 
-**Tech Stack:** Plain JavaScript (ESM `export`/`export default` syntax, per Vercel's documented Routing Middleware convention), Vercel Functions `nodejs` runtime. No npm dependencies, no `package.json`, no build step — matches the rest of the site (`docs/superpowers/specs/2026-08-18-melray-landing-design.md`).
+**Tech Stack:** Plain JavaScript (ESM `export`/`export default` syntax, per Vercel's documented Routing Middleware convention), Vercel Functions `nodejs` runtime. `@vercel/functions` is the one runtime dependency, declared in a minimal `package.json` — added after a live deploy proved a dependency-free pass-through wasn't achievable (see the design spec's §3 correction note). No build step otherwise — matches the rest of the site (`docs/superpowers/specs/2026-08-18-melray-landing-design.md`).
 
 ## Global Constraints
 
-- No build tools, frameworks, or npm dependencies — `middleware.js` must be plain JavaScript with zero imports (per `docs/superpowers/specs/2026-08-24-maintenance-mode-503-design.md` §3).
+- No build tools or frameworks — `middleware.js` may import `next` from `@vercel/functions` (the project's one runtime dependency, declared in a minimal `package.json`) — this is the only permitted import (per `docs/superpowers/specs/2026-08-24-maintenance-mode-503-design.md` §3).
 - The maintenance page must not reference `css/styles.css`, the self-hosted `.woff2` fonts, or any other external file — all CSS inline in the same `middleware.js` string, system font stack only (spec §4).
 - Brand colors used verbatim: background `#faf1e7`, text `#2c1a12`, logo gradient `#fb7b15` → `#df3314` (spec §4).
 - Exact copy: title `Melray — Volvemos enseguida`, heading `Estamos poniendo esto en orden.`, body `Volvemos enseguida.` (spec §4).
-- No changes to any existing file (`index.html`, `css/styles.css`, `js/main.js`, or any other file already in the repo) — this plan only adds `middleware.js` (spec §5).
+- No changes to any existing file (`index.html`, `css/styles.css`, `js/main.js`, or any other file already in the repo) — this plan only adds `middleware.js` and `package.json`, plus an addition to `.gitignore` (spec §5).
 - No `matcher` config — Routing Middleware must run on every route by default (spec §3).
 - Runtime `nodejs` (spec §3) — do not use `runtime: 'edge'`.
-- Response headers when in maintenance mode: `Content-Type: text/html; charset=utf-8` and `Retry-After: 3600` (spec §3).
+- Response headers when in maintenance mode: `Content-Type: text/html; charset=utf-8`, `Retry-After: 3600`, and `Cache-Control: no-store` (so no intermediary caches the maintenance page past when maintenance mode ends) (spec §3).
 - Setting or changing the live `MAINTENANCE_MODE` environment variable on Vercel is a production-impacting action (it takes the real site offline) and is explicitly OUT OF SCOPE for both tasks below — it is documented as a manual runbook at the end of this plan for the human to run when they actually want to use the feature, never executed automatically as part of implementation.
 
 ---
 
-### Task 1: Create `middleware.js`
+### Task 1: Create `middleware.js` and `package.json`
 
 **Files:**
 - Create: `middleware.js` (repo root, same level as `index.html`)
+- Create: `package.json` (repo root)
+- Modify: `.gitignore` (repo root) — add `node_modules`
 
 **Interfaces:**
-- Produces: default-exported function `middleware(request)` — returns a `Response` (status 503) when `process.env.MAINTENANCE_MODE === 'true'`, otherwise returns `undefined`. Exported `config = { runtime: 'nodejs' }`.
+- Produces: default-exported function `middleware(request)` — returns a `Response` (status 503) when `String(process.env.MAINTENANCE_MODE).trim().toLowerCase() === 'true'`, otherwise calls and returns `next()` (imported from `@vercel/functions`). Exported `config = { runtime: 'nodejs' }`.
 
 - [ ] **Step 1: Write `middleware.js`**
+
+Note: this reflects the corrected version. The first implementation
+attempt used an implicit `undefined` return here (no `next()` call, no
+import), which a live Vercel deploy proved breaks 100% of normal traffic
+— see the design spec §3 for the full story.
 
 Create the file with this exact content:
 
 ```js
+import { next } from '@vercel/functions';
+
 const MAINTENANCE_HTML = `<!doctype html>
 <html lang="es">
 <head>
@@ -89,19 +98,50 @@ export const config = {
 };
 
 export default function middleware(request) {
-  if (process.env.MAINTENANCE_MODE === 'true') {
+  if (String(process.env.MAINTENANCE_MODE).trim().toLowerCase() === 'true') {
     return new Response(MAINTENANCE_HTML, {
       status: 503,
       headers: {
         'Content-Type': 'text/html; charset=utf-8',
         'Retry-After': '3600',
+        'Cache-Control': 'no-store',
       },
     });
+  }
+  return next();
+}
+```
+
+The env var check is case-insensitive and whitespace-tolerant
+(`String(...).trim().toLowerCase() === 'true'`) so a value like `True` or
+`TRUE` typed into the Vercel dashboard by hand still works as expected.
+
+- [ ] **Step 2: Write `package.json` and update `.gitignore`**
+
+Since `middleware.js` now imports `@vercel/functions`, the project needs a
+minimal `package.json` declaring it as a dependency, and `"type": "module"`
+so Vercel doesn't implicitly compile the ESM syntax as CommonJS:
+
+```json
+{
+  "name": "melray",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@vercel/functions": "^3.9.5"
   }
 }
 ```
 
-- [ ] **Step 2: Verify the logic locally with plain Node**
+Run `npm install` once to fetch the dependency locally (needed for Step 3's
+local verification), then add `node_modules` to `.gitignore` so the
+installed package isn't committed:
+
+```bash
+echo "node_modules" >> .gitignore
+```
+
+- [ ] **Step 3: Verify the logic locally with plain Node**
 
 No Vercel CLI is installed in this environment, so `vercel dev` is not
 available. Verify the middleware's request-handling logic directly with
@@ -114,12 +154,14 @@ Run:
 node --input-type=module -e "
 import middleware from './middleware.js';
 const off = middleware(new Request('https://example.com/'));
-console.log('off:', off);
+console.log('off constructor:', off?.constructor?.name);
+console.log('off x-middleware-next:', off?.headers?.get('x-middleware-next'));
 process.env.MAINTENANCE_MODE = 'true';
 const on = middleware(new Request('https://example.com/'));
 console.log('on status:', on.status);
 console.log('on content-type:', on.headers.get('Content-Type'));
 console.log('on retry-after:', on.headers.get('Retry-After'));
+console.log('on cache-control:', on.headers.get('Cache-Control'));
 const body = await on.text();
 console.log('on body includes heading:', body.includes('Estamos poniendo esto en orden.'));
 console.log('on body includes css var:', body.includes('#fb7b15'));
@@ -128,22 +170,27 @@ console.log('on body includes css var:', body.includes('#fb7b15'));
 
 Expected output:
 ```
-off: undefined
+off constructor: Response
+off x-middleware-next: 1
 on status: 503
 on content-type: text/html; charset=utf-8
 on retry-after: 3600
+on cache-control: no-store
 on body includes heading: true
 on body includes css var: true
 ```
 
-If `off` is not `undefined`, or any `on` line doesn't match, the
-implementation has a bug — fix `middleware.js` and re-run this exact
-command before moving on.
+The corrected code returns a real `Response` object from `off` (produced
+by `next()` from `@vercel/functions`, identifiable by its
+`x-middleware-next: 1` header) — NOT `undefined`. If `off` prints as
+`undefined`, that's the original broken behavior regressing; fix
+`middleware.js` and re-run this exact command before moving on. If any
+`on` line doesn't match, the implementation has a bug too.
 
-- [ ] **Step 3: Commit**
+- [ ] **Step 4: Commit**
 
 ```bash
-git add middleware.js
+git add middleware.js package.json .gitignore
 git commit -m "feat: add maintenance-mode 503 routing middleware"
 git push origin master
 ```
@@ -232,26 +279,42 @@ feature:
    en orden." page, and the HTTP status is 503 (check via browser dev
    tools Network tab, or `curl -I https://melray.vercel.app`).
 4. When done, delete the `MAINTENANCE_MODE` environment variable (or set
-   it to `false`) and confirm the site returns to normal.
+   it to `false`) and confirm the site returns to normal. **This direction
+   has the same redeploy-timing risk as step 2, but it's more dangerous to
+   get wrong:** deleting/changing the variable does not necessarily take
+   effect on the currently-running deployment — the old value may still be
+   baked in, so the site can silently keep showing the maintenance page
+   even though you believe you just turned it off. If the site still shows
+   the maintenance page after deleting/changing the variable, trigger a
+   redeploy from the dashboard (Deployments → newest → the ⋯ menu →
+   Redeploy) — do not assume the site is back up just because you deleted
+   the variable; confirm it with a real request first.
 
 ## Self-Review Notes
 
 - **Spec coverage:** Mechanism (env var + Routing Middleware, spec §3) →
-  Task 1 Step 1 + config. No-npm-deps/no-package.json constraint (spec §3)
-  → enforced in Global Constraints and Task 1's plain-JS content. Standalone
-  page content (logo, copy, colors, system fonts, spec §4) → Task 1 Step 1,
-  verified in Task 1 Step 2's body-content assertions. No changes to
+  Task 1 Step 1 + config. One-permitted-dependency constraint (spec §3,
+  §5: `@vercel/functions` via a minimal `package.json`, added after a live
+  deploy proved a dependency-free pass-through wasn't achievable) →
+  enforced in Global Constraints and Task 1 Steps 1–2. Standalone page
+  content (logo, copy, colors, system fonts, spec §4) → Task 1 Step 1,
+  verified in Task 1 Step 3's body-content assertions. No changes to
   existing files (spec §5) → Global Constraints, and Task 1 only creates
-  one new file. Redeploy-timing unknown (spec §3.1, §6) → explicitly
-  surfaced in Task 2 Step 2 and the manual runbook, not silently assumed
-  either way.
+  new files (`middleware.js`, `package.json`) plus a `.gitignore` addition.
+  Redeploy-timing unknown (spec §3.1, §6) → explicitly surfaced in Task 2
+  Step 2 and the manual runbook (both the ON and OFF directions), not
+  silently assumed either way.
 - **Placeholder scan:** No TBD/TODO. The one open question from the spec
   (does the env var apply instantly or need a redeploy) is carried forward
   explicitly as a documented unknown in the manual runbook, not hidden or
   guessed at — it cannot be resolved without actually enabling maintenance
   mode, which this plan deliberately keeps out of the automated tasks.
 - **Type/consistency check:** `middleware.js`'s default export signature
-  (`middleware(request)` → `Response | undefined`) is used consistently in
-  Task 1 Step 2's test script and nowhere contradicted elsewhere in the
-  plan. Header names/values (`Content-Type`, `Retry-After: 3600`) match
-  between Task 1's code and the Global Constraints list.
+  (`middleware(request)` → `Response` in both branches, via `next()` from
+  `@vercel/functions` in the pass-through case) is used consistently in
+  Task 1 Step 3's test script and nowhere contradicted elsewhere in the
+  plan. Header names/values (`Content-Type`, `Retry-After: 3600`,
+  `Cache-Control: no-store`) match between Task 1's code and the Global
+  Constraints list. The env var comparison
+  (`String(process.env.MAINTENANCE_MODE).trim().toLowerCase() === 'true'`)
+  is stated identically in the Interfaces line and the Task 1 Step 1 code.

@@ -41,9 +41,9 @@ modo mantenimiento:
 > Las líneas de abajo quedan como registro de la decisión original; la
 > sección 5 refleja el mecanismo corregido.
 
-- ~~**JavaScript plano, sin dependencias npm ni `package.json`**~~ — sin
-  dependencias npm ni `package.json`, respetando la restricción de "sin
-  build tools" del sitio. ~~No se importa `@vercel/functions`; el
+- ~~**JavaScript plano, sin dependencias npm ni `package.json`**~~ — respetando
+  la restricción de "sin build tools" del sitio en todo lo demás (sin
+  bundler, sin paso de build). ~~No se importa `@vercel/functions`; el
   contrato usado es el más simple posible: devolver un `Response` para
   interceptar la petición, o no devolver nada (`undefined`) para dejarla
   pasar sin modificar.~~ **Corregido:** sí se importa `next` de
