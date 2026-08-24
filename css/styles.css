@@ -529,12 +529,6 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   .servicios__grid { grid-template-columns: 1fr; }
 }
 
-/* ===== Demo CTA ===== */
-.demo-cta { padding: var(--space-8) 0; }
-.demo-cta__inner { max-width: 640px; text-align: center; display: flex; flex-direction: column; align-items: center; }
-.demo-cta__note { font-family: var(--font-heading); margin-top: var(--space-4); }
-.demo-cta__button { margin-top: var(--space-5); }
-
 /* ===== Footer ===== */
 .site-footer { padding: var(--space-6) 0; background: var(--color-red); }
 .site-footer .site-header__wordmark { color: var(--color-white); }
