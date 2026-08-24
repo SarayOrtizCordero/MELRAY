@@ -28,11 +28,27 @@ Service Unavailable** (405 es "Método no permitido", no aplica aquí).
 Un único archivo `middleware.js` en la raíz del proyecto implementa el
 modo mantenimiento:
 
-- **JavaScript plano, sin dependencias npm ni `package.json`** — respeta la
-  restricción de "sin build tools" del sitio. No se importa `@vercel/functions`;
-  el contrato usado es el más simple posible: devolver un `Response` para
+> **Corrección post-implementación (2026-08-24):** el diseño original
+> decía "sin dependencias npm ni `package.json`", asumiendo que devolver
+> `undefined` bastaba para dejar pasar la petición. Un deploy de prueba
+> real lo desmintió: bajo `runtime: 'nodejs'`, devolver `undefined`
+> corta la petición con un `200` vacío en vez de dejarla pasar al sitio
+> estático. La documentación oficial de Vercel confirma que, para
+> proyectos sin framework, la única forma soportada de continuar la
+> cadena es `next()` del paquete `@vercel/functions`. El usuario aprobó
+> agregar esa única dependencia (con un `package.json` mínimo) en vez de
+> intentar replicar el comportamiento a mano sin documentación pública.
+> Las líneas de abajo quedan como registro de la decisión original; la
+> sección 5 refleja el mecanismo corregido.
+
+- ~~**JavaScript plano, sin dependencias npm ni `package.json`**~~ — sin
+  dependencias npm ni `package.json`, respetando la restricción de "sin
+  build tools" del sitio. ~~No se importa `@vercel/functions`; el
+  contrato usado es el más simple posible: devolver un `Response` para
   interceptar la petición, o no devolver nada (`undefined`) para dejarla
-  pasar sin modificar.
+  pasar sin modificar.~~ **Corregido:** sí se importa `next` de
+  `@vercel/functions` (única dependencia), y se llama `next()`
+  explícitamente para dejar pasar la petición — ver §5.
 - **Runtime `nodejs`** (Fluid Compute) — es la recomendación actual de
   Vercel por defecto sobre `edge`, que ya no ofrece ventaja para este caso.
 - Sin `matcher` explícito: por defecto Routing Middleware corre en todas las
@@ -41,8 +57,10 @@ modo mantenimiento:
   activo).
 - Lógica: si `process.env.MAINTENANCE_MODE === 'true'`, responde con la
   página de mantenimiento embebida, `status: 503` y header
-  `Retry-After: 3600`. En cualquier otro caso, no hace nada (deja pasar la
-  petición normal).
+  `Retry-After: 3600`. En cualquier otro caso, llama y devuelve `next()`
+  (de `@vercel/functions`) para dejar pasar la petición normal —
+  **corregido** tras confirmar en un deploy real que devolver `undefined`
+  no tiene ese efecto bajo `runtime: 'nodejs'` (ver nota en §3).
 
 ### 3.1. Activación
 
@@ -78,8 +96,11 @@ pueda romperse por su cuenta durante una caída real:
 
 ## 5. Detalles técnicos
 
-- Un solo archivo nuevo: `middleware.js` en la raíz del repo (mismo nivel
-  que `index.html`).
+- Dos archivos nuevos: `middleware.js` y `package.json` en la raíz del
+  repo (mismo nivel que `index.html`) — **corregido** desde "un solo
+  archivo" tras el hallazgo de §3: `package.json` declara `@vercel/functions`
+  como única dependencia y `"type": "module"` (evita además la
+  compilación implícita ESM→CommonJS que hacía Vercel sin él).
 - No se modifica `index.html`, `css/styles.css`, `js/main.js` ni ningún
   archivo existente.
 - No se necesita `vercel.json` ni `vercel.ts` para este mecanismo — Routing
@@ -91,6 +112,10 @@ pueda romperse por su cuenta durante una caída real:
 
 ## 6. Riesgos / limitaciones
 
+- ~~El contrato de "devolver `undefined` deja pasar la petición" no estaba
+  verificado contra un deploy real~~ — **resuelto**: se verificó en un
+  deploy de preview real, resultó falso, y se corrigió usando `next()` de
+  `@vercel/functions` (ver §3, §5). Este riesgo ya no aplica.
 - Si `MAINTENANCE_MODE` requiere un redeploy para tomar efecto (por
   confirmar en implementación), activar el modo no es 100% instantáneo,
   pero sigue sin requerir cambios de código — solo el toggle de la
