@@ -353,97 +353,17 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   background: rgba(44, 26, 18, 0.15);
 }
 .producto__mockup-body { padding: var(--space-5); }
-.producto__mockup-body--media { padding: 0; }
-
-/* Catálogo mockup (row 1) */
-.mockup-catalog__row {
-  display: grid;
-  grid-template-columns: 20px 1fr auto auto;
-  align-items: center;
-  gap: var(--space-3);
-  padding: var(--space-2) 0;
-  border-bottom: 1px solid rgba(44, 26, 18, 0.06);
-  font-family: var(--font-heading);
-  font-size: 0.85rem;
+.producto__mockup-body--media {
+  padding: 0;
+  height: 320px;
+  overflow: hidden;
 }
-.mockup-catalog__row:last-child { border-bottom: none; }
-.mockup-catalog__swatch { width: 20px; height: 20px; border-radius: var(--radius-sm); }
-.mockup-catalog__name { color: var(--color-text); }
-.mockup-catalog__sku { color: var(--color-text-muted); font-size: 0.75rem; }
-.mockup-catalog__stock {
-  color: var(--color-orange-dark);
-  background: rgba(251, 123, 21, 0.1);
-  padding: var(--space-1) var(--space-2);
-  border-radius: var(--radius-full);
-}
-
-/* Movimientos mockup (row 2) */
-.mockup-move__row {
-  display: grid;
-  grid-template-columns: 24px 1fr auto auto;
-  align-items: center;
-  gap: var(--space-3);
-  padding: var(--space-3) 0;
-  border-bottom: 1px solid rgba(44, 26, 18, 0.06);
-  font-family: var(--font-heading);
-  font-size: 0.85rem;
-}
-.mockup-move__row:last-child { border-bottom: none; }
-.mockup-move__icon {
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--color-white);
-}
-.mockup-move__row--in .mockup-move__icon { background: var(--color-orange-light); }
-.mockup-move__row--out .mockup-move__icon { background: var(--color-red); }
-.mockup-move__row--in .mockup-move__qty { color: var(--color-orange-dark); }
-.mockup-move__row--out .mockup-move__qty { color: var(--color-red); }
-.mockup-move__date { color: var(--color-text-muted); font-size: 0.75rem; }
-
-.mockup-move__row--animated {
-  animation: mockup-move-in 3.2s ease-in-out infinite;
-}
-@keyframes mockup-move-in {
-  0%, 15% { opacity: 0; transform: translateY(10px); }
-  30%, 85% { opacity: 1; transform: translateY(0); }
-  100% { opacity: 1; transform: translateY(0); }
-}
-@media (prefers-reduced-motion: reduce) {
-  .mockup-move__row--animated { animation: none; opacity: 1; transform: none; }
-}
-
-/* Consulta de stock mockup (row 3) */
-.mockup-lookup__search {
-  font-family: var(--font-body);
-  color: var(--color-text-muted);
-  background: var(--color-bg);
-  border-radius: var(--radius-full);
-  padding: var(--space-3) var(--space-4);
-  margin-bottom: var(--space-4);
-}
-.mockup-lookup__result { text-align: center; padding: var(--space-4) 0; }
-.mockup-lookup__result-name {
+.producto__mockup-body--media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
   display: block;
-  font-family: var(--font-heading);
-  color: var(--color-text);
-  margin-bottom: var(--space-2);
-}
-.mockup-lookup__result-stock {
-  display: block;
-  font-family: var(--font-heading);
-  font-size: 3rem;
-  color: var(--color-orange-dark);
-  line-height: 1;
-}
-.mockup-lookup__result-label {
-  display: block;
-  color: var(--color-text-muted);
-  font-size: 0.85rem;
-  margin-top: var(--space-2);
 }
 
 @media (max-width: 860px) {
