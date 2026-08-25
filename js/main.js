@@ -81,6 +81,31 @@ function initReducedMotionVideo() {
   }
 }
 
+function initMockupTilt() {
+  const cards = document.querySelectorAll('.producto__mockup');
+  if (!cards.length) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  const MAX_TILT = 8;
+
+  cards.forEach((card) => {
+    card.addEventListener('mousemove', (event) => {
+      const rect = card.getBoundingClientRect();
+      const x = event.clientX - rect.left;
+      const y = event.clientY - rect.top;
+      const midX = rect.width / 2;
+      const midY = rect.height / 2;
+      const rotateY = ((x - midX) / midX) * MAX_TILT;
+      const rotateX = -((y - midY) / midY) * MAX_TILT;
+      card.style.transform = `perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+    });
+
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = '';
+    });
+  });
+}
+
 function runSafely(fn) {
   try {
     fn();
@@ -96,4 +121,5 @@ document.addEventListener('DOMContentLoaded', () => {
   runSafely(initCookieBanner);
   runSafely(initFooterYear);
   runSafely(initReducedMotionVideo);
+  runSafely(initMockupTilt);
 });

@@ -338,6 +338,10 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-md);
   overflow: hidden;
+  transition: box-shadow 200ms ease, transform 150ms ease;
+}
+.producto__mockup:hover {
+  box-shadow: 0 20px 40px rgba(223, 51, 20, 0.35);
 }
 .producto__mockup-bar {
   display: flex;
