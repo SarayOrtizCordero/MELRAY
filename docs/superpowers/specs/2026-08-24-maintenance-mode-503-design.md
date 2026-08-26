@@ -18,6 +18,19 @@ Estado: aprobado por el usuario, pendiente de implementación
 > `middleware.js`. Los dos mecanismos coexisten sin conflicto: cada uno
 > solo actúa en su propio entorno de hosting.
 
+> **Segunda corrección (2026-08-26):** la cuenta de Kasserver que aparecía
+> en el DNS no es de Melray — la compró/gestiona un tercero, que solo
+> facilitó una cuenta de correo (`melray@melraysystems.com`), sin acceso
+> FTP ni al panel de hosting. Melray no tiene, y no va a montar, hosting
+> propio en Kasserver. La producción vuelve a ser **Vercel** (gratuito, ya
+> con deploy automático configurado) — se revierte el mecanismo de §"Segunda
+> corrección" anterior: se eliminan `.htaccess` y `mantenimiento.html` del
+> repo. `middleware.js` (§3-§5) vuelve a ser el único mecanismo de
+> mantenimiento, ahora también para producción, no solo para staging. Los
+> registros DNS de correo (`MX`, `SPF`, `_dmarc`, `DKIM`) los sigue
+> gestionando ese tercero sin tocarse; solo cambian el `A` de la raíz y el
+> `CNAME` de `www` para apuntar a Vercel.
+
 ## 1. Contexto
 
 Melray es un sitio estático (HTML/CSS/JS vanilla, sin frameworks ni build
