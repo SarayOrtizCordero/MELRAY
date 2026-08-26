@@ -85,6 +85,7 @@ function initMockupTilt() {
   const cards = document.querySelectorAll('.producto__mockup');
   if (!cards.length) return;
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
 
   const MAX_TILT = 8;
 

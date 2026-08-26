@@ -340,8 +340,10 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   overflow: hidden;
   transition: box-shadow 200ms ease, transform 150ms ease;
 }
-.producto__mockup:hover {
-  box-shadow: 0 20px 40px rgba(223, 51, 20, 0.35);
+@media (hover: hover) and (pointer: fine) {
+  .producto__mockup:hover {
+    box-shadow: 0 20px 40px rgba(223, 51, 20, 0.35);
+  }
 }
 .producto__mockup-bar {
   display: flex;
@@ -368,6 +370,10 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   object-fit: cover;
   object-position: top;
   display: block;
+}
+.producto__mockup-body--media-movimientos {
+  transform: scale(1.65);
+  transform-origin: top;
 }
 
 @media (max-width: 860px) {
