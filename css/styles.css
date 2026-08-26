@@ -373,7 +373,11 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   display: block;
 }
 .producto__mockup-body--media-movimientos {
-  height: 190px;
+  height: 286px;
+}
+.producto__mockup-body--media-movimientos img {
+  transform: scale(1.45);
+  transform-origin: top;
 }
 
 @media (max-width: 860px) {
