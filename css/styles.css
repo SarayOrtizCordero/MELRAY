@@ -221,10 +221,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 
 @media (max-width: 860px) {
   .site-header__nav { display: none; }
-  /* Legal pages have no hamburger menu, so their CTA has nowhere else
-     to go — only hide it on pages that actually offer a mobile-menu
-     replacement. */
-  .site-header:not(.site-header--minimal) .site-header__cta { display: none; }
+  .site-header__cta { display: none; }
   .site-header__toggle { display: flex; }
 }
 
