@@ -3,6 +3,21 @@
 Fecha: 2026-08-24
 Estado: aprobado por el usuario, pendiente de implementación
 
+> **Corrección post-implementación (2026-08-26):** el dominio de
+> producción `melraysystems.com` se aloja finalmente en Kasserver/All-Inkl
+> (hosting estático Apache), no en Vercel — el registro DNS `A` ya lo
+> apuntaba ahí antes incluso de decidirlo. `middleware.js` (Vercel Routing
+> Middleware, ver §3-§5 abajo) no se ejecuta en Apache, así que no cubre
+> producción. El usuario decidió mantener el proyecto Vercel conectado
+> como staging (el `middleware.js` sigue siendo válido ahí, sin cambios),
+> y añadir un mecanismo equivalente para Apache: `.htaccess` en la raíz
+> del repo detecta un archivo marcador `.maintenance` (subido/borrado por
+> FTP, sin tocar código) y fuerza `503` con `ErrorDocument 503` sirviendo
+> `mantenimiento.html` — la misma página standalone descrita en §4,
+> extraída a un archivo propio en vez de vivir como string embebido en
+> `middleware.js`. Los dos mecanismos coexisten sin conflicto: cada uno
+> solo actúa en su propio entorno de hosting.
+
 ## 1. Contexto
 
 Melray es un sitio estático (HTML/CSS/JS vanilla, sin frameworks ni build

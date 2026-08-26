@@ -1,0 +1,13 @@
+# Modo mantenimiento (producción en Kasserver/All-Inkl)
+#
+# Para activar: sube (por FTP) un archivo vacío llamado ".maintenance" a
+# la raíz del sitio (mismo nivel que este .htaccess). Para desactivar:
+# borra ese archivo. No hace falta tocar ningún otro archivo ni redeploy.
+RewriteEngine On
+
+RewriteCond %{DOCUMENT_ROOT}/.maintenance -f
+RewriteCond %{REQUEST_URI} !^/mantenimiento\.html$
+RewriteRule ^ - [R=503,L]
+
+ErrorDocument 503 /mantenimiento.html
+Header always set Retry-After "3600"
