@@ -435,6 +435,15 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   border-top: 1px solid rgba(44, 26, 18, 0.1);
 }
 .plan-card--highlight .plan-card__price { color: var(--color-red); }
+.plan-card__price-note {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 400;
+  letter-spacing: normal;
+  color: var(--color-text-muted);
+  margin-top: var(--space-1);
+}
 
 @media (max-width: 860px) {
   .planes__grid { grid-template-columns: 1fr; }
