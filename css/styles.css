@@ -467,9 +467,20 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   align-items: center;
 }
 .servicios__closing a { margin-top: var(--space-5); }
+.servicios__closing h3 { margin-top: var(--space-5); color: var(--color-orange-dark); }
+.servicios__closing .calendly-inline-widget {
+  width: 100%;
+  min-width: 320px;
+  height: 700px;
+  margin-top: var(--space-3);
+}
 
 @media (max-width: 860px) {
   .servicios__grid { grid-template-columns: 1fr; }
+}
+
+@media (min-width: 861px) {
+  .servicios__closing { max-width: 900px; }
 }
 
 /* ===== Footer ===== */
