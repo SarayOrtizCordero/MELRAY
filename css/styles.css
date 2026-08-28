@@ -208,8 +208,30 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 .site-header__nav a { font-family: var(--font-heading); font-size: 0.95rem; }
 .site-header__nav a:hover { color: var(--color-orange-dark); }
 .site-header__cta { padding: var(--space-2) var(--space-4); font-size: 0.85rem; }
-.site-header__toggle { display: none; flex-direction: column; gap: 4px; padding: var(--space-2); }
-.site-header__toggle-bar { width: 22px; height: 2px; background: var(--color-text); }
+.site-header__toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border-radius: var(--radius-sm);
+  transition: background-color var(--transition-base);
+}
+.site-header__toggle:hover,
+.site-header__toggle:focus-visible { background: rgba(44, 26, 18, 0.06); }
+.site-header__toggle-bar {
+  width: 20px;
+  height: 2px;
+  border-radius: var(--radius-full);
+  background: var(--color-text);
+  transition: transform var(--transition-base), opacity var(--transition-base);
+}
+.site-header__toggle[aria-expanded="true"] .site-header__toggle-bar:nth-child(2) { transform: translateY(7px) rotate(45deg); }
+.site-header__toggle[aria-expanded="true"] .site-header__toggle-bar:nth-child(3) { opacity: 0; }
+.site-header__toggle[aria-expanded="true"] .site-header__toggle-bar:nth-child(4) { transform: translateY(-7px) rotate(-45deg); }
 
 .mobile-menu {
   background: var(--color-bg);
@@ -245,9 +267,10 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 }
 
 @media (max-width: 860px) {
+  .hero { padding: var(--space-6) 0; }
   .hero__inner { grid-template-columns: 1fr; text-align: center; }
   .hero__actions { justify-content: center; }
-  .hero__art { order: -1; }
+  .hero-video { width: min(180px, 45%); }
 }
 
 /* ===== Scroll reveal ===== */
@@ -343,6 +366,11 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
     box-shadow: 0 20px 40px rgba(223, 51, 20, 0.35);
   }
 }
+@media (hover: none) {
+  .producto__mockup {
+    box-shadow: 0 16px 34px rgba(223, 51, 20, 0.2);
+  }
+}
 .producto__mockup-bar {
   display: flex;
   gap: var(--space-2);
@@ -388,7 +416,11 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   .producto__row--reverse .producto__text { order: initial; }
   .producto__mockup, .producto__text { flex: none; width: 100%; }
   .producto__mockup-body--media { height: 170px; }
-  .producto__mockup-body--media-movimientos { height: 100px; }
+  .producto__mockup-body--media-movimientos {
+    height: auto;
+    aspect-ratio: 1907 / 520;
+  }
+  .producto__mockup-body--media-movimientos img { transform: none; }
 }
 
 /* ===== Planes ===== */
@@ -479,6 +511,11 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   .servicios__grid { grid-template-columns: 1fr; }
 }
 
+@media (max-width: 860px) {
+  .site-footer__inner { flex-direction: column; align-items: center; text-align: center; }
+  .site-footer__links { flex-direction: column; align-items: center; gap: var(--space-3); }
+}
+
 @media (min-width: 861px) {
   .servicios__closing { max-width: 900px; }
 }
@@ -511,16 +548,26 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   background: var(--color-card);
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-md);
-  padding: var(--space-4);
+  padding: var(--space-3) var(--space-4);
   display: flex;
   flex-wrap: wrap;
-  gap: var(--space-3);
+  gap: var(--space-2);
   align-items: center;
   justify-content: space-between;
   z-index: 200;
 }
 .cookie-banner p { flex: 1 1 280px; font-size: 0.9rem; }
 .cookie-banner[hidden] { display: none; }
+
+@media (max-width: 480px) {
+  .cookie-banner {
+    bottom: var(--space-2);
+    left: var(--space-2);
+    right: var(--space-2);
+    padding: var(--space-3);
+  }
+  .cookie-banner p { font-size: 0.8rem; }
+}
 
 /* ===== Legal pages ===== */
 .legal { padding: var(--space-7) 0 var(--space-8); }
