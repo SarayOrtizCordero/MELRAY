@@ -427,7 +427,9 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 .planes { padding: var(--space-8) 0; }
 .planes__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-5); align-items: stretch; }
 .plan-card {
+  position: relative;
   background: var(--color-card);
+  border: 1px solid rgba(44, 26, 18, 0.06);
   border-radius: var(--radius-lg);
   padding: var(--space-5);
   box-shadow: var(--shadow-sm);
@@ -437,8 +439,17 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   transition: transform var(--transition-base), box-shadow var(--transition-base);
 }
 .plan-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-md); }
-.plan-card--highlight { border: 2px solid var(--color-orange-dark); }
+.plan-card--highlight {
+  background: linear-gradient(180deg, #fff6ee 0%, var(--color-card) 55%);
+  border: 2px solid var(--color-orange-dark);
+  box-shadow: 0 16px 40px rgba(177, 30, 27, 0.16);
+  transform: translateY(-14px);
+}
+.plan-card--highlight:hover { transform: translateY(-20px); }
 .plan-card__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
   align-self: flex-start;
   font-family: var(--font-heading);
   font-size: 0.75rem;
@@ -449,7 +460,8 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   padding: var(--space-1) var(--space-3);
   border-radius: var(--radius-full);
 }
-.plan-card__features { display: flex; flex-direction: column; gap: var(--space-3); flex: 1; }
+.plan-card__badge svg { width: 11px; height: 11px; flex-shrink: 0; }
+.plan-card__features { display: flex; flex-direction: column; gap: var(--space-3); }
 .plan-card__features li { padding-left: var(--space-4); position: relative; color: var(--color-text); }
 .plan-card__features li::before {
   content: "";
@@ -458,6 +470,53 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   border-radius: 50%;
   background: var(--color-orange-light);
 }
+
+.plan-card__teaser { display: flex; flex-direction: column; gap: var(--space-3); }
+.plan-card__teaser li {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-2);
+  color: var(--color-text);
+  font-size: 0.92rem;
+}
+.plan-card__teaser-icon {
+  flex-shrink: 0;
+  width: 18px; height: 18px;
+  margin-top: 2px;
+  border-radius: 50%;
+  background: rgba(251, 123, 21, 0.14);
+  color: var(--color-orange-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.plan-card__teaser-icon svg { width: 10px; height: 10px; }
+
+/* Hidden until JS confirms it can open the detail modal — with JS off,
+   the card simply shows its teaser features and nothing else breaks. */
+.plan-card__more {
+  display: none;
+  align-items: center;
+  gap: var(--space-2);
+  align-self: flex-start;
+  font-family: var(--font-heading);
+  font-size: 0.88rem;
+  color: var(--color-orange-dark);
+  transition: color var(--transition-base), gap var(--transition-base);
+}
+.plan-card__more:hover { color: var(--color-red); gap: 9px; }
+.plan-card__more-icon { width: 13px; height: 13px; flex-shrink: 0; }
+.plans-js-ready .plan-card__more { display: inline-flex; }
+
+/* Anchors price + CTA to the card's bottom edge, so cards with a
+   slightly shorter description still line up with their siblings. */
+.plan-card__footer {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  margin-top: auto;
+}
+
 .plan-card__price {
   font-family: var(--font-heading);
   font-size: 1.75rem;
@@ -479,6 +538,61 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 
 @media (max-width: 860px) {
   .planes__grid { grid-template-columns: 1fr; }
+  .plan-card--highlight, .plan-card--highlight:hover { transform: none; }
+}
+
+/* ===== Plan detail modal ===== */
+.plan-modal {
+  position: fixed;
+  inset: 0;
+  margin: auto;
+  border: none;
+  padding: 0;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 24px 60px rgba(44, 26, 18, 0.28);
+  max-width: 600px;
+  width: calc(100% - var(--space-6) * 2);
+  max-height: calc(100vh - var(--space-6) * 2);
+  background: var(--color-card);
+}
+.plan-modal::backdrop { background: rgba(44, 26, 18, 0.55); }
+.plan-modal[open] { animation: plan-modal-pop 200ms ease; }
+.plan-modal[open]::backdrop { animation: plan-modal-fade 180ms ease; }
+.plan-modal__panel {
+  position: relative;
+  padding: var(--space-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  max-height: calc(100vh - var(--space-6) * 2);
+  overflow-y: auto;
+}
+.plan-modal__close {
+  position: absolute;
+  top: var(--space-4);
+  right: var(--space-4);
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-muted);
+  background: rgba(44, 26, 18, 0.06);
+  transition: background var(--transition-base);
+}
+.plan-modal__close:hover { background: rgba(44, 26, 18, 0.12); }
+.plan-modal__close svg { width: 16px; height: 16px; }
+.plan-modal #plan-modal-title { padding-right: var(--space-6); }
+.plan-modal--accent #plan-modal-price { color: var(--color-red); }
+
+@keyframes plan-modal-pop {
+  from { opacity: 0; transform: translateY(10px) scale(0.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+@keyframes plan-modal-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 /* ===== Servicios ===== */

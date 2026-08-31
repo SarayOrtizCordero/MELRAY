@@ -211,59 +211,91 @@
           <article class="plan-card reveal">
             <h3>Básico</h3>
             <p class="plan-card__desc">Todo lo que necesitas para dejar de adivinar y empezar a tener el control de tu negocio.</p>
-            <ul class="plan-card__features">
-              <li>Catálogo de productos organizado</li>
-              <li>Entradas y salidas</li>
-              <li>Stock actualizado por producto</li>
-              <li>Historial de movimientos</li>
-              <li>Búsqueda y consulta rápida</li>
-              <li>Información esencial de cada producto</li>
-              <li>Control y seguimiento de inventario</li>
+            <ul class="plan-card__teaser">
+              <li><span class="plan-card__teaser-icon"><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M2 7l3.5 3.5L12 3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Catálogo de productos organizado</li>
+              <li><span class="plan-card__teaser-icon"><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M2 7l3.5 3.5L12 3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Entradas y salidas en segundos</li>
+              <li><span class="plan-card__teaser-icon"><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M2 7l3.5 3.5L12 3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Stock actualizado por producto</li>
+              <li><span class="plan-card__teaser-icon"><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M2 7l3.5 3.5L12 3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Historial de movimientos</li>
             </ul>
-            <p class="plan-card__price">997 €<span class="plan-card__price-note">Valor de implementación</span></p>
-            <a href="https://panel-basico.vercel.app/" class="btn btn--secondary" target="_blank" rel="noopener">Ver demo en acción</a>
+            <button type="button" class="plan-card__more" data-plan="basico">
+              Ver todo lo incluido
+              <svg class="plan-card__more-icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+                <path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+            <div class="plan-card__footer">
+              <p class="plan-card__price">997 €<span class="plan-card__price-note">Valor de implementación</span></p>
+              <a href="https://panel-basico.vercel.app/" class="btn btn--secondary" target="_blank" rel="noopener">Ver demo en acción</a>
+            </div>
           </article>
 
           <article class="plan-card plan-card--highlight reveal">
-            <p class="plan-card__badge">Más elegido</p>
+            <p class="plan-card__badge">
+              <svg viewBox="0 0 12 12" aria-hidden="true"><path d="M6 0 L7.2 4.8 L12 6 L7.2 7.2 L6 12 L4.8 7.2 L0 6 L4.8 4.8 Z" fill="currentColor"/></svg>
+              Más elegido
+            </p>
             <h3>Intermedio</h3>
             <p class="plan-card__desc">Más funcionalidades para entender cómo se está moviendo tu inventario.</p>
-            <p class="plan-card__detail">Gestiona tu stock, ten una lectura más clara del movimiento de tus productos y la información que necesitas para planificar tus próximas compras.</p>
-            <ul class="plan-card__features">
-              <li>Todo lo incluido en Básico</li>
-              <li>Productos más vendidos</li>
-              <li>Productos con menor movimiento</li>
-              <li>Seguimiento del rendimiento</li>
-              <li>Información y datos de proveedores</li>
-              <li>Productos asociados a cada proveedor</li>
-              <li>Referencia de tus compras habituales</li>
-              <li>Información clave para planificar reposiciones</li>
+            <ul class="plan-card__teaser">
+              <li><span class="plan-card__teaser-icon"><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M2 7l3.5 3.5L12 3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Todo lo incluido en Básico</li>
+              <li><span class="plan-card__teaser-icon"><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M2 7l3.5 3.5L12 3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Productos más vendidos</li>
+              <li><span class="plan-card__teaser-icon"><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M2 7l3.5 3.5L12 3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Información y datos de proveedores</li>
+              <li><span class="plan-card__teaser-icon"><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M2 7l3.5 3.5L12 3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Planificación de reposiciones</li>
             </ul>
-            <p class="plan-card__price">1.600 €<span class="plan-card__price-note">Valor de implementación</span></p>
-            <a href="https://panel-intermedio.vercel.app/" class="btn btn--primary" target="_blank" rel="noopener">Ver demo en acción</a>
+            <button type="button" class="plan-card__more" data-plan="intermedio">
+              Ver todo lo incluido
+              <svg class="plan-card__more-icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+                <path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+            <div class="plan-card__footer">
+              <p class="plan-card__price">1.600 €<span class="plan-card__price-note">Valor de implementación</span></p>
+              <a href="https://panel-intermedio.vercel.app/" class="btn btn--primary" target="_blank" rel="noopener">Ver demo en acción</a>
+            </div>
           </article>
 
           <article class="plan-card reveal">
             <h3>Pro</h3>
             <p class="plan-card__desc">Una visión financiera completa para gestionar y anticiparte.</p>
-            <p class="plan-card__detail">Análisis financiero, evolución del negocio y herramientas inteligentes para entender tus números, detectar tendencias y optimizar decisiones y procesos.</p>
-            <ul class="plan-card__features">
-              <li>Todo lo incluido en Básico e Intermedio</li>
-              <li>Costes y rentabilidad por producto</li>
-              <li>Márgenes y análisis de beneficio</li>
-              <li>Evolución financiera del negocio</li>
-              <li>Comparativas entre períodos</li>
-              <li>Análisis de tendencias</li>
-              <li>Predicciones y recomendaciones</li>
-              <li>Proyección de necesidades de stock</li>
-              <li>Automatización de procesos</li>
-              <li>Integraciones con proveedores</li>
-              <li>Inteligencia artificial aplicada a tu negocio</li>
+            <ul class="plan-card__teaser">
+              <li><span class="plan-card__teaser-icon"><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M2 7l3.5 3.5L12 3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Todo lo incluido en Básico e Intermedio</li>
+              <li><span class="plan-card__teaser-icon"><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M2 7l3.5 3.5L12 3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Costes y rentabilidad por producto</li>
+              <li><span class="plan-card__teaser-icon"><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M2 7l3.5 3.5L12 3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Predicciones y recomendaciones con IA</li>
+              <li><span class="plan-card__teaser-icon"><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M2 7l3.5 3.5L12 3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Automatización de procesos</li>
             </ul>
-            <a href="https://calendly.com/charladeclaridad/demo-melray" class="btn btn--secondary" target="_blank" rel="noopener">Agendar cotización</a>
+            <button type="button" class="plan-card__more" data-plan="pro">
+              Ver todo lo incluido
+              <svg class="plan-card__more-icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+                <path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+            <div class="plan-card__footer">
+              <p class="plan-card__price">A medida<span class="plan-card__price-note">Cotización según tu negocio</span></p>
+              <a href="https://calendly.com/charladeclaridad/demo-melray" class="btn btn--secondary" target="_blank" rel="noopener">Agendar cotización</a>
+            </div>
           </article>
         </div>
       </div>
+
+      <dialog class="plan-modal" id="plan-modal" aria-labelledby="plan-modal-title">
+        <div class="plan-modal__panel">
+          <button type="button" class="plan-modal__close" id="plan-modal-close" aria-label="Cerrar">
+            <svg viewBox="0 0 18 18" aria-hidden="true"><path d="M4 4l10 10M14 4L4 14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+          </button>
+          <p class="plan-card__badge" id="plan-modal-badge" hidden>
+            <svg viewBox="0 0 12 12" aria-hidden="true"><path d="M6 0 L7.2 4.8 L12 6 L7.2 7.2 L6 12 L4.8 7.2 L0 6 L4.8 4.8 Z" fill="currentColor"/></svg>
+            <span id="plan-modal-badge-label"></span>
+          </p>
+          <h3 id="plan-modal-title"></h3>
+          <p class="plan-card__desc" id="plan-modal-desc"></p>
+          <p class="plan-card__detail" id="plan-modal-detail" hidden></p>
+          <ul class="plan-card__features" id="plan-modal-features"></ul>
+          <div class="plan-card__footer">
+            <p class="plan-card__price"><span id="plan-modal-price"></span><span id="plan-modal-price-note" class="plan-card__price-note"></span></p>
+            <a href="#" class="btn" id="plan-modal-cta" target="_blank" rel="noopener"></a>
+          </div>
+        </div>
+      </dialog>
     </section>
     <!-- /SECTION:PLANES -->
 
