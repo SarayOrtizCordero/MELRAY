@@ -1,5 +1,10 @@
 import { next } from '@vercel/functions';
 
+// Página autocontenida: no puede depender de /css/styles.css, porque el
+// mismo mantenimiento que activa este middleware podría afectar también a
+// los estáticos. Los tokens de color de abajo son una copia intencional
+// (no un olvido) de los de css/styles.css — si cambia la paleta de marca,
+// hay que actualizar ambos sitios.
 const MAINTENANCE_HTML = `<!doctype html>
 <html lang="es">
 <head>
