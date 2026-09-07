@@ -311,6 +311,35 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 }
 .section-closing strong { color: var(--color-orange-dark); }
 
+/* ===== Category nav (shared: Producto + Planes) ===== */
+.category-nav {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-bottom: var(--space-6);
+}
+.category-nav__tab {
+  font-family: var(--font-heading);
+  font-size: 0.9rem;
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-full);
+  border: 1px solid rgba(44, 26, 18, 0.12);
+  background: var(--color-card);
+  color: var(--color-text-muted);
+  transition: background var(--transition-base), color var(--transition-base), border-color var(--transition-base);
+}
+.category-nav__tab:hover { color: var(--color-orange-dark); border-color: var(--color-orange-dark); }
+.category-nav__tab[aria-selected="true"] {
+  background: var(--color-orange-dark);
+  border-color: var(--color-orange-dark);
+  color: var(--color-white);
+}
+
+@media (max-width: 600px) {
+  .category-nav__tab { flex: 1 1 auto; text-align: center; padding: var(--space-2) var(--space-3); font-size: 0.85rem; }
+}
+
 /* ===== Problema ===== */
 .problema { padding: var(--space-8) 0; }
 .problema__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-5); }
@@ -404,6 +433,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   transform: scale(1.45);
   transform-origin: top;
 }
+.producto__cta { text-align: center; margin-top: var(--space-6); }
 
 @media (max-width: 860px) {
   .problema__grid { grid-template-columns: 1fr; }
@@ -426,6 +456,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 /* ===== Planes ===== */
 .planes { padding: var(--space-8) 0; }
 .planes__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-5); align-items: stretch; }
+.planes__single { max-width: 480px; margin: 0 auto; }
 .plan-card {
   position: relative;
   background: var(--color-card);
