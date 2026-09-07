@@ -370,6 +370,11 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 /* ===== Producto hoy ===== */
 .producto { padding: var(--space-8) 0; }
 
+/* NOTE: .producto__row/.producto__mockup* below are no longer used by the
+   homepage Producto section (replaced by .flow-diagram), but are kept
+   because inventario.html's own SECTION:SERVICE-DEMO still relies on them.
+   See task-2-report.md for details — do not delete until that page is
+   migrated too. */
 .producto__row {
   display: flex;
   gap: var(--space-6);
@@ -434,6 +439,89 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   transform-origin: top;
 }
 .producto__cta { text-align: center; margin-top: var(--space-6); }
+
+/* ===== Flow diagram (cómo funciona una automatización) ===== */
+.flow-diagram {
+  display: flex;
+  flex-direction: column;
+  max-width: 900px;
+  margin: 0 auto;
+}
+.flow-diagram__step {
+  background: var(--color-card);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  padding: var(--space-5);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
+}
+.flow-diagram__number {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--color-orange-dark);
+  color: var(--color-white);
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+}
+.flow-diagram__step p { margin: 0; }
+
+.flow-diagram__connector {
+  position: relative;
+  width: 2px;
+  height: var(--space-6);
+  margin: 0 auto;
+  background: rgba(44, 26, 18, 0.12);
+}
+.flow-diagram__pulse {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-orange-dark);
+  transform: translateX(-50%);
+  animation: flow-pulse-vertical 2.4s ease-in-out infinite;
+}
+@keyframes flow-pulse-vertical {
+  0% { top: 0; opacity: 0; }
+  15% { opacity: 1; }
+  85% { opacity: 1; }
+  100% { top: 100%; opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .flow-diagram__pulse { animation: none; opacity: 0; }
+}
+
+@media (min-width: 768px) {
+  .flow-diagram { flex-direction: row; align-items: stretch; }
+  .flow-diagram__step { flex: 1; }
+  .flow-diagram__connector {
+    width: var(--space-6);
+    height: 2px;
+    margin: auto 0;
+    flex-shrink: 0;
+  }
+  .flow-diagram__pulse {
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    animation: flow-pulse-horizontal 2.4s ease-in-out infinite;
+  }
+  @keyframes flow-pulse-horizontal {
+    0% { left: 0; opacity: 0; }
+    15% { opacity: 1; }
+    85% { opacity: 1; }
+    100% { left: 100%; opacity: 0; }
+  }
+}
 
 @media (max-width: 860px) {
   .problema__grid { grid-template-columns: 1fr; }

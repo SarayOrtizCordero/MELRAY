@@ -81,6 +81,9 @@ function initReducedMotionVideo() {
   }
 }
 
+// NOTE: still called below — inventario.html's own SECTION:SERVICE-DEMO
+// still uses .producto__mockup cards and relies on this tilt effect, even
+// though the homepage Producto section no longer does. See task-2-report.md.
 function initMockupTilt() {
   const cards = document.querySelectorAll('.producto__mockup');
   if (!cards.length) return;
