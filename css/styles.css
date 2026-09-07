@@ -597,7 +597,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 
 /* ===== Servicios ===== */
 .servicios { padding: var(--space-8) 0; }
-.servicios__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-5); }
+.servicios__grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-5); }
 .servicios__card {
   background: var(--color-card);
   border-radius: var(--radius-md);
@@ -630,6 +630,10 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   min-width: 320px;
   height: 700px;
   margin-top: var(--space-3);
+}
+
+@media (max-width: 1100px) {
+  .servicios__grid { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (max-width: 860px) {
