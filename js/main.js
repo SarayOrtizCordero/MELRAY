@@ -107,6 +107,47 @@ function initMockupTilt() {
   });
 }
 
+function initCategoryNav() {
+  document.querySelectorAll('.category-nav').forEach((nav) => {
+    const section = nav.closest('section');
+    if (!section) return;
+
+    const tabs = Array.from(nav.querySelectorAll('.category-nav__tab'));
+    const panels = Array.from(section.querySelectorAll('[data-category-panel]'));
+    if (!tabs.length || !panels.length) return;
+
+    function activate(category, { focusTab = false } = {}) {
+      tabs.forEach((tab) => {
+        const isActive = tab.dataset.category === category;
+        tab.setAttribute('aria-selected', String(isActive));
+        tab.tabIndex = isActive ? 0 : -1;
+        if (isActive && focusTab) tab.focus();
+      });
+      panels.forEach((panel) => {
+        const isActive = panel.dataset.categoryPanel === category;
+        panel.hidden = !isActive;
+        if (isActive) {
+          panel.querySelectorAll('.reveal').forEach((el) => el.classList.add('reveal--visible'));
+        }
+      });
+    }
+
+    tabs.forEach((tab, index) => {
+      tab.addEventListener('click', () => activate(tab.dataset.category));
+      tab.addEventListener('keydown', (event) => {
+        if (event.key !== 'ArrowRight' && event.key !== 'ArrowLeft') return;
+        event.preventDefault();
+        const dir = event.key === 'ArrowRight' ? 1 : -1;
+        const nextIndex = (index + dir + tabs.length) % tabs.length;
+        activate(tabs[nextIndex].dataset.category, { focusTab: true });
+      });
+    });
+
+    const initial = tabs.find((tab) => tab.getAttribute('aria-selected') === 'true') || tabs[0];
+    activate(initial.dataset.category);
+  });
+}
+
 const PLAN_DETAILS = {
   basico: {
     badge: null,
@@ -225,5 +266,6 @@ document.addEventListener('DOMContentLoaded', () => {
   runSafely(initFooterYear);
   runSafely(initReducedMotionVideo);
   runSafely(initMockupTilt);
+  runSafely(initCategoryNav);
   runSafely(initPlanModal);
 });
