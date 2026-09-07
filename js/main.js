@@ -116,7 +116,7 @@ function initCategoryNav() {
     const panels = Array.from(section.querySelectorAll('[data-category-panel]'));
     if (!tabs.length || !panels.length) return;
 
-    function activate(category, { focusTab = false } = {}) {
+    function activate(category, { focusTab = false, reveal = true } = {}) {
       tabs.forEach((tab) => {
         const isActive = tab.dataset.category === category;
         tab.setAttribute('aria-selected', String(isActive));
@@ -126,7 +126,7 @@ function initCategoryNav() {
       panels.forEach((panel) => {
         const isActive = panel.dataset.categoryPanel === category;
         panel.hidden = !isActive;
-        if (isActive) {
+        if (isActive && reveal) {
           panel.querySelectorAll('.reveal').forEach((el) => el.classList.add('reveal--visible'));
         }
       });
@@ -144,7 +144,7 @@ function initCategoryNav() {
     });
 
     const initial = tabs.find((tab) => tab.getAttribute('aria-selected') === 'true') || tabs[0];
-    activate(initial.dataset.category);
+    activate(initial.dataset.category, { reveal: false });
   });
 }
 
