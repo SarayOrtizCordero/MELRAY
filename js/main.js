@@ -83,7 +83,7 @@ function initReducedMotionVideo() {
 
 // NOTE: still called below — inventario.html's own SECTION:SERVICE-DEMO
 // still uses .producto__mockup cards and relies on this tilt effect, even
-// though the homepage Producto section no longer does. See task-2-report.md.
+// though the homepage Producto section no longer does.
 function initMockupTilt() {
   const cards = document.querySelectorAll('.producto__mockup');
   if (!cards.length) return;
@@ -140,7 +140,9 @@ function initCotizacionForm() {
   whatsappBtn.addEventListener('click', () => {
     if (!form.reportValidity()) return;
     const { message } = buildMessage();
-    window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`, '_blank', 'noopener');
+    const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+    const popup = window.open(url, '_blank', 'noopener');
+    if (!popup) window.location.href = url;
   });
 
   emailBtn.addEventListener('click', () => {

@@ -343,9 +343,8 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 
 /* NOTE: .producto__row/.producto__mockup* below are no longer used by the
    homepage Producto section (replaced by .flow-diagram), but are kept
-   because inventario.html's own SECTION:SERVICE-DEMO still relies on them.
-   See task-2-report.md for details — do not delete until that page is
-   migrated too. */
+   because inventario.html's own SECTION:SERVICE-DEMO still relies on them —
+   do not delete until that page is migrated too. */
 .producto__row {
   display: flex;
   gap: var(--space-6);
@@ -459,6 +458,8 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   border-radius: 50%;
   background: var(--color-orange-dark);
   transform: translateX(-50%);
+}
+.flow-diagram.reveal--visible .flow-diagram__pulse {
   animation: flow-pulse-vertical 2.4s ease-in-out infinite;
 }
 @keyframes flow-pulse-vertical {
@@ -466,9 +467,6 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   15% { opacity: 1; }
   85% { opacity: 1; }
   100% { top: 100%; opacity: 0; }
-}
-@media (prefers-reduced-motion: reduce) {
-  .flow-diagram__pulse { animation: none; opacity: 0; }
 }
 
 @media (min-width: 768px) {
@@ -484,6 +482,8 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
     top: 50%;
     left: 0;
     transform: translateY(-50%);
+  }
+  .flow-diagram.reveal--visible .flow-diagram__pulse {
     animation: flow-pulse-horizontal 2.4s ease-in-out infinite;
   }
   @keyframes flow-pulse-horizontal {
@@ -491,6 +491,14 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
     15% { opacity: 1; }
     85% { opacity: 1; }
     100% { left: 100%; opacity: 0; }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .flow-diagram__pulse,
+  .flow-diagram.reveal--visible .flow-diagram__pulse {
+    animation: none;
+    opacity: 0;
   }
 }
 
