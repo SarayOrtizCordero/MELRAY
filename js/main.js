@@ -53,7 +53,7 @@ function initThemeToggle() {
   const toggle = document.getElementById('theme-toggle');
   if (!toggle) return;
 
-  const STORAGE_KEY = 'melray-theme';
+  const STORAGE_KEY = document.documentElement.getAttribute('data-theme-key') || 'melray-theme';
 
   const syncButton = () => {
     const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
@@ -97,45 +97,6 @@ function initFooterYear() {
   if (el) el.textContent = new Date().getFullYear();
 }
 
-function initReducedMotionVideo() {
-  const video = document.querySelector('.hero-video');
-  if (!video) return;
-
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    video.removeAttribute('autoplay');
-    video.pause();
-  }
-}
-
-// NOTE: still called below — inventario.html's own SECTION:SERVICE-DEMO
-// still uses .producto__mockup cards and relies on this tilt effect, even
-// though the homepage Producto section no longer does.
-function initMockupTilt() {
-  const cards = document.querySelectorAll('.producto__mockup');
-  if (!cards.length) return;
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
-
-  const MAX_TILT = 8;
-
-  cards.forEach((card) => {
-    card.addEventListener('mousemove', (event) => {
-      const rect = card.getBoundingClientRect();
-      const x = event.clientX - rect.left;
-      const y = event.clientY - rect.top;
-      const midX = rect.width / 2;
-      const midY = rect.height / 2;
-      const rotateY = ((x - midX) / midX) * MAX_TILT;
-      const rotateX = -((y - midY) / midY) * MAX_TILT;
-      card.style.transform = `perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
-    });
-
-    card.addEventListener('mouseleave', () => {
-      card.style.transform = '';
-    });
-  });
-}
-
 function initCotizacionForm() {
   const form = document.getElementById('cotizacion-form');
   const whatsappBtn = document.getElementById('cotizacion-whatsapp');
@@ -167,8 +128,11 @@ function initCotizacionForm() {
     if (!form.reportValidity()) return;
     const { message } = buildMessage();
     const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
-    const popup = window.open(url, '_blank', 'noopener');
-    if (!popup) window.location.href = url;
+    const link = document.createElement('a');
+    link.href = url;
+    link.target = '_blank';
+    link.rel = 'noopener';
+    link.click();
   });
 
   emailBtn.addEventListener('click', () => {
@@ -176,6 +140,45 @@ function initCotizacionForm() {
     const { nombre, message } = buildMessage();
     const subject = `Cotización de automatización — ${nombre}`;
     window.location.href = `mailto:${EMAIL_TO}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(message)}`;
+  });
+}
+
+function initDemoForm() {
+  const form = document.getElementById('demo-form');
+  const confirmBox = document.getElementById('demo-confirm');
+  if (!form || !confirmBox) return;
+
+  // No hay backend todavía: al enviar, se abre WhatsApp con los datos ya
+  // escritos. Si más adelante se conecta un endpoint, reemplazar el bloque
+  // marcado abajo y mantener el mensaje de confirmación.
+  const WHATSAPP_NUMBER = '5491127041868';
+
+  function buildMessage() {
+    const field = (name) => form.elements[name].value.trim();
+    const lines = ['Hola, quiero mi demo personalizada:', `Nombre: ${field('nombre')}`];
+    if (field('instagram')) lines.push(`Instagram: ${field('instagram')}`);
+    if (field('web')) lines.push(`Web actual: ${field('web')}`);
+    lines.push(`WhatsApp / teléfono: ${field('telefono')}`, `Correo: ${field('email')}`);
+    if (field('detalle')) lines.push(`Detalle: ${field('detalle')}`);
+    return lines.join('\n');
+  }
+
+  form.addEventListener('submit', (event) => {
+    event.preventDefault();
+    if (!form.reportValidity()) return;
+
+    // --- envío: reemplazar este bloque si se conecta un backend ---
+    const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(buildMessage())}`;
+    const link = document.createElement('a');
+    link.href = url;
+    link.target = '_blank';
+    link.rel = 'noopener';
+    link.click();
+    // --- fin envío ---
+
+    form.hidden = true;
+    confirmBox.hidden = false;
+    confirmBox.focus();
   });
 }
 
@@ -194,7 +197,6 @@ document.addEventListener('DOMContentLoaded', () => {
   runSafely(initScrollReveal);
   runSafely(initCookieBanner);
   runSafely(initFooterYear);
-  runSafely(initReducedMotionVideo);
-  runSafely(initMockupTilt);
   runSafely(initCotizacionForm);
+  runSafely(initDemoForm);
 });

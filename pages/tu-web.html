@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="es" data-default-theme="dark" data-theme-key="melray-theme-landing">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Melray — Una web que realmente trabaje para tu negocio</title>
+  <meta name="description" content="Cualquiera puede crear una web hoy. En Melray hacemos que tu web trabaje para tu negocio: te mostramos en menos de 24 horas cómo podría verse.">
+  <link rel="canonical" href="https://melraysystems.com/tu-web.html">
+
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_ES">
+  <meta property="og:site_name" content="Melray">
+  <meta property="og:title" content="Melray — Una web que realmente trabaje para tu negocio">
+  <meta property="og:description" content="Te mostramos en menos de 24 horas cómo podría verse una web que realmente trabaje para tu negocio.">
+  <meta property="og:url" content="https://melraysystems.com/tu-web.html">
+  <meta property="og:image" content="https://melraysystems.com/assets/favicon.svg">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Melray — Una web que realmente trabaje para tu negocio">
+  <meta name="twitter:description" content="Te mostramos en menos de 24 horas cómo podría verse una web que realmente trabaje para tu negocio.">
+
+  <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#15110e">
+  <!-- Bloqueante a propósito (sin defer): fija data-theme antes del primer pintado para que no haya parpadeo claro→oscuro en visitas que ya eligieron oscuro. -->
+  <script src="/js/theme-init.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fragment+Mono&family=Inter:wght@300;400;600;700&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,300;1,6..72,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/styles.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Melray",
+    "url": "https://melraysystems.com/",
+    "logo": "https://melraysystems.com/assets/favicon.svg",
+    "description": "Webs pensadas para diferenciarte y convertir, a la medida de tu negocio.",
+    "sameAs": ["https://www.instagram.com/melray.systems/"]
+  }
+  </script>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Saltar al contenido</a>
+
+  <!-- SECTION:HEADER -->
+  <header class="site-header" id="site-header">
+    <div class="container site-header__inner">
+      <a href="/" class="site-header__logo" aria-label="Melray — inicio">
+        <svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true">
+          <defs>
+            <linearGradient id="logoGrad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#fb7b15"/>
+              <stop offset="1" stop-color="#df3314"/>
+            </linearGradient>
+          </defs>
+          <path fill="url(#logoGrad)" d="M15 2.3C18.3 6.3 22.2 10.8 22.8 16.2C23.7 11.7 22.2 8.3 20.7 6.3C23.7 8.7 25.8 13.2 25.5 18.3C25.5 25.2 20.9 30.3 15 30.3C9.2 30.3 4.5 25.2 4.5 18.3C4.5 13.8 6.9 10.2 10.2 7.5C9 10.2 9.3 13.2 11.1 15C10.5 10.8 12.3 6.3 15 2.3Z"/>
+        </svg>
+        <span class="site-header__wordmark">melray</span>
+      </a>
+
+      <nav class="site-header__nav" id="primary-nav" aria-label="Navegación principal">
+        <ul>
+          <li><a href="#video">El video</a></li>
+          <li><a href="#demos">Ejemplos</a></li>
+          <li><a href="#demo">Tu demo</a></li>
+        </ul>
+      </nav>
+
+      <button type="button" class="theme-toggle" id="theme-toggle" role="switch" aria-checked="false" aria-label="Cambiar a modo oscuro">
+        <svg class="theme-toggle__icon theme-toggle__icon--sun" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="4"/>
+          <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
+        </svg>
+        <svg class="theme-toggle__icon theme-toggle__icon--moon" width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>
+        </svg>
+        <span class="theme-toggle__thumb" aria-hidden="true"></span>
+      </button>
+
+      <a href="/" class="btn btn--secondary site-header__cta site-header__back"><span aria-hidden="true">←</span> Web principal</a>
+
+      <a href="#demo" class="btn btn--primary site-header__cta">Quiero mi demo personalizada</a>
+
+      <button type="button" class="site-header__toggle" id="nav-toggle" aria-expanded="false" aria-controls="mobile-menu">
+        <span class="visually-hidden">Abrir menú</span>
+        <span class="site-header__toggle-bar"></span>
+        <span class="site-header__toggle-bar"></span>
+        <span class="site-header__toggle-bar"></span>
+      </button>
+    </div>
+
+    <nav id="mobile-menu" class="mobile-menu" aria-label="Navegación móvil" hidden>
+      <ul>
+        <li><a href="#video">El video</a></li>
+        <li><a href="#demos">Ejemplos</a></li>
+        <li><a href="#demo">Tu demo</a></li>
+        <li><a href="/" class="btn btn--secondary"><span aria-hidden="true">←</span> Ir a la web principal</a></li>
+        <li><a href="#demo" class="btn btn--primary">Quiero mi demo personalizada</a></li>
+      </ul>
+    </nav>
+  </header>
+  <!-- /SECTION:HEADER -->
+
+  <main id="main-content" tabindex="-1">
+    <!-- SECTION:HOOK -->
+    <section class="hook" id="top">
+      <div class="container hook__inner reveal">
+        <h1>Cualquiera puede crear una web hoy. Pero no cualquiera puede hacer que esa web <em>realmente trabaje</em> para tu negocio.</h1>
+        <p class="hook__sub">Así es como trabajamos en Melray y te ayudamos a diferenciarte y a convertir.</p>
+      </div>
+    </section>
+    <!-- /SECTION:HOOK -->
+
+    <!-- SECTION:VIDEO -->
+    <section class="vsl" id="video">
+      <div class="container">
+        <div class="vsl__frame reveal">
+          <!-- Cuando el video VSL esté listo, reemplaza el bloque .vsl__placeholder por:
+               <video class="vsl__video" controls playsinline preload="metadata" poster="/assets/vsl-poster.jpg">
+                 <source src="/assets/vsl.mp4" type="video/mp4">
+               </video> -->
+          <div class="vsl__placeholder">
+            <span class="vsl__play"><svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13a1 1 0 001.5.86l11-6.5a1 1 0 000-1.72l-11-6.5A1 1 0 008 5.5z"/></svg></span>
+            <p>El video llega muy pronto</p>
+          </div>
+        </div>
+        <div class="vsl__cta reveal">
+          <a href="#demo" class="btn btn--primary">Quiero mi demo personalizada</a>
+        </div>
+      </div>
+    </section>
+    <!-- /SECTION:VIDEO -->
+
+    <!-- SECTION:DEMOS -->
+    <section class="demos" id="demos">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow">Ejemplos</p>
+          <h2 class="section-head__lead">Webs que ya <em>construimos</em></h2>
+          <p>Demos reales que puedes abrir y recorrer, pensadas para convertir visitas en clientes.</p>
+        </div>
+        <div class="demos__grid">
+          <article class="demo-card reveal">
+            <a class="demo-card__browser" href="https://sarayortizcordero.github.io/real-estate-agency-1/" target="_blank" rel="noopener" aria-label="Abrir la demo de Serrano y Vega (se abre en otra pestaña)">
+              <span class="demo-card__bar" aria-hidden="true"><i></i><i></i><i></i></span>
+              <img src="/assets/demos/web-serrano-vega.webp" alt="Captura de la web demo de Serrano &amp; Vega, una inmobiliaria boutique de Madrid, con un edificio clásico al fondo." width="1000" height="625" loading="lazy" decoding="async">
+            </a>
+            <p class="demo-card__tag">Demo · Inmobiliaria</p>
+            <h3 class="demo-card__title">Serrano &amp; Vega</h3>
+            <p class="demo-card__caption">Inmobiliaria boutique · Madrid</p>
+            <a class="card-link" href="https://sarayortizcordero.github.io/real-estate-agency-1/" target="_blank" rel="noopener">Ver demo en vivo <span aria-hidden="true">↗</span></a>
+          </article>
+          <article class="demo-card reveal">
+            <a class="demo-card__browser" href="https://sarayortizcordero.github.io/real-estate-agency-2/" target="_blank" rel="noopener" aria-label="Abrir la demo de Ribera Norte (se abre en otra pestaña)">
+              <span class="demo-card__bar" aria-hidden="true"><i></i><i></i><i></i></span>
+              <img src="/assets/demos/web-ribera-norte.webp" alt="Captura de la web demo de Ribera Norte, negocios inmobiliarios, con una casa con pileta al fondo." width="1000" height="625" loading="lazy" decoding="async">
+            </a>
+            <p class="demo-card__tag">Demo · Inmobiliaria</p>
+            <h3 class="demo-card__title">Ribera Norte</h3>
+            <p class="demo-card__caption">Negocios inmobiliarios · Zona Norte</p>
+            <a class="card-link" href="https://sarayortizcordero.github.io/real-estate-agency-2/" target="_blank" rel="noopener">Ver demo en vivo <span aria-hidden="true">↗</span></a>
+          </article>
+          <article class="demo-card reveal">
+            <a class="demo-card__browser" href="https://sarayortizcordero.github.io/template-belleza/" target="_blank" rel="noopener" aria-label="Abrir la demo de Lumina Serenity (se abre en otra pestaña)">
+              <span class="demo-card__bar" aria-hidden="true"><i></i><i></i><i></i></span>
+              <img src="/assets/demos/web-lumina-serenity.webp" alt="Captura de la web demo de Lumina Serenity, un centro de bienestar, con una toalla y tulipanes." width="1000" height="625" loading="lazy" decoding="async">
+            </a>
+            <p class="demo-card__tag">Demo · Bienestar</p>
+            <h3 class="demo-card__title">Lumina Serenity</h3>
+            <p class="demo-card__caption">Centro de bienestar de lujo · Madrid</p>
+            <a class="card-link" href="https://sarayortizcordero.github.io/template-belleza/" target="_blank" rel="noopener">Ver demo en vivo <span aria-hidden="true">↗</span></a>
+          </article>
+          <article class="demo-card reveal">
+            <a class="demo-card__browser" href="https://sarayortizcordero.github.io/template-belle-body/" target="_blank" rel="noopener" aria-label="Abrir la demo de Belle Body (se abre en otra pestaña)">
+              <span class="demo-card__bar" aria-hidden="true"><i></i><i></i><i></i></span>
+              <img src="/assets/demos/web-belle-body.webp" alt="Captura de la web demo de Belle Body, un centro de estética, con un tratamiento facial." width="1000" height="625" loading="lazy" decoding="async">
+            </a>
+            <p class="demo-card__tag">Demo · Estética</p>
+            <h3 class="demo-card__title">Belle Body</h3>
+            <p class="demo-card__caption">Centro de estética · San Isidro</p>
+            <a class="card-link" href="https://sarayortizcordero.github.io/template-belle-body/" target="_blank" rel="noopener">Ver demo en vivo <span aria-hidden="true">↗</span></a>
+          </article>
+          <article class="demo-card reveal">
+            <a class="demo-card__browser" href="https://sarayortizcordero.github.io/template-cafeter-a/" target="_blank" rel="noopener" aria-label="Abrir la demo de Café de la Esquina (se abre en otra pestaña)">
+              <span class="demo-card__bar" aria-hidden="true"><i></i><i></i><i></i></span>
+              <img src="/assets/demos/web-cafe-esquina.webp" alt="Captura de la web demo de Café de la Esquina, una cafetería de barrio, con el salón del local." width="1000" height="625" loading="lazy" decoding="async">
+            </a>
+            <p class="demo-card__tag">Demo · Cafetería</p>
+            <h3 class="demo-card__title">Café de la Esquina</h3>
+            <p class="demo-card__caption">Café de barrio &amp; brunch</p>
+            <a class="card-link" href="https://sarayortizcordero.github.io/template-cafeter-a/" target="_blank" rel="noopener">Ver demo en vivo <span aria-hidden="true">↗</span></a>
+          </article>
+          <article class="demo-card reveal">
+            <a class="demo-card__browser" href="https://sarayortizcordero.github.io/Fogon-Restaurante/" target="_blank" rel="noopener" aria-label="Abrir la demo de El Fogón Porteño (se abre en otra pestaña)">
+              <span class="demo-card__bar" aria-hidden="true"><i></i><i></i><i></i></span>
+              <img src="/assets/demos/web-fogon-porteno.webp" alt="Captura de la web demo de El Fogón Porteño, un restaurante de cocina argentina, con una mesa servida." width="1000" height="625" loading="lazy" decoding="async">
+            </a>
+            <p class="demo-card__tag">Demo · Restaurante</p>
+            <h3 class="demo-card__title">El Fogón Porteño</h3>
+            <p class="demo-card__caption">Auténtica cocina argentina</p>
+            <a class="card-link" href="https://sarayortizcordero.github.io/Fogon-Restaurante/" target="_blank" rel="noopener">Ver demo en vivo <span aria-hidden="true">↗</span></a>
+          </article>
+        </div>
+      </div>
+    </section>
+    <!-- /SECTION:DEMOS -->
+
+    <!-- SECTION:DEMO-FORM -->
+    <section class="cta-final" id="demo">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow">Tu demo gratuita</p>
+          <h2 class="section-head__lead">En menos de 24 horas te mostramos cómo podría verse tu web — una que <em>realmente trabaje</em> para tu negocio.</h2>
+        </div>
+
+        <form class="demo-form reveal" id="demo-form" novalidate>
+          <div class="demo-form__grid">
+            <div class="demo-form__field">
+              <label for="demo-nombre">Nombre *</label>
+              <input type="text" id="demo-nombre" name="nombre" required autocomplete="name">
+            </div>
+            <div class="demo-form__field">
+              <label for="demo-instagram">Instagram de la empresa</label>
+              <input type="text" id="demo-instagram" name="instagram" placeholder="@tuempresa" autocomplete="off">
+            </div>
+            <div class="demo-form__field">
+              <label for="demo-web">Web actual (si tiene)</label>
+              <input type="text" id="demo-web" name="web" placeholder="www.tuempresa.com" inputmode="url" autocomplete="url">
+            </div>
+            <div class="demo-form__field">
+              <label for="demo-telefono">WhatsApp / teléfono *</label>
+              <input type="tel" id="demo-telefono" name="telefono" required autocomplete="tel">
+            </div>
+            <div class="demo-form__field demo-form__field--full">
+              <label for="demo-email">Correo *</label>
+              <input type="email" id="demo-email" name="email" required autocomplete="email">
+            </div>
+            <div class="demo-form__field demo-form__field--full">
+              <label for="demo-detalle">¿Algo más que quieras contarnos?</label>
+              <textarea id="demo-detalle" name="detalle" rows="4"></textarea>
+            </div>
+          </div>
+          <div class="demo-form__actions">
+            <button type="submit" class="btn btn--primary" id="demo-submit">Quiero mi demo personalizada</button>
+          </div>
+        </form>
+
+        <div class="demo-confirm" id="demo-confirm" role="status" aria-live="polite" tabindex="-1" hidden>
+          <p class="demo-confirm__title">¡Listo! En menos de 24 horas vas a recibir tu demo gratuita — mostrándote cómo podría verse una web que realmente trabaje para vos.</p>
+          <p class="demo-confirm__note">Se abrió WhatsApp con tus datos: envía el mensaje para que lleguen a nuestro equipo.</p>
+        </div>
+      </div>
+    </section>
+    <!-- /SECTION:DEMO-FORM -->
+  </main>
+
+  <!-- SECTION:FOOTER -->
+  <footer class="site-footer">
+    <div class="container site-footer__inner">
+      <div class="site-footer__brand">
+        <span class="site-header__wordmark">melray</span>
+        <p>Webs que trabajan para tu negocio.</p>
+      </div>
+      <nav class="site-footer__links" aria-label="Enlaces legales">
+        <a href="mailto:melray@melraysystems.com">melray@melraysystems.com</a>
+        <a href="https://www.instagram.com/melray.systems/" target="_blank" rel="noopener">Instagram</a>
+        <a href="/pages/privacidad.html">Privacidad</a>
+        <a href="/pages/terminos.html">Términos</a>
+        <a href="/pages/cookies.html">Cookies</a>
+      </nav>
+      <p class="site-footer__copy">&copy; <span id="footer-year"></span> Melray. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+  <!-- /SECTION:FOOTER -->
+
+  <div class="cookie-banner" id="cookie-banner" role="dialog" aria-live="polite" aria-label="Aviso de cookies" hidden>
+    <p>Usamos cookies técnicas necesarias para la web. Sin cookies de analítica ni publicidad. <a href="/pages/cookies.html">Más info</a>.</p>
+    <button type="button" class="btn btn--primary" id="cookie-banner-accept">Entendido</button>
+  </div>
+
+  <script src="/js/main.js" defer></script>
+</body>
+</html>

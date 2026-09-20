@@ -1,12 +1,15 @@
 {
   "rewrites": [
-    { "source": "/automatizaciones.html", "destination": "/pages/automatizaciones.html" },
     { "source": "/cookies.html", "destination": "/pages/cookies.html" },
-    { "source": "/crm.html", "destination": "/pages/crm.html" },
-    { "source": "/inventario.html", "destination": "/pages/inventario.html" },
     { "source": "/privacidad.html", "destination": "/pages/privacidad.html" },
     { "source": "/terminos.html", "destination": "/pages/terminos.html" },
-    { "source": "/websites.html", "destination": "/pages/websites.html" }
+    { "source": "/tu-web.html", "destination": "/pages/tu-web.html" }
+  ],
+  "redirects": [
+    { "source": "/automatizaciones.html", "destination": "/", "permanent": true },
+    { "source": "/crm.html", "destination": "/", "permanent": true },
+    { "source": "/websites.html", "destination": "/", "permanent": true },
+    { "source": "/inventario.html", "destination": "/", "permanent": true }
   ],
   "headers": [
     {

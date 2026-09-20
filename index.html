@@ -22,12 +22,12 @@
   <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
   <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
   <link rel="manifest" href="/manifest.json">
-  <meta name="theme-color" content="#df3314">
+  <meta name="theme-color" content="#fef9ef">
   <!-- Bloqueante a propósito (sin defer): fija data-theme antes del primer pintado para que no haya parpadeo claro→oscuro en visitas que ya eligieron oscuro. -->
   <script src="/js/theme-init.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&family=Roboto+Mono:wght@500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fragment+Mono&family=Inter:wght@300;400;600;700&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,300;1,6..72,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/styles.css">
 
   <script type="application/ld+json">
@@ -66,6 +66,7 @@
           <li><a href="#producto">Producto</a></li>
           <li><a href="#cotizacion">Cotización</a></li>
           <li><a href="#servicios">Servicios</a></li>
+          <li><a href="/pages/tu-web.html">Tu web</a></li>
         </ul>
       </nav>
 
@@ -95,6 +96,7 @@
         <li><a href="#producto">Producto</a></li>
         <li><a href="#cotizacion">Cotización</a></li>
         <li><a href="#servicios">Servicios</a></li>
+        <li><a href="/pages/tu-web.html">Tu web</a></li>
         <li><a href="https://calendly.com/charladeclaridad/demo-melray" class="btn btn--primary" target="_blank" rel="noopener">Agendar una demo</a></li>
       </ul>
     </nav>
@@ -104,9 +106,14 @@
   <main id="main-content" tabindex="-1">
     <!-- SECTION:HERO -->
     <section class="hero" id="top">
+      <div class="hero__bg" aria-hidden="true">
+        <div class="hero__photo"></div>
+        <div class="hero__shade"></div>
+      </div>
+
       <div class="container hero__inner">
         <div class="hero__copy reveal">
-          <h1>Elimina el trabajo repetitivo. Después, todo lo demás</h1>
+          <h1>Elimina el trabajo repetitivo. Después, <em>todo lo demás</em></h1>
           <p class="hero__subtitle">Melray empieza por automatizar tus procesos y suma CRM, webs e inventario a medida que tu negocio lo necesita.</p>
           <div class="hero__actions">
             <a href="https://calendly.com/charladeclaridad/demo-melray" class="btn btn--primary" target="_blank" rel="noopener">Agendar una demo</a>
@@ -114,11 +121,22 @@
           </div>
         </div>
 
-        <div class="hero__art reveal" aria-hidden="true">
-          <video class="hero-video" width="600" height="600" autoplay muted loop playsinline poster="/assets/mascota-hero-poster.png">
-            <source src="/assets/mascota-hero.mp4" type="video/mp4">
-            <img src="/assets/mascota-hero-poster.png" alt="" width="220" height="220">
-          </video>
+        <div class="hero__device reveal">
+          <div class="hero__badge">
+            <span class="hero__badge-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+            </span>
+            <span class="hero__badge-text">Demo en 24 h</span>
+          </div>
+          <div class="laptop">
+            <div class="laptop__lid">
+              <span class="laptop__cam" aria-hidden="true"></span>
+              <div class="laptop__screen">
+                <img src="/assets/demos/crm-basico.webp" alt="Captura del CRM de Melray: resumen de pacientes y pipeline por estados." width="1440" height="900" fetchpriority="high" decoding="async">
+              </div>
+            </div>
+            <div class="laptop__base" aria-hidden="true"></div>
+          </div>
         </div>
       </div>
     </section>
@@ -129,7 +147,7 @@
       <div class="container">
         <div class="section-head reveal">
           <p class="eyebrow">El problema</p>
-          <h2>Gestionar tu negocio no debería sentirse como adivinar</h2>
+          <h2>Gestionar tu negocio no debería sentirse como <em>adivinar</em></h2>
         </div>
         <div class="problema__grid">
           <div class="problema__card reveal">
@@ -153,7 +171,7 @@
     <section class="ver-accion" id="ver-accion">
       <div class="container">
         <div class="ver-accion__card reveal">
-          <h2>¿Quieres ver Melray en acción?</h2>
+          <h2>¿Quieres ver Melray <em>en acción</em>?</h2>
           <p>Te mostramos cómo funciona aplicado a tu negocio.</p>
           <a href="https://calendly.com/charladeclaridad/demo-melray" class="btn btn--primary" target="_blank" rel="noopener">Agendar una demo</a>
         </div>
@@ -190,7 +208,6 @@
           </div>
         </div>
 
-        <p class="producto__cta reveal"><a href="automatizaciones.html" class="servicios__card-link">Ver todo sobre Automatización <span aria-hidden="true">→</span></a></p>
       </div>
     </section>
     <!-- /SECTION:PRODUCTO -->
@@ -200,23 +217,24 @@
       <div class="container">
         <div class="section-head reveal">
           <p class="eyebrow">Nuestro trabajo</p>
-          <h2 class="section-head__lead">Así se ven las herramientas que construimos</h2>
+          <h2 class="section-head__lead">Así se ven las herramientas que <em>construimos</em></h2>
           <p>Un vistazo real a lo que tu negocio tendría con Melray.</p>
         </div>
 
         <div class="escaparate__grid">
           <article class="escaparate__card reveal">
             <div class="escaparate__media">
-              <img src="/assets/mockup-crm-dashboard.png" alt="Captura del panel de CRM de Melray mostrando el resumen del negocio: pipeline, ingresos y tareas pendientes." loading="lazy" width="1280" height="800">
+              <img src="/assets/demos/crm-basico.webp" alt="Captura del CRM de Melray: resumen de pacientes y pipeline por estados." loading="lazy" width="1440" height="900">
             </div>
             <p class="escaparate__tag">CRM</p>
             <h3>Pipeline comercial claro</h3>
             <p>Cada cliente, conversación y oportunidad en un solo lugar, sin hojas de cálculo perdidas.</p>
+            <a class="card-link" href="https://sarayortizcordero.github.io/CRM-Basico/" target="_blank" rel="noopener">Ver demo en vivo <span aria-hidden="true">↗</span></a>
           </article>
 
           <article class="escaparate__card reveal">
             <div class="escaparate__media">
-              <img src="/assets/mockup-catalogo.png" alt="Captura del panel de inventario de Melray mostrando la lista de productos con SKU, proveedor y stock." loading="lazy" width="1889" height="939">
+              <img src="/assets/demos/inventario-plan-intermedio.webp" alt="Captura del panel de inventario de Melray: lista de productos con SKU, proveedor y stock, con avisos de stock bajo resaltados." loading="lazy" width="1400" height="700">
             </div>
             <p class="escaparate__tag">Inventario</p>
             <h3>Stock bajo control</h3>
@@ -233,12 +251,13 @@
           </article>
 
           <article class="escaparate__card reveal">
-            <div class="escaparate__media escaparate__media--placeholder" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18"/><circle cx="6.5" cy="6.5" r="0.6" fill="currentColor" stroke="none"/><circle cx="9" cy="6.5" r="0.6" fill="currentColor" stroke="none"/></svg>
+            <div class="escaparate__media">
+              <img src="/assets/demos/web-serrano-vega.webp" alt="Captura de una web demo de Melray para una inmobiliaria boutique en Madrid." loading="lazy" width="1000" height="625">
             </div>
             <p class="escaparate__tag">Websites</p>
             <h3>Tu presencia digital</h3>
             <p>Sitios diseñados y desarrollados a la medida de tu negocio, tu cliente y tus objetivos.</p>
+            <a class="card-link" href="/pages/tu-web.html#demos">Ver más ejemplos <span aria-hidden="true">→</span></a>
           </article>
         </div>
       </div>
@@ -294,29 +313,25 @@
       <div class="container">
         <div class="section-head reveal">
           <p class="eyebrow">Servicios</p>
-          <h2 class="section-head__lead">Construimos las herramientas digitales que tu negocio necesita, empezando por tu automatización.</h2>
+          <h2 class="section-head__lead">Construimos las herramientas digitales que tu negocio necesita, empezando por tu <em>automatización</em>.</h2>
           <p>Cada herramienta resuelve un problema concreto de tu negocio, para que tu día a día sea más simple.</p>
         </div>
         <div class="servicios__grid">
           <article class="servicios__card reveal">
             <h3>Automatizaciones</h3>
             <p>Conectamos herramientas y automatizamos procesos para reducir tareas manuales y hacer tus operaciones más eficientes.</p>
-            <a href="automatizaciones.html" class="servicios__card-link">Ver Automatizaciones <span aria-hidden="true">→</span></a>
           </article>
           <article class="servicios__card reveal">
             <h3>CRM</h3>
             <p>Centraliza clientes, conversaciones y oportunidades para tener un proceso comercial claro y organizado.</p>
-            <a href="crm.html" class="servicios__card-link">Ver CRM <span aria-hidden="true">→</span></a>
           </article>
           <article class="servicios__card reveal">
             <h3>Websites</h3>
             <p>Diseñamos y desarrollamos sitios web pensados para tu negocio, tu cliente y tus objetivos.</p>
-            <a href="websites.html" class="servicios__card-link">Ver Websites <span aria-hidden="true">→</span></a>
           </article>
           <article class="servicios__card reveal">
             <h3>Paneles e Inventarios</h3>
             <p>Ordena tu stock, tus movimientos y tu catálogo en un panel simple que se actualiza en segundos.</p>
-            <a href="inventario.html" class="servicios__card-link">Ver Paneles <span aria-hidden="true">→</span></a>
           </article>
         </div>
         <div class="servicios__closing reveal">
@@ -342,18 +357,12 @@
         <span class="site-header__wordmark">melray</span>
         <p>Automatiza lo repetitivo. Enfócate en crecer.</p>
       </div>
-      <nav class="site-footer__links" aria-label="Servicios">
-        <a href="automatizaciones.html">Automatizaciones</a>
-        <a href="crm.html">CRM</a>
-        <a href="websites.html">Websites</a>
-        <a href="inventario.html">Paneles e Inventarios</a>
-      </nav>
       <nav class="site-footer__links" aria-label="Enlaces legales">
         <a href="mailto:melray@melraysystems.com">melray@melraysystems.com</a>
         <a href="https://www.instagram.com/melray.systems/" target="_blank" rel="noopener">Instagram</a>
-        <a href="privacidad.html">Privacidad</a>
-        <a href="terminos.html">Términos</a>
-        <a href="cookies.html">Cookies</a>
+        <a href="/pages/privacidad.html">Privacidad</a>
+        <a href="/pages/terminos.html">Términos</a>
+        <a href="/pages/cookies.html">Cookies</a>
       </nav>
       <p class="site-footer__copy">&copy; <span id="footer-year"></span> Melray. Todos los derechos reservados.</p>
     </div>
@@ -361,7 +370,7 @@
   <!-- /SECTION:FOOTER -->
 
   <div class="cookie-banner" id="cookie-banner" role="dialog" aria-live="polite" aria-label="Aviso de cookies" hidden>
-    <p>Usamos cookies técnicas necesarias para la web y el calendario de Calendly. Sin cookies de analítica ni publicidad. <a href="cookies.html">Más info</a>.</p>
+    <p>Usamos cookies técnicas necesarias para la web y el calendario de Calendly. Sin cookies de analítica ni publicidad. <a href="/pages/cookies.html">Más info</a>.</p>
     <button type="button" class="btn btn--primary" id="cookie-banner-accept">Entendido</button>
   </div>
 
