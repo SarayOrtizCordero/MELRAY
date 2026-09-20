@@ -1,11 +1,20 @@
 {
+  "rewrites": [
+    { "source": "/automatizaciones.html", "destination": "/pages/automatizaciones.html" },
+    { "source": "/cookies.html", "destination": "/pages/cookies.html" },
+    { "source": "/crm.html", "destination": "/pages/crm.html" },
+    { "source": "/inventario.html", "destination": "/pages/inventario.html" },
+    { "source": "/privacidad.html", "destination": "/pages/privacidad.html" },
+    { "source": "/terminos.html", "destination": "/pages/terminos.html" },
+    { "source": "/websites.html", "destination": "/pages/websites.html" }
+  ],
   "headers": [
     {
       "source": "/(.*)",
       "headers": [
         {
           "key": "Content-Security-Policy",
-          "value": "default-src 'self'; script-src 'self' https://assets.calendly.com; style-src 'self' 'unsafe-inline' https://assets.calendly.com https://fonts.googleapis.com; img-src 'self' https://*.calendly.com; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://*.calendly.com; frame-src https://calendly.com https://*.calendly.com; object-src 'none'; base-uri 'self'; form-action 'self' https://calendly.com; frame-ancestors 'none'; upgrade-insecure-requests"
+          "value": "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self'; font-src 'self' https://fonts.gstatic.com; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests"
         },
         { "key": "X-Content-Type-Options", "value": "nosniff" },
         { "key": "X-Frame-Options", "value": "DENY" },

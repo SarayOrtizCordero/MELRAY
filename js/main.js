@@ -49,6 +49,32 @@ function initScrollReveal() {
   targets.forEach((el) => observer.observe(el));
 }
 
+function initThemeToggle() {
+  const toggle = document.getElementById('theme-toggle');
+  if (!toggle) return;
+
+  const STORAGE_KEY = 'melray-theme';
+
+  const syncButton = () => {
+    const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    toggle.setAttribute('aria-checked', String(isDark));
+    toggle.setAttribute('aria-label', isDark ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro');
+  };
+  syncButton();
+
+  toggle.addEventListener('click', () => {
+    const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    if (isDark) {
+      document.documentElement.removeAttribute('data-theme');
+      localStorage.setItem(STORAGE_KEY, 'light');
+    } else {
+      document.documentElement.setAttribute('data-theme', 'dark');
+      localStorage.setItem(STORAGE_KEY, 'dark');
+    }
+    syncButton();
+  });
+}
+
 function initCookieBanner() {
   const banner = document.getElementById('cookie-banner');
   const acceptBtn = document.getElementById('cookie-banner-accept');
@@ -163,6 +189,7 @@ function runSafely(fn) {
 
 document.addEventListener('DOMContentLoaded', () => {
   runSafely(initMobileNav);
+  runSafely(initThemeToggle);
   runSafely(initHeaderScroll);
   runSafely(initScrollReveal);
   runSafely(initCookieBanner);
