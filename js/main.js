@@ -143,6 +143,19 @@ function initCotizacionForm() {
   });
 }
 
+function initDemosToggle() {
+  const toggle = document.getElementById('demos-toggle');
+  const grid = document.getElementById('demos-grid');
+  if (!toggle || !grid) return;
+  const label = toggle.querySelector('.demos__toggle-label');
+
+  toggle.addEventListener('click', () => {
+    const expanded = grid.classList.toggle('is-expanded');
+    toggle.setAttribute('aria-expanded', String(expanded));
+    label.textContent = expanded ? toggle.dataset.less : toggle.dataset.more;
+  });
+}
+
 function initDemoForm() {
   const form = document.getElementById('demo-form');
   const confirmBox = document.getElementById('demo-confirm');
@@ -198,5 +211,6 @@ document.addEventListener('DOMContentLoaded', () => {
   runSafely(initCookieBanner);
   runSafely(initFooterYear);
   runSafely(initCotizacionForm);
+  runSafely(initDemosToggle);
   runSafely(initDemoForm);
 });

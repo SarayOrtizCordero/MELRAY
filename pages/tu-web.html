@@ -4,20 +4,20 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Melray — Una web que realmente trabaje para tu negocio</title>
-  <meta name="description" content="Cualquiera puede crear una web hoy. En Melray hacemos que tu web trabaje para tu negocio: te mostramos en menos de 24 horas cómo podría verse.">
+  <meta name="description" content="Cualquiera puede crear una web hoy. En Melray hacemos que tu web trabaje para tu negocio: te mostramos en hasta 24 horas cómo podría verse.">
   <link rel="canonical" href="https://melraysystems.com/tu-web.html">
 
   <meta property="og:type" content="website">
   <meta property="og:locale" content="es_ES">
   <meta property="og:site_name" content="Melray">
   <meta property="og:title" content="Melray — Una web que realmente trabaje para tu negocio">
-  <meta property="og:description" content="Te mostramos en menos de 24 horas cómo podría verse una web que realmente trabaje para tu negocio.">
+  <meta property="og:description" content="Te mostramos en hasta 24 horas cómo podría verse una web que realmente trabaje para tu negocio.">
   <meta property="og:url" content="https://melraysystems.com/tu-web.html">
   <meta property="og:image" content="https://melraysystems.com/assets/favicon.svg">
 
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Melray — Una web que realmente trabaje para tu negocio">
-  <meta name="twitter:description" content="Te mostramos en menos de 24 horas cómo podría verse una web que realmente trabaje para tu negocio.">
+  <meta name="twitter:description" content="Te mostramos en hasta 24 horas cómo podría verse una web que realmente trabaje para tu negocio.">
 
   <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
   <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
@@ -63,7 +63,7 @@
 
       <nav class="site-header__nav" id="primary-nav" aria-label="Navegación principal">
         <ul>
-          <li><a href="#video">El video</a></li>
+          <li hidden><a href="#video">El video</a></li>
           <li><a href="#demos">Ejemplos</a></li>
           <li><a href="#demo">Tu demo</a></li>
         </ul>
@@ -82,7 +82,7 @@
 
       <a href="/" class="btn btn--secondary site-header__cta site-header__back"><span aria-hidden="true">←</span> Web principal</a>
 
-      <a href="#demo" class="btn btn--primary site-header__cta">Quiero mi demo personalizada</a>
+      <a href="#demo" class="btn btn--primary site-header__cta">Quiero mi demo</a>
 
       <button type="button" class="site-header__toggle" id="nav-toggle" aria-expanded="false" aria-controls="mobile-menu">
         <span class="visually-hidden">Abrir menú</span>
@@ -94,11 +94,11 @@
 
     <nav id="mobile-menu" class="mobile-menu" aria-label="Navegación móvil" hidden>
       <ul>
-        <li><a href="#video">El video</a></li>
+        <li hidden><a href="#video">El video</a></li>
         <li><a href="#demos">Ejemplos</a></li>
         <li><a href="#demo">Tu demo</a></li>
         <li><a href="/" class="btn btn--secondary"><span aria-hidden="true">←</span> Ir a la web principal</a></li>
-        <li><a href="#demo" class="btn btn--primary">Quiero mi demo personalizada</a></li>
+        <li><a href="#demo" class="btn btn--primary">Quiero mi demo</a></li>
       </ul>
     </nav>
   </header>
@@ -108,14 +108,17 @@
     <!-- SECTION:HOOK -->
     <section class="hook" id="top">
       <div class="container hook__inner reveal">
-        <h1>Cualquiera puede crear una web hoy. Pero no cualquiera puede hacer que esa web <em>realmente trabaje</em> para tu negocio.</h1>
-        <p class="hook__sub">Así es como trabajamos en Melray y te ayudamos a diferenciarte y a convertir.</p>
+        <h1>¿Dejaste que la IA te haga la web y esperas que <em>también consiga clientes</em>?</h1>
+        <p class="hook__sub">Crear una web es cada vez más fácil. Crear una web que funcione para tu negocio sigue requiriendo criterio.</p>
+        <a href="#demo" class="btn btn--primary hook__cta">Quiero ver cómo podría verse la mía</a>
       </div>
     </section>
     <!-- /SECTION:HOOK -->
 
     <!-- SECTION:VIDEO -->
-    <section class="vsl" id="video">
+    <!-- VIDEO OCULTO por ahora: cuando el VSL esté listo, quita el atributo "hidden"
+         de esta sección y de los dos <li> "El video" del menú (cabecera y móvil). -->
+    <section class="vsl" id="video" hidden>
       <div class="container">
         <div class="vsl__frame reveal">
           <!-- Cuando el video VSL esté listo, reemplaza el bloque .vsl__placeholder por:
@@ -128,11 +131,55 @@
           </div>
         </div>
         <div class="vsl__cta reveal">
-          <a href="#demo" class="btn btn--primary">Quiero mi demo personalizada</a>
+          <a href="#demo" class="btn btn--primary">Quiero ver cómo podría verse la mía</a>
         </div>
       </div>
     </section>
     <!-- /SECTION:VIDEO -->
+
+    <!-- SECTION:SUENA -->
+    <section class="suena" id="te-suena">
+      <div class="container">
+        <div class="section-head reveal">
+          <h2 class="section-head__lead">¿Te suena <em>alguno de estos</em>?</h2>
+        </div>
+        <div class="problema__grid">
+          <article class="problema__card reveal">
+            <p class="problema__quote">“La hicimos con IA y quedó bastante bien.”</p>
+            <p>Pero nadie revisó si realmente funciona.</p>
+          </article>
+          <article class="problema__card reveal">
+            <p class="problema__quote">“Elegimos una plantilla y después la adaptamos.”</p>
+            <p>Pero tu negocio terminó pareciéndose a otros 500.</p>
+          </article>
+          <article class="problema__card reveal">
+            <p class="problema__quote">“La web está publicada.”</p>
+            <p>Pero nadie sabe si está generando consultas.</p>
+          </article>
+        </div>
+
+        <div class="suena__closing reveal">
+          <p class="section-closing">El problema no es crear una web.<br><strong>El problema es crear una web que tenga sentido para tu negocio.</strong></p>
+          <p class="suena__lead">Analizamos tu negocio, tu marca y lo que quieres conseguir para crear una web personalizada, funcional y preparada para convertir.</p>
+        </div>
+
+        <div class="pilares">
+          <div class="pilar reveal">
+            <p class="pilar__label">Tu marca</p>
+            <p class="pilar__text">Que tu web se parezca a ti, no a una plantilla.</p>
+          </div>
+          <div class="pilar reveal">
+            <p class="pilar__label">Tu negocio</p>
+            <p class="pilar__text">Una estructura pensada alrededor de lo que realmente vendes.</p>
+          </div>
+          <div class="pilar reveal">
+            <p class="pilar__label">Tus clientes</p>
+            <p class="pilar__text">Una experiencia diseñada para que sepan qué hacer después.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- /SECTION:SUENA -->
 
     <!-- SECTION:DEMOS -->
     <section class="demos" id="demos">
@@ -142,7 +189,7 @@
           <h2 class="section-head__lead">Webs que ya <em>construimos</em></h2>
           <p>Demos reales que puedes abrir y recorrer, pensadas para convertir visitas en clientes.</p>
         </div>
-        <div class="demos__grid">
+        <div class="demos__grid" id="demos-grid">
           <article class="demo-card reveal">
             <a class="demo-card__browser" href="https://sarayortizcordero.github.io/real-estate-agency-1/" target="_blank" rel="noopener" aria-label="Abrir la demo de Serrano y Vega (se abre en otra pestaña)">
               <span class="demo-card__bar" aria-hidden="true"><i></i><i></i><i></i></span>
@@ -156,32 +203,12 @@
           <article class="demo-card reveal">
             <a class="demo-card__browser" href="https://sarayortizcordero.github.io/real-estate-agency-2/" target="_blank" rel="noopener" aria-label="Abrir la demo de Ribera Norte (se abre en otra pestaña)">
               <span class="demo-card__bar" aria-hidden="true"><i></i><i></i><i></i></span>
-              <img src="/assets/demos/web-ribera-norte.webp" alt="Captura de la web demo de Ribera Norte, negocios inmobiliarios, con una casa con pileta al fondo." width="1000" height="625" loading="lazy" decoding="async">
+              <img src="/assets/demos/web-ribera-norte.webp" alt="Captura de la web demo de Ribera Norte, negocios inmobiliarios, con una casa con piscina al fondo." width="1000" height="625" loading="lazy" decoding="async">
             </a>
             <p class="demo-card__tag">Demo · Inmobiliaria</p>
             <h3 class="demo-card__title">Ribera Norte</h3>
             <p class="demo-card__caption">Negocios inmobiliarios · Zona Norte</p>
             <a class="card-link" href="https://sarayortizcordero.github.io/real-estate-agency-2/" target="_blank" rel="noopener">Ver demo en vivo <span aria-hidden="true">↗</span></a>
-          </article>
-          <article class="demo-card reveal">
-            <a class="demo-card__browser" href="https://sarayortizcordero.github.io/template-belleza/" target="_blank" rel="noopener" aria-label="Abrir la demo de Lumina Serenity (se abre en otra pestaña)">
-              <span class="demo-card__bar" aria-hidden="true"><i></i><i></i><i></i></span>
-              <img src="/assets/demos/web-lumina-serenity.webp" alt="Captura de la web demo de Lumina Serenity, un centro de bienestar, con una toalla y tulipanes." width="1000" height="625" loading="lazy" decoding="async">
-            </a>
-            <p class="demo-card__tag">Demo · Bienestar</p>
-            <h3 class="demo-card__title">Lumina Serenity</h3>
-            <p class="demo-card__caption">Centro de bienestar de lujo · Madrid</p>
-            <a class="card-link" href="https://sarayortizcordero.github.io/template-belleza/" target="_blank" rel="noopener">Ver demo en vivo <span aria-hidden="true">↗</span></a>
-          </article>
-          <article class="demo-card reveal">
-            <a class="demo-card__browser" href="https://sarayortizcordero.github.io/template-belle-body/" target="_blank" rel="noopener" aria-label="Abrir la demo de Belle Body (se abre en otra pestaña)">
-              <span class="demo-card__bar" aria-hidden="true"><i></i><i></i><i></i></span>
-              <img src="/assets/demos/web-belle-body.webp" alt="Captura de la web demo de Belle Body, un centro de estética, con un tratamiento facial." width="1000" height="625" loading="lazy" decoding="async">
-            </a>
-            <p class="demo-card__tag">Demo · Estética</p>
-            <h3 class="demo-card__title">Belle Body</h3>
-            <p class="demo-card__caption">Centro de estética · San Isidro</p>
-            <a class="card-link" href="https://sarayortizcordero.github.io/template-belle-body/" target="_blank" rel="noopener">Ver demo en vivo <span aria-hidden="true">↗</span></a>
           </article>
           <article class="demo-card reveal">
             <a class="demo-card__browser" href="https://sarayortizcordero.github.io/template-cafeter-a/" target="_blank" rel="noopener" aria-label="Abrir la demo de Café de la Esquina (se abre en otra pestaña)">
@@ -193,7 +220,7 @@
             <p class="demo-card__caption">Café de barrio &amp; brunch</p>
             <a class="card-link" href="https://sarayortizcordero.github.io/template-cafeter-a/" target="_blank" rel="noopener">Ver demo en vivo <span aria-hidden="true">↗</span></a>
           </article>
-          <article class="demo-card reveal">
+          <article class="demo-card demo-card--extra reveal">
             <a class="demo-card__browser" href="https://sarayortizcordero.github.io/Fogon-Restaurante/" target="_blank" rel="noopener" aria-label="Abrir la demo de El Fogón Porteño (se abre en otra pestaña)">
               <span class="demo-card__bar" aria-hidden="true"><i></i><i></i><i></i></span>
               <img src="/assets/demos/web-fogon-porteno.webp" alt="Captura de la web demo de El Fogón Porteño, un restaurante de cocina argentina, con una mesa servida." width="1000" height="625" loading="lazy" decoding="async">
@@ -203,6 +230,32 @@
             <p class="demo-card__caption">Auténtica cocina argentina</p>
             <a class="card-link" href="https://sarayortizcordero.github.io/Fogon-Restaurante/" target="_blank" rel="noopener">Ver demo en vivo <span aria-hidden="true">↗</span></a>
           </article>
+          <article class="demo-card demo-card--extra reveal">
+            <a class="demo-card__browser" href="https://sarayortizcordero.github.io/template-belleza/" target="_blank" rel="noopener" aria-label="Abrir la demo de Lumina Serenity (se abre en otra pestaña)">
+              <span class="demo-card__bar" aria-hidden="true"><i></i><i></i><i></i></span>
+              <img src="/assets/demos/web-lumina-serenity.webp" alt="Captura de la web demo de Lumina Serenity, un centro de bienestar, con una toalla y tulipanes." width="1000" height="625" loading="lazy" decoding="async">
+            </a>
+            <p class="demo-card__tag">Demo · Bienestar</p>
+            <h3 class="demo-card__title">Lumina Serenity</h3>
+            <p class="demo-card__caption">Centro de bienestar de lujo · Madrid</p>
+            <a class="card-link" href="https://sarayortizcordero.github.io/template-belleza/" target="_blank" rel="noopener">Ver demo en vivo <span aria-hidden="true">↗</span></a>
+          </article>
+          <article class="demo-card demo-card--extra reveal">
+            <a class="demo-card__browser" href="https://sarayortizcordero.github.io/template-belle-body/" target="_blank" rel="noopener" aria-label="Abrir la demo de Belle Body (se abre en otra pestaña)">
+              <span class="demo-card__bar" aria-hidden="true"><i></i><i></i><i></i></span>
+              <img src="/assets/demos/web-belle-body.webp" alt="Captura de la web demo de Belle Body, un centro de estética, con un tratamiento facial." width="1000" height="625" loading="lazy" decoding="async">
+            </a>
+            <p class="demo-card__tag">Demo · Estética</p>
+            <h3 class="demo-card__title">Belle Body</h3>
+            <p class="demo-card__caption">Centro de estética · San Isidro</p>
+            <a class="card-link" href="https://sarayortizcordero.github.io/template-belle-body/" target="_blank" rel="noopener">Ver demo en vivo <span aria-hidden="true">↗</span></a>
+          </article>
+        </div>
+        <div class="demos__more">
+          <button type="button" class="btn btn--secondary demos__toggle" id="demos-toggle" aria-expanded="false" aria-controls="demos-grid" data-more="Ver más demos" data-less="Ver menos demos">
+            <span class="demos__toggle-label">Ver más demos</span>
+            <svg class="demos__toggle-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
         </div>
       </div>
     </section>
@@ -212,8 +265,8 @@
     <section class="cta-final" id="demo">
       <div class="container">
         <div class="section-head reveal">
-          <p class="eyebrow">Tu demo gratuita</p>
-          <h2 class="section-head__lead">En menos de 24 horas te mostramos cómo podría verse tu web — una que <em>realmente trabaje</em> para tu negocio.</h2>
+          <h2 class="section-head__lead">¿Quieres ver cómo podría verse <em>la tuya</em>?</h2>
+          <p>Pásanos tu Instagram y tu web actual —si tienes— y creamos una demo personalizada para tu negocio.</p>
         </div>
 
         <form class="demo-form reveal" id="demo-form" novalidate>
@@ -243,13 +296,19 @@
               <textarea id="demo-detalle" name="detalle" rows="4"></textarea>
             </div>
           </div>
+          <div class="demo-promise">
+            <p>En hasta 24 horas.</p>
+            <p>No una plantilla.</p>
+            <p>No una demo genérica.</p>
+            <p><em>Una propuesta pensada para ti.</em></p>
+          </div>
           <div class="demo-form__actions">
-            <button type="submit" class="btn btn--primary" id="demo-submit">Quiero mi demo personalizada</button>
+            <button type="submit" class="btn btn--primary" id="demo-submit">Quiero mi demo</button>
           </div>
         </form>
 
         <div class="demo-confirm" id="demo-confirm" role="status" aria-live="polite" tabindex="-1" hidden>
-          <p class="demo-confirm__title">¡Listo! En menos de 24 horas vas a recibir tu demo gratuita — mostrándote cómo podría verse una web que realmente trabaje para vos.</p>
+          <p class="demo-confirm__title">¡Listo! En hasta 24 horas vas a recibir tu demo gratuita — mostrándote cómo podría verse una web que realmente trabaje para ti.</p>
           <p class="demo-confirm__note">Se abrió WhatsApp con tus datos: envía el mensaje para que lleguen a nuestro equipo.</p>
         </div>
       </div>
