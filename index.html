@@ -299,11 +299,23 @@
               <input type="text" id="cot-herramientas" name="herramientas" placeholder="Ej. Excel, WhatsApp Business, Notion...">
             </div>
           </div>
+          <div class="demo-form__hp" aria-hidden="true">
+            <label for="cot-empresa-web">No rellenar este campo</label>
+            <input type="text" id="cot-empresa-web" name="empresa_web" tabindex="-1" autocomplete="off">
+          </div>
           <div class="cotizacion-form__actions">
-            <button type="button" class="btn btn--primary" id="cotizacion-whatsapp">Enviar por WhatsApp</button>
-            <button type="button" class="btn btn--secondary" id="cotizacion-email">Enviar por email</button>
+            <button type="submit" class="btn btn--primary" id="cotizacion-submit">Enviar solicitud</button>
           </div>
         </form>
+
+        <div class="demo-confirm" id="cotizacion-confirm" role="status" aria-live="polite" tabindex="-1" hidden>
+          <p class="demo-confirm__title">¡Listo! Hemos recibido tu solicitud y te responderemos con una propuesta.</p>
+          <p class="demo-confirm__note" id="cotizacion-note-sent">Recibimos tus datos correctamente. Si prefieres hablar ya, también puedes <a id="cotizacion-wa-sent" href="https://wa.me/34644888144" target="_blank" rel="noopener">escribirnos por WhatsApp</a> o <a href="mailto:melray@melraysystems.com">por email</a>.</p>
+          <div id="cotizacion-note-fallback" hidden>
+            <p class="demo-confirm__note">No pudimos enviar el formulario automáticamente, así que preparamos un mensaje de WhatsApp con tus datos. Envíalo para que lleguen a nuestro equipo.</p>
+            <a id="cotizacion-wa-fallback" class="btn btn--primary" href="https://wa.me/34644888144" target="_blank" rel="noopener">Abrir WhatsApp</a>
+          </div>
+        </div>
       </div>
     </section>
     <!-- /SECTION:PLANES -->

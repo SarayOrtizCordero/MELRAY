@@ -97,49 +97,87 @@ function initFooterYear() {
   if (el) el.textContent = new Date().getFullYear();
 }
 
+// Envío compartido por los dos formularios de la web: intenta mandar el
+// correo por /api/demo (SMTP) y devuelve si funcionó, sin lanzar si falla.
+async function sendFormByEmail(payload) {
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), 10000);
+  try {
+    const response = await fetch('/api/demo', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+      signal: controller.signal,
+    });
+    return response.ok;
+  } catch (err) {
+    return false;
+  } finally {
+    clearTimeout(timer);
+  }
+}
+
 function initCotizacionForm() {
   const form = document.getElementById('cotizacion-form');
-  const whatsappBtn = document.getElementById('cotizacion-whatsapp');
-  const emailBtn = document.getElementById('cotizacion-email');
-  if (!form || !whatsappBtn || !emailBtn) return;
+  const confirmBox = document.getElementById('cotizacion-confirm');
+  if (!form || !confirmBox) return;
 
   const WHATSAPP_NUMBER = '34644888144';
-  const EMAIL_TO = 'melray@melraysystems.com';
+  const submitBtn = document.getElementById('cotizacion-submit');
+  const noteSent = document.getElementById('cotizacion-note-sent');
+  const noteFallback = document.getElementById('cotizacion-note-fallback');
+  const waFallback = document.getElementById('cotizacion-wa-fallback');
 
-  form.addEventListener('submit', (event) => event.preventDefault());
-
-  function buildMessage() {
-    const nombre = form.nombre.value.trim();
-    const negocio = form.negocio.value.trim();
-    const email = form.email.value.trim();
-    const telefono = form.telefono.value.trim();
-    const necesidad = form.necesidad.value.trim();
-    const herramientas = form.herramientas.value.trim();
-
-    const lines = ['Hola, quiero cotizar una automatización:', `Nombre: ${nombre}`];
-    if (negocio) lines.push(`Negocio: ${negocio}`);
-    lines.push(`Email: ${email}`, `Teléfono: ${telefono}`, `Qué necesita automatizar: ${necesidad}`);
-    if (herramientas) lines.push(`Herramientas actuales: ${herramientas}`);
-
-    return { nombre, message: lines.join('\n') };
-  }
-
-  whatsappBtn.addEventListener('click', () => {
-    if (!form.reportValidity()) return;
-    const { message } = buildMessage();
-    const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
-    const link = document.createElement('a');
-    link.href = url;
-    link.target = '_blank';
-    link.rel = 'noopener';
-    link.click();
+  const field = (name) => form.elements[name].value.trim();
+  const payload = () => ({
+    origen: 'cotizacion',
+    nombre: field('nombre'),
+    negocio: field('negocio'),
+    email: field('email'),
+    telefono: field('telefono'),
+    necesidad: field('necesidad'),
+    herramientas: field('herramientas'),
+    empresa_web: field('empresa_web'),
   });
 
-  emailBtn.addEventListener('click', () => {
+  function whatsappUrl(data) {
+    const lines = ['Hola, quiero cotizar una automatización:', `Nombre: ${data.nombre}`];
+    if (data.negocio) lines.push(`Negocio: ${data.negocio}`);
+    lines.push(`Email: ${data.email}`, `Teléfono: ${data.telefono}`, `Qué necesita automatizar: ${data.necesidad}`);
+    if (data.herramientas) lines.push(`Herramientas actuales: ${data.herramientas}`);
+    return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(lines.join('\n'))}`;
+  }
+
+  form.addEventListener('submit', async (event) => {
+    event.preventDefault();
     if (!form.reportValidity()) return;
-    const { nombre, message } = buildMessage();
-    const subject = `Cotización de automatización — ${nombre}`;
-    window.location.href = `mailto:${EMAIL_TO}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(message)}`;
+
+    const data = payload();
+    const label = submitBtn.textContent;
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Enviando…';
+    form.classList.add('is-sending');
+
+    const sent = await sendFormByEmail(data);
+    const wa = whatsappUrl(data);
+
+    if (!sent) {
+      waFallback.href = wa;
+      noteSent.hidden = true;
+      noteFallback.hidden = false;
+      const link = document.createElement('a');
+      link.href = wa;
+      link.target = '_blank';
+      link.rel = 'noopener';
+      link.click();
+    }
+
+    form.hidden = true;
+    form.classList.remove('is-sending');
+    submitBtn.disabled = false;
+    submitBtn.textContent = label;
+    confirmBox.hidden = false;
+    confirmBox.focus();
   });
 }
 
@@ -170,6 +208,7 @@ function initDemoForm() {
 
   const field = (name) => form.elements[name].value.trim();
   const payload = () => ({
+    origen: 'demo',
     nombre: field('nombre'),
     instagram: field('instagram'),
     web: field('web'),
@@ -188,26 +227,6 @@ function initDemoForm() {
     return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(lines.join('\n'))}`;
   }
 
-  // El envío real es POST /api/demo (correo por SMTP). Si falla —o si la
-  // función aún no está configurada— se abre WhatsApp con el mensaje escrito.
-  async function sendByEmail(data) {
-    const controller = new AbortController();
-    const timer = setTimeout(() => controller.abort(), 10000);
-    try {
-      const response = await fetch('/api/demo', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data),
-        signal: controller.signal,
-      });
-      return response.ok;
-    } catch (err) {
-      return false;
-    } finally {
-      clearTimeout(timer);
-    }
-  }
-
   form.addEventListener('submit', async (event) => {
     event.preventDefault();
     if (!form.reportValidity()) return;
@@ -218,7 +237,7 @@ function initDemoForm() {
     submitBtn.textContent = 'Enviando…';
     form.classList.add('is-sending');
 
-    const sent = await sendByEmail(data);
+    const sent = await sendFormByEmail(data);
     const wa = whatsappUrl(data);
 
     if (sent) {

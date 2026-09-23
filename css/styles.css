@@ -559,7 +559,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 #demo-note-fallback[hidden] { display: none; }
 #demo-note-fallback .btn { color: var(--color-on-accent); text-decoration: none; }
 .demo-form__hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
-.demo-form.is-sending { opacity: 0.7; pointer-events: none; }
+.demo-form.is-sending, .cotizacion-form.is-sending { opacity: 0.7; pointer-events: none; }
 .demo-confirm__title {
   margin: 0 0 var(--space-3);
   font-family: var(--font-display);
