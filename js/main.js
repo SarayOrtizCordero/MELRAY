@@ -103,7 +103,7 @@ function initCotizacionForm() {
   const emailBtn = document.getElementById('cotizacion-email');
   if (!form || !whatsappBtn || !emailBtn) return;
 
-  const WHATSAPP_NUMBER = '5491127041868';
+  const WHATSAPP_NUMBER = '34644888144';
   const EMAIL_TO = 'melray@melraysystems.com';
 
   form.addEventListener('submit', (event) => event.preventDefault());
@@ -161,7 +161,7 @@ function initDemoForm() {
   const confirmBox = document.getElementById('demo-confirm');
   if (!form || !confirmBox) return;
 
-  const WHATSAPP_NUMBER = '5491127041868';
+  const WHATSAPP_NUMBER = '34644888144';
   const submitBtn = document.getElementById('demo-submit');
   const noteSent = document.getElementById('demo-note-sent');
   const noteFallback = document.getElementById('demo-note-fallback');
