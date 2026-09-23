@@ -5,15 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Melray — Una web que realmente trabaje para tu negocio</title>
   <meta name="description" content="Cualquiera puede crear una web hoy. En Melray hacemos que tu web trabaje para tu negocio: te mostramos en hasta 24 horas cómo podría verse.">
-  <link rel="canonical" href="https://melraysystems.com/tu-web.html">
+  <link rel="canonical" href="https://www.melraysystems.com/tu-web.html">
 
   <meta property="og:type" content="website">
   <meta property="og:locale" content="es_ES">
   <meta property="og:site_name" content="Melray">
   <meta property="og:title" content="Melray — Una web que realmente trabaje para tu negocio">
   <meta property="og:description" content="Te mostramos en hasta 24 horas cómo podría verse una web que realmente trabaje para tu negocio.">
-  <meta property="og:url" content="https://melraysystems.com/tu-web.html">
-  <meta property="og:image" content="https://melraysystems.com/assets/favicon.svg">
+  <meta property="og:url" content="https://www.melraysystems.com/tu-web.html">
+  <meta property="og:image" content="https://www.melraysystems.com/assets/favicon.svg">
 
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Melray — Una web que realmente trabaje para tu negocio">
@@ -35,8 +35,8 @@
     "@context": "https://schema.org",
     "@type": "Organization",
     "name": "Melray",
-    "url": "https://melraysystems.com/",
-    "logo": "https://melraysystems.com/assets/favicon.svg",
+    "url": "https://www.melraysystems.com/",
+    "logo": "https://www.melraysystems.com/assets/favicon.svg",
     "description": "Webs pensadas para diferenciarte y convertir, a la medida de tu negocio.",
     "sameAs": ["https://www.instagram.com/melray.systems/"]
   }
@@ -82,7 +82,7 @@
 
       <a href="/" class="btn btn--secondary site-header__cta site-header__back"><span aria-hidden="true">←</span> Web principal</a>
 
-      <a href="#demo" class="btn btn--primary site-header__cta">Quiero mi demo</a>
+      <a href="#demo" class="btn btn--primary site-header__cta">Quiero mi demo gratis</a>
 
       <button type="button" class="site-header__toggle" id="nav-toggle" aria-expanded="false" aria-controls="mobile-menu">
         <span class="visually-hidden">Abrir menú</span>
@@ -98,7 +98,7 @@
         <li><a href="#demos">Ejemplos</a></li>
         <li><a href="#demo">Tu demo</a></li>
         <li><a href="/" class="btn btn--secondary"><span aria-hidden="true">←</span> Ir a la web principal</a></li>
-        <li><a href="#demo" class="btn btn--primary">Quiero mi demo</a></li>
+        <li><a href="#demo" class="btn btn--primary">Quiero mi demo gratis</a></li>
       </ul>
     </nav>
   </header>
@@ -108,7 +108,7 @@
     <!-- SECTION:HOOK -->
     <section class="hook" id="top">
       <div class="container hook__inner reveal">
-        <h1>¿Dejaste que la IA te haga la web y esperas que <em>también consiga clientes</em>?</h1>
+        <h1>Cualquiera puede crear una web hoy. Pero no cualquiera puede hacer que esa web <em>trabaje</em> para tu negocio.</h1>
         <p class="hook__sub">Crear una web es cada vez más fácil. Crear una web que funcione para tu negocio sigue requiriendo criterio.</p>
         <a href="#demo" class="btn btn--primary hook__cta">Quiero ver cómo podría verse la mía</a>
       </div>
@@ -166,15 +166,15 @@
         <div class="pilares">
           <div class="pilar reveal">
             <p class="pilar__label">Tu marca</p>
-            <p class="pilar__text">Que tu web se parezca a ti, no a una plantilla.</p>
+            <p class="pilar__text">Que tu web represente a tu negocio, no a una plantilla.</p>
           </div>
           <div class="pilar reveal">
-            <p class="pilar__label">Tu negocio</p>
-            <p class="pilar__text">Una estructura pensada alrededor de lo que realmente vendes.</p>
+            <p class="pilar__label">Tu objetivo</p>
+            <p class="pilar__text">Una estructura pensada para convertir, y no solo mostrar lo que haces.</p>
           </div>
           <div class="pilar reveal">
             <p class="pilar__label">Tus clientes</p>
-            <p class="pilar__text">Una experiencia diseñada para que sepan qué hacer después.</p>
+            <p class="pilar__text">Un diseño que cree una experiencia y no solo que se vea bonito.</p>
           </div>
         </div>
       </div>
@@ -265,7 +265,7 @@
     <section class="cta-final" id="demo">
       <div class="container">
         <div class="section-head reveal">
-          <h2 class="section-head__lead">¿Quieres ver cómo podría verse <em>la tuya</em>?</h2>
+          <h2 class="section-head__lead">Te mostramos cómo podría verse una web <em>realmente pensada</em> para tu negocio.</h2>
           <p>Pásanos tu Instagram y tu web actual —si tienes— y creamos una demo personalizada para tu negocio.</p>
         </div>
 
@@ -296,6 +296,10 @@
               <textarea id="demo-detalle" name="detalle" rows="4"></textarea>
             </div>
           </div>
+          <div class="demo-form__hp" aria-hidden="true">
+            <label for="demo-empresa-web">No rellenar este campo</label>
+            <input type="text" id="demo-empresa-web" name="empresa_web" tabindex="-1" autocomplete="off">
+          </div>
           <div class="demo-promise">
             <p>En hasta 24 horas.</p>
             <p>No una plantilla.</p>
@@ -309,7 +313,11 @@
 
         <div class="demo-confirm" id="demo-confirm" role="status" aria-live="polite" tabindex="-1" hidden>
           <p class="demo-confirm__title">¡Listo! En hasta 24 horas vas a recibir tu demo gratuita — mostrándote cómo podría verse una web que realmente trabaje para ti.</p>
-          <p class="demo-confirm__note">Se abrió WhatsApp con tus datos: envía el mensaje para que lleguen a nuestro equipo.</p>
+          <p class="demo-confirm__note" id="demo-note-sent">Recibimos tus datos correctamente. Si prefieres hablar ya, también puedes <a id="demo-wa-sent" href="https://wa.me/5491127041868" target="_blank" rel="noopener">escribirnos por WhatsApp</a>.</p>
+          <div id="demo-note-fallback" hidden>
+            <p class="demo-confirm__note">No pudimos enviar el formulario automáticamente, así que preparamos un mensaje de WhatsApp con tus datos. Envíalo para que lleguen a nuestro equipo.</p>
+            <a id="demo-wa-fallback" class="btn btn--primary" href="https://wa.me/5491127041868" target="_blank" rel="noopener">Abrir WhatsApp</a>
+          </div>
         </div>
       </div>
     </section>

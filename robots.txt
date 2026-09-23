@@ -1,3 +1,3 @@
 User-agent: *
 Allow: /
-Sitemap: https://melraysystems.com/sitemap.xml
+Sitemap: https://www.melraysystems.com/sitemap.xml

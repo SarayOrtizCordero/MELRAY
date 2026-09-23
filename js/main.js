@@ -161,35 +161,83 @@ function initDemoForm() {
   const confirmBox = document.getElementById('demo-confirm');
   if (!form || !confirmBox) return;
 
-  // No hay backend todavía: al enviar, se abre WhatsApp con los datos ya
-  // escritos. Si más adelante se conecta un endpoint, reemplazar el bloque
-  // marcado abajo y mantener el mensaje de confirmación.
   const WHATSAPP_NUMBER = '5491127041868';
+  const submitBtn = document.getElementById('demo-submit');
+  const noteSent = document.getElementById('demo-note-sent');
+  const noteFallback = document.getElementById('demo-note-fallback');
+  const waSent = document.getElementById('demo-wa-sent');
+  const waFallback = document.getElementById('demo-wa-fallback');
 
-  function buildMessage() {
-    const field = (name) => form.elements[name].value.trim();
-    const lines = ['Hola, quiero mi demo personalizada:', `Nombre: ${field('nombre')}`];
-    if (field('instagram')) lines.push(`Instagram: ${field('instagram')}`);
-    if (field('web')) lines.push(`Web actual: ${field('web')}`);
-    lines.push(`WhatsApp / teléfono: ${field('telefono')}`, `Correo: ${field('email')}`);
-    if (field('detalle')) lines.push(`Detalle: ${field('detalle')}`);
-    return lines.join('\n');
+  const field = (name) => form.elements[name].value.trim();
+  const payload = () => ({
+    nombre: field('nombre'),
+    instagram: field('instagram'),
+    web: field('web'),
+    telefono: field('telefono'),
+    email: field('email'),
+    detalle: field('detalle'),
+    empresa_web: field('empresa_web'),
+  });
+
+  function whatsappUrl(data) {
+    const lines = ['Hola, quiero mi demo personalizada:', `Nombre: ${data.nombre}`];
+    if (data.instagram) lines.push(`Instagram: ${data.instagram}`);
+    if (data.web) lines.push(`Web actual: ${data.web}`);
+    lines.push(`WhatsApp / teléfono: ${data.telefono}`, `Correo: ${data.email}`);
+    if (data.detalle) lines.push(`Detalle: ${data.detalle}`);
+    return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(lines.join('\n'))}`;
   }
 
-  form.addEventListener('submit', (event) => {
+  // El envío real es POST /api/demo (correo por SMTP). Si falla —o si la
+  // función aún no está configurada— se abre WhatsApp con el mensaje escrito.
+  async function sendByEmail(data) {
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), 10000);
+    try {
+      const response = await fetch('/api/demo', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+        signal: controller.signal,
+      });
+      return response.ok;
+    } catch (err) {
+      return false;
+    } finally {
+      clearTimeout(timer);
+    }
+  }
+
+  form.addEventListener('submit', async (event) => {
     event.preventDefault();
     if (!form.reportValidity()) return;
 
-    // --- envío: reemplazar este bloque si se conecta un backend ---
-    const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(buildMessage())}`;
-    const link = document.createElement('a');
-    link.href = url;
-    link.target = '_blank';
-    link.rel = 'noopener';
-    link.click();
-    // --- fin envío ---
+    const data = payload();
+    const label = submitBtn.textContent;
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Enviando…';
+    form.classList.add('is-sending');
+
+    const sent = await sendByEmail(data);
+    const wa = whatsappUrl(data);
+
+    if (sent) {
+      waSent.href = wa;
+    } else {
+      waFallback.href = wa;
+      noteSent.hidden = true;
+      noteFallback.hidden = false;
+      const link = document.createElement('a');
+      link.href = wa;
+      link.target = '_blank';
+      link.rel = 'noopener';
+      link.click();
+    }
 
     form.hidden = true;
+    form.classList.remove('is-sending');
+    submitBtn.disabled = false;
+    submitBtn.textContent = label;
     confirmBox.hidden = false;
     confirmBox.focus();
   });
