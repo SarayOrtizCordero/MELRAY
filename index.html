@@ -13,13 +13,13 @@
   <meta property="og:title" content="Melray — Tu marca merece una web a su altura">
   <meta property="og:description" content="Diseño web para marcas que quieren verse a su altura.">
   <meta property="og:url" content="https://www.melraysystems.com/">
-  <meta property="og:image" content="https://www.melraysystems.com/assets/hero/poster-paisaje.jpg">
+  <meta property="og:image" content="https://www.melraysystems.com/assets/hero/poster-olas.jpg">
   <meta name="twitter:card" content="summary_large_image">
 
   <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
   <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
   <link rel="manifest" href="/manifest.json">
-  <meta name="theme-color" content="#0b0c0d">
+  <meta name="theme-color" content="#ffffff">
   <script src="/js/no-js.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -51,12 +51,18 @@
   <main id="top">
     <section class="intro" id="intro" aria-label="Presentación">
       <div class="intro__stage">
-        <video class="intro__video" id="intro-video" autoplay muted loop playsinline preload="auto" poster="/assets/hero/poster-paisaje.jpg" aria-hidden="true">
-          <source src="/assets/hero/paisaje-1080.mp4" type="video/mp4" media="(max-width: 900px)">
-          <source src="/assets/hero/paisaje-4k.mp4" type="video/mp4">
+        <video class="intro__video" id="intro-video" muted playsinline preload="auto" poster="/assets/hero/poster-olas.jpg" aria-hidden="true">
+          <source src="/assets/hero/olas-720.mp4" type="video/mp4" media="(max-width: 900px)">
+          <source src="/assets/hero/olas-2k.mp4" type="video/mp4">
         </video>
-        <div class="intro__scrim" aria-hidden="true"></div>
-        <div class="intro__sea" id="intro-sea" aria-hidden="true"></div>
+
+        <div class="intro__web" id="intro-web">
+          <h1>Tu marca merece una web a su altura.</h1>
+          <p class="lead">Diseñamos sitios que muestran lo que hacés con el estatus que ya tiene tu marca.</p>
+          <a href="#contacto" class="btn">Quiero mi web</a>
+        </div>
+
+        <canvas class="intro__canvas" id="intro-canvas" aria-hidden="true"></canvas>
 
         <div class="intro__logo" id="intro-logo">
           <img src="/assets/logo-llama-640.png" alt="Melray" width="640" height="856">
@@ -66,15 +72,8 @@
       </div>
     </section>
 
-    <section class="hero" id="inicio" aria-label="Qué hacemos">
-      <div class="wrap">
-        <h1 class="reveal">Tu marca merece una web a su altura.</h1>
-        <p class="reveal">Diseñamos sitios que muestran lo que hacés con el estatus que ya tiene tu marca.</p>
-        <a href="#contacto" class="btn reveal">Quiero mi web</a>
-      </div>
-    </section>
 
-    <section class="ejemplos" id="ejemplos" aria-labelledby="ejemplos-t">
+    <section class="ejemplos center" id="ejemplos" aria-labelledby="ejemplos-t">
       <div class="wrap">
         <h2 id="ejemplos-t" class="reveal">Así se ve una web de Melray.</h2>
         <p class="lead reveal">Dos ejemplos hechos de cero. Abrilos y recorrelos como lo haría tu cliente.</p>
@@ -102,47 +101,56 @@
       </div>
     </section>
 
-    <section class="contacto" id="contacto" aria-labelledby="contacto-t">
-      <div class="wrap contacto__grid">
-        <div class="contacto__texto reveal">
-          <h2 id="contacto-t">Contanos tu proyecto.</h2>
-          <p class="lead">Te escribimos para entender qué necesitás y cómo puede verse tu web.</p>
-          <a class="btn btn--wa" href="https://wa.me/34644888144" target="_blank" rel="noopener">Escribinos por WhatsApp</a>
-          <p class="contacto__mail">O por mail: <a href="mailto:melray@melraysystems.com">melray@melraysystems.com</a></p>
-        </div>
+    <section class="contacto center" id="contacto" aria-labelledby="contacto-t">
+      <div class="contacto__box">
+        <h2 id="contacto-t" class="reveal">Contanos tu proyecto.</h2>
+        <p class="lead reveal">Completá el formulario o escribinos directo. Te respondemos por WhatsApp o por mail.</p>
+
+        <a class="wa-card reveal" href="https://wa.me/34644888144" target="_blank" rel="noopener">
+          <span><strong>Escribinos por WhatsApp</strong><span>Es la forma más rápida de hablar con nosotras.</span></span>
+          <span class="btn btn--wa btn--small" aria-hidden="true">Abrir</span>
+        </a>
+
+        <p class="o reveal">o completá el formulario</p>
 
         <div class="panel reveal">
           <form id="contacto-form" novalidate>
             <div class="hp" aria-hidden="true">
               <label>No completar <input type="text" name="empresa_web" tabindex="-1" autocomplete="off"></label>
             </div>
-            <div class="field">
-              <label for="f-nombre">Nombre *</label>
-              <input type="text" id="f-nombre" name="nombre" required autocomplete="name">
+            <div class="row">
+              <div class="field">
+                <label for="f-nombre">Nombre *</label>
+                <input type="text" id="f-nombre" name="nombre" required autocomplete="name">
+              </div>
+              <div class="field">
+                <label for="f-email">Email *</label>
+                <input type="email" id="f-email" name="email" required autocomplete="email">
+              </div>
+            </div>
+            <div class="row">
+              <div class="field">
+                <label for="f-pais">País *</label>
+                <input type="text" id="f-pais" name="pais" required autocomplete="country-name">
+              </div>
+              <div class="field">
+                <label for="f-tel">WhatsApp *</label>
+                <input type="tel" id="f-tel" name="telefono" required autocomplete="tel" placeholder="Con código de país">
+              </div>
             </div>
             <div class="field">
-              <label for="f-email">Email *</label>
-              <input type="email" id="f-email" name="email" required autocomplete="email">
-            </div>
-            <div class="field">
-              <label for="f-tel">WhatsApp *</label>
-              <input type="tel" id="f-tel" name="telefono" required autocomplete="tel" placeholder="Con código de país">
-            </div>
-            <div class="field">
-              <label for="f-tipo">¿Qué necesitás? *</label>
+              <label for="f-tipo">Tipo de proyecto *</label>
               <select id="f-tipo" name="tipo" required>
                 <option value="">Elegí una opción</option>
-                <option>Una web nueva</option>
-                <option>Rediseñar mi web</option>
-                <option>Una tienda online</option>
-                <option>Otra cosa</option>
+                <option>Web nueva</option>
+                <option>Rediseño de mi web</option>
               </select>
             </div>
             <div class="field">
-              <label for="f-msg">Contanos más (opcional)</label>
-              <textarea id="f-msg" name="detalle" rows="3" placeholder="Tu rubro, tu Instagram o tu web actual"></textarea>
+              <label for="f-msg">Tu rubro y tu Instagram (opcional)</label>
+              <textarea id="f-msg" name="detalle" rows="3"></textarea>
             </div>
-            <p class="form-error" id="form-error" role="alert" hidden>Completá nombre, email, WhatsApp y qué necesitás.</p>
+            <p class="form-error" id="form-error" role="alert" hidden>Completá nombre, email, país, WhatsApp y tipo de proyecto.</p>
             <button type="submit" class="btn btn--block" id="form-submit">Enviar</button>
           </form>
 
@@ -156,6 +164,7 @@
             <a id="form-wa" class="btn btn--wa" href="https://wa.me/34644888144" target="_blank" rel="noopener">Abrir WhatsApp</a>
           </div>
         </div>
+        <p class="contacto__mail reveal">O por mail: <a href="mailto:melray@melraysystems.com">melray@melraysystems.com</a></p>
       </div>
     </section>
   </main>
