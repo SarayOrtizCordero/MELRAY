@@ -1,34 +1,30 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="no-js">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Melray — Elimina el trabajo repetitivo. Después, todo lo demás.</title>
-  <meta name="description" content="Melray empieza por automatizar tus procesos y suma CRM, webs e inventario a medida que tu negocio lo necesita. Herramientas digitales a la medida de tu negocio.">
+  <title>Melray — Diseño web para marcas que quieren verse a su altura</title>
+  <meta name="description" content="Melray diseña webs que le dan a tu marca el estatus que merece. Mirá dos ejemplos y contanos tu proyecto.">
   <link rel="canonical" href="https://www.melraysystems.com/">
 
   <meta property="og:type" content="website">
-  <meta property="og:locale" content="es_ES">
+  <meta property="og:locale" content="es_AR">
   <meta property="og:site_name" content="Melray">
-  <meta property="og:title" content="Melray — Elimina el trabajo repetitivo. Después, todo lo demás.">
-  <meta property="og:description" content="Automatización, CRM, webs e inventario en un solo lugar, a medida de tu negocio.">
+  <meta property="og:title" content="Melray — Tu marca merece una web a su altura">
+  <meta property="og:description" content="Diseño web para marcas que quieren verse a su altura.">
   <meta property="og:url" content="https://www.melraysystems.com/">
-  <meta property="og:image" content="https://www.melraysystems.com/assets/favicon.svg">
-
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Melray — Elimina el trabajo repetitivo. Después, todo lo demás.">
-  <meta name="twitter:description" content="Automatización, CRM, webs e inventario en un solo lugar, a medida de tu negocio.">
+  <meta property="og:image" content="https://www.melraysystems.com/assets/hero/poster-paisaje.jpg">
+  <meta name="twitter:card" content="summary_large_image">
 
   <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
   <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
   <link rel="manifest" href="/manifest.json">
-  <meta name="theme-color" content="#fef9ef">
-  <!-- Bloqueante a propósito (sin defer): fija data-theme antes del primer pintado para que no haya parpadeo claro→oscuro en visitas que ya eligieron oscuro. -->
-  <script src="/js/theme-init.js"></script>
+  <meta name="theme-color" content="#0b0c0d">
+  <script src="/js/no-js.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fragment+Mono&family=Inter:wght@300;400;600;700&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,300;1,6..72,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/css/styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Newsreader:opsz,wght@6..72,300;6..72,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/home.css">
 
   <script type="application/ld+json">
   {
@@ -37,355 +33,153 @@
     "name": "Melray",
     "url": "https://www.melraysystems.com/",
     "logo": "https://www.melraysystems.com/assets/favicon.svg",
-    "description": "Automatización y herramientas digitales a medida (CRM, webs e inventario) para pequeños y medianos negocios.",
+    "description": "Estudio de diseño web.",
     "sameAs": ["https://www.instagram.com/melray.systems/"]
   }
   </script>
 </head>
 <body>
-  <a href="#main-content" class="skip-link">Saltar al contenido</a>
+  <a href="#contacto" class="skip-link">Ir al formulario</a>
 
-  <!-- SECTION:HEADER -->
-  <header class="site-header" id="site-header">
-    <div class="container site-header__inner">
-      <a href="#top" class="site-header__logo" aria-label="Melray — inicio">
-        <svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true">
-          <defs>
-            <linearGradient id="logoGrad" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0" stop-color="#fb7b15"/>
-              <stop offset="1" stop-color="#df3314"/>
-            </linearGradient>
-          </defs>
-          <path fill="url(#logoGrad)" d="M15 2.3C18.3 6.3 22.2 10.8 22.8 16.2C23.7 11.7 22.2 8.3 20.7 6.3C23.7 8.7 25.8 13.2 25.5 18.3C25.5 25.2 20.9 30.3 15 30.3C9.2 30.3 4.5 25.2 4.5 18.3C4.5 13.8 6.9 10.2 10.2 7.5C9 10.2 9.3 13.2 11.1 15C10.5 10.8 12.3 6.3 15 2.3Z"/>
-        </svg>
-        <span class="site-header__wordmark">melray</span>
-      </a>
-
-      <nav class="site-header__nav" id="primary-nav" aria-label="Navegación principal">
-        <ul>
-          <li><a href="#producto">Producto</a></li>
-          <li><a href="#cotizacion">Cotización</a></li>
-          <li><a href="#servicios">Servicios</a></li>
-          <li><a href="/pages/tu-web.html">Tu web</a></li>
-        </ul>
-      </nav>
-
-      <button type="button" class="theme-toggle" id="theme-toggle" role="switch" aria-checked="false" aria-label="Cambiar a modo oscuro">
-        <svg class="theme-toggle__icon theme-toggle__icon--sun" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
-          <circle cx="12" cy="12" r="4"/>
-          <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
-        </svg>
-        <svg class="theme-toggle__icon theme-toggle__icon--moon" width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-          <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>
-        </svg>
-        <span class="theme-toggle__thumb" aria-hidden="true"></span>
-      </button>
-
-      <a href="https://calendly.com/charladeclaridad/demo-melray" class="btn btn--primary site-header__cta" target="_blank" rel="noopener">Agendar una demo</a>
-
-      <button type="button" class="site-header__toggle" id="nav-toggle" aria-expanded="false" aria-controls="mobile-menu">
-        <span class="visually-hidden">Abrir menú</span>
-        <span class="site-header__toggle-bar"></span>
-        <span class="site-header__toggle-bar"></span>
-        <span class="site-header__toggle-bar"></span>
-      </button>
-    </div>
-
-    <nav id="mobile-menu" class="mobile-menu" aria-label="Navegación móvil" hidden>
-      <ul>
-        <li><a href="#producto">Producto</a></li>
-        <li><a href="#cotizacion">Cotización</a></li>
-        <li><a href="#servicios">Servicios</a></li>
-        <li><a href="/pages/tu-web.html">Tu web</a></li>
-        <li><a href="https://calendly.com/charladeclaridad/demo-melray" class="btn btn--primary" target="_blank" rel="noopener">Agendar una demo</a></li>
-      </ul>
-    </nav>
+  <header class="bar" id="bar">
+    <a href="#top" class="brand brand--small" aria-label="Melray — inicio">
+      <img src="/assets/logo-llama-640.png" alt="" width="28" height="38">
+    </a>
+    <a href="#contacto" class="btn btn--small">Quiero mi web</a>
   </header>
-  <!-- /SECTION:HEADER -->
 
-  <main id="main-content" tabindex="-1">
-    <!-- SECTION:HERO -->
-    <section class="hero" id="top">
-      <div class="hero__bg" aria-hidden="true">
-        <div class="hero__photo"></div>
-        <div class="hero__shade"></div>
-      </div>
+  <main id="top">
+    <section class="intro" id="intro" aria-label="Presentación">
+      <div class="intro__stage">
+        <video class="intro__video" id="intro-video" autoplay muted loop playsinline preload="auto" poster="/assets/hero/poster-paisaje.jpg" aria-hidden="true">
+          <source src="/assets/hero/paisaje-1080.mp4" type="video/mp4" media="(max-width: 900px)">
+          <source src="/assets/hero/paisaje-4k.mp4" type="video/mp4">
+        </video>
+        <div class="intro__scrim" aria-hidden="true"></div>
+        <div class="intro__sea" id="intro-sea" aria-hidden="true"></div>
 
-      <div class="container hero__inner">
-        <div class="hero__copy reveal">
-          <h1>Elimina el trabajo repetitivo. Después, <em>todo lo demás</em></h1>
-          <p class="hero__subtitle">Melray empieza por automatizar tus procesos y suma CRM, webs e inventario a medida que tu negocio lo necesita.</p>
-          <div class="hero__actions">
-            <a href="https://calendly.com/charladeclaridad/demo-melray" class="btn btn--primary" target="_blank" rel="noopener">Agendar una demo</a>
-            <a href="#cotizacion" class="btn btn--secondary">Ver cotización</a>
-          </div>
+        <div class="intro__logo" id="intro-logo">
+          <img src="/assets/logo-llama-640.png" alt="Melray" width="640" height="856">
         </div>
 
-        <div class="hero__device reveal">
-          <div class="hero__badge">
-            <span class="hero__badge-icon" aria-hidden="true">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
-            </span>
-            <span class="hero__badge-text">Demo en 24 h</span>
-          </div>
-          <div class="laptop">
-            <div class="laptop__lid">
-              <span class="laptop__cam" aria-hidden="true"></span>
-              <div class="laptop__screen">
-                <img src="/assets/demos/crm-basico.webp" alt="Captura del CRM de Melray: resumen de pacientes y pipeline por estados." width="1440" height="900" fetchpriority="high" decoding="async">
-              </div>
+        <p class="intro__hint" id="intro-hint">Scrolleá para entrar</p>
+      </div>
+    </section>
+
+    <section class="hero" id="inicio" aria-label="Qué hacemos">
+      <div class="wrap">
+        <h1 class="reveal">Tu marca merece una web a su altura.</h1>
+        <p class="reveal">Diseñamos sitios que muestran lo que hacés con el estatus que ya tiene tu marca.</p>
+        <a href="#contacto" class="btn reveal">Quiero mi web</a>
+      </div>
+    </section>
+
+    <section class="ejemplos" id="ejemplos" aria-labelledby="ejemplos-t">
+      <div class="wrap">
+        <h2 id="ejemplos-t" class="reveal">Así se ve una web de Melray.</h2>
+        <p class="lead reveal">Dos ejemplos hechos de cero. Abrilos y recorrelos como lo haría tu cliente.</p>
+
+        <div class="ejemplos__grid">
+          <article class="ejemplo reveal">
+            <a href="https://cabanas-del-lago-ejemplo.vercel.app" target="_blank" rel="noopener" class="ejemplo__img" aria-label="Abrir el ejemplo de cabañas">
+              <img src="/assets/ejemplos/cabanas.webp" alt="Portada de una web de ejemplo para cabañas junto a un lago, con tres fotografías grandes y el título." width="1600" height="1000" loading="lazy">
+            </a>
+            <h3>Cabañas del Lago</h3>
+            <p>Para alojamientos: fotos grandes, reseñas que giran solas y consultas directo a tu WhatsApp.</p>
+            <a class="link" href="https://cabanas-del-lago-ejemplo.vercel.app" target="_blank" rel="noopener">Abrir el ejemplo <span aria-hidden="true">→</span></a>
+          </article>
+
+          <article class="ejemplo reveal">
+            <a href="https://odontologos-ejemplo.vercel.app" target="_blank" rel="noopener" class="ejemplo__img" aria-label="Abrir el ejemplo de clínica dental">
+              <img src="/assets/ejemplos/odontologos.webp" alt="Portada de una web de ejemplo para una clínica dental, con tres fotografías del equipo y del consultorio." width="1600" height="1000" loading="lazy">
+            </a>
+            <h3>Clínica Dental</h3>
+            <p>Para consultorios: tratamientos explicados con claridad, el equipo a la vista y turnos en un clic.</p>
+            <a class="link" href="https://odontologos-ejemplo.vercel.app" target="_blank" rel="noopener">Abrir el ejemplo <span aria-hidden="true">→</span></a>
+          </article>
+        </div>
+        <p class="nota reveal">Son muestras de diseño. Los datos y las fotos se cambian por los de tu marca.</p>
+      </div>
+    </section>
+
+    <section class="contacto" id="contacto" aria-labelledby="contacto-t">
+      <div class="wrap contacto__grid">
+        <div class="contacto__texto reveal">
+          <h2 id="contacto-t">Contanos tu proyecto.</h2>
+          <p class="lead">Te escribimos para entender qué necesitás y cómo puede verse tu web.</p>
+          <a class="btn btn--wa" href="https://wa.me/34644888144" target="_blank" rel="noopener">Escribinos por WhatsApp</a>
+          <p class="contacto__mail">O por mail: <a href="mailto:melray@melraysystems.com">melray@melraysystems.com</a></p>
+        </div>
+
+        <div class="panel reveal">
+          <form id="contacto-form" novalidate>
+            <div class="hp" aria-hidden="true">
+              <label>No completar <input type="text" name="empresa_web" tabindex="-1" autocomplete="off"></label>
             </div>
-            <div class="laptop__base" aria-hidden="true"></div>
+            <div class="field">
+              <label for="f-nombre">Nombre *</label>
+              <input type="text" id="f-nombre" name="nombre" required autocomplete="name">
+            </div>
+            <div class="field">
+              <label for="f-email">Email *</label>
+              <input type="email" id="f-email" name="email" required autocomplete="email">
+            </div>
+            <div class="field">
+              <label for="f-tel">WhatsApp *</label>
+              <input type="tel" id="f-tel" name="telefono" required autocomplete="tel" placeholder="Con código de país">
+            </div>
+            <div class="field">
+              <label for="f-tipo">¿Qué necesitás? *</label>
+              <select id="f-tipo" name="tipo" required>
+                <option value="">Elegí una opción</option>
+                <option>Una web nueva</option>
+                <option>Rediseñar mi web</option>
+                <option>Una tienda online</option>
+                <option>Otra cosa</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="f-msg">Contanos más (opcional)</label>
+              <textarea id="f-msg" name="detalle" rows="3" placeholder="Tu rubro, tu Instagram o tu web actual"></textarea>
+            </div>
+            <p class="form-error" id="form-error" role="alert" hidden>Completá nombre, email, WhatsApp y qué necesitás.</p>
+            <button type="submit" class="btn btn--block" id="form-submit">Enviar</button>
+          </form>
+
+          <div class="confirm" id="form-ok" hidden>
+            <h3>Recibimos tu mensaje.</h3>
+            <p>Te respondemos por WhatsApp o por mail.</p>
+          </div>
+          <div class="confirm" id="form-fallback" hidden>
+            <h3>Casi listo.</h3>
+            <p>No pudimos enviarlo automáticamente. Mandanos el mensaje por WhatsApp y llega directo al equipo.</p>
+            <a id="form-wa" class="btn btn--wa" href="https://wa.me/34644888144" target="_blank" rel="noopener">Abrir WhatsApp</a>
           </div>
         </div>
       </div>
     </section>
-    <!-- /SECTION:HERO -->
-
-    <!-- SECTION:PROBLEMA -->
-    <section class="problema" id="problema">
-      <div class="container">
-        <div class="section-head reveal">
-          <p class="eyebrow">El problema</p>
-          <h2>Gestionar tu negocio no debería sentirse como <em>adivinar</em></h2>
-        </div>
-        <div class="problema__grid">
-          <div class="problema__card reveal">
-            <p class="problema__quote">"Creo que… tengo que mirar el Excel."</p>
-            <p>Si necesitas abrir una hoja de cálculo para saber qué tienes, qué falta o qué ha pasado, estás perdiendo tiempo y dinero. Melray te ayuda a tener toda la información a tu alcance cuando la necesitas.</p>
-          </div>
-          <div class="problema__card reveal">
-            <p class="problema__quote">¿Qué se vende, qué no y qué necesitas reponer?</p>
-            <p>No todos los productos se mueven igual. Melray te ayuda a identificar qué se está vendiendo, qué lleva demasiado tiempo parado y qué necesitas volver a pedir, con la información de tus proveedores a mano.</p>
-          </div>
-          <div class="problema__card reveal">
-            <p class="problema__quote">Vender más no siempre significa ganar más.</p>
-            <p>Facturar es una cosa. Saber qué tan rentable está siendo tu negocio es otra. Con el tiempo, Melray te ayuda a ver tus costes, tu rentabilidad y la salud financiera de tu negocio con claridad.</p>
-          </div>
-        </div>
-        <p class="section-closing reveal">Tu negocio genera información todo el tiempo. Deja de mirarla y empieza a usarla.</p>
-      </div>
-    </section>
-
-    <!-- SECTION:VER-ACCION -->
-    <section class="ver-accion" id="ver-accion">
-      <div class="container">
-        <div class="ver-accion__card reveal">
-          <h2>¿Quieres ver Melray <em>en acción</em>?</h2>
-          <p>Te mostramos cómo funciona aplicado a tu negocio.</p>
-          <a href="https://calendly.com/charladeclaridad/demo-melray" class="btn btn--primary" target="_blank" rel="noopener">Agendar una demo</a>
-        </div>
-      </div>
-    </section>
-    <!-- /SECTION:VER-ACCION -->
-
-    <!-- SECTION:PRODUCTO -->
-    <section class="producto" id="producto">
-      <div class="container">
-        <div class="section-head reveal">
-          <h2 class="eyebrow">Automatización hoy</h2>
-          <p class="section-head__lead">Así es como tus procesos dejan de depender de ti.</p>
-          <p>Conectamos tus herramientas para que la información fluya sola entre ellas, sin que tengas que copiarla a mano de un lado a otro.</p>
-        </div>
-
-        <div class="flow-diagram reveal" role="list" aria-label="Cómo funciona una automatización de Melray">
-          <div class="flow-diagram__step" role="listitem">
-            <span class="flow-diagram__number" aria-hidden="true">1</span>
-            <h3>Disparador</h3>
-            <p>Algo pasa en tu negocio: llega un pedido, un email, se completa un formulario.</p>
-          </div>
-          <div class="flow-diagram__connector" aria-hidden="true"><span class="flow-diagram__pulse"></span></div>
-          <div class="flow-diagram__step" role="listitem">
-            <span class="flow-diagram__number" aria-hidden="true">2</span>
-            <h3>Automatización</h3>
-            <p>Melray lo detecta al instante y actúa: mueve datos, envía mensajes, actualiza sistemas.</p>
-          </div>
-          <div class="flow-diagram__connector" aria-hidden="true"><span class="flow-diagram__pulse"></span></div>
-          <div class="flow-diagram__step" role="listitem">
-            <span class="flow-diagram__number" aria-hidden="true">3</span>
-            <h3>Resultado</h3>
-            <p>Tu equipo se entera sin tocar nada: notificación enviada, tarea creada, cliente atendido.</p>
-          </div>
-        </div>
-
-      </div>
-    </section>
-    <!-- /SECTION:PRODUCTO -->
-
-    <!-- SECTION:ESCAPARATE -->
-    <section class="escaparate" id="escaparate">
-      <div class="container">
-        <div class="section-head reveal">
-          <p class="eyebrow">Nuestro trabajo</p>
-          <h2 class="section-head__lead">Así se ven las herramientas que <em>construimos</em></h2>
-          <p>Un vistazo real a lo que tu negocio tendría con Melray.</p>
-        </div>
-
-        <div class="escaparate__grid">
-          <article class="escaparate__card reveal">
-            <div class="escaparate__media">
-              <img src="/assets/demos/crm-basico.webp" alt="Captura del CRM de Melray: resumen de pacientes y pipeline por estados." loading="lazy" width="1440" height="900">
-            </div>
-            <p class="escaparate__tag">CRM</p>
-            <h3>Pipeline comercial claro</h3>
-            <p>Cada cliente, conversación y oportunidad en un solo lugar, sin hojas de cálculo perdidas.</p>
-            <a class="card-link" href="https://sarayortizcordero.github.io/CRM-Basico/" target="_blank" rel="noopener">Ver demo en vivo <span aria-hidden="true">↗</span></a>
-          </article>
-
-          <article class="escaparate__card reveal">
-            <div class="escaparate__media">
-              <img src="/assets/demos/inventario-plan-intermedio.webp" alt="Captura del panel de inventario de Melray: lista de productos con SKU, proveedor y stock, con avisos de stock bajo resaltados." loading="lazy" width="1400" height="700">
-            </div>
-            <p class="escaparate__tag">Inventario</p>
-            <h3>Stock bajo control</h3>
-            <p>Sabes qué se vende, qué falta y qué reponer, con tus proveedores a la mano.</p>
-          </article>
-
-          <article class="escaparate__card reveal">
-            <div class="escaparate__media escaparate__media--placeholder" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L4 14h6l-1 8 9-12h-6l1-8z"/></svg>
-            </div>
-            <p class="escaparate__tag">Automatizaciones</p>
-            <h3>Procesos que corren solos</h3>
-            <p>Conectamos tus herramientas para que la información fluya sin que la muevas a mano.</p>
-          </article>
-
-          <article class="escaparate__card reveal">
-            <div class="escaparate__media">
-              <img src="/assets/demos/web-serrano-vega.webp" alt="Captura de una web demo de Melray para una inmobiliaria boutique en Madrid." loading="lazy" width="1000" height="625">
-            </div>
-            <p class="escaparate__tag">Websites</p>
-            <h3>Tu presencia digital</h3>
-            <p>Sitios diseñados y desarrollados a la medida de tu negocio, tu cliente y tus objetivos.</p>
-            <a class="card-link" href="/pages/tu-web.html#demos">Ver más ejemplos <span aria-hidden="true">→</span></a>
-          </article>
-        </div>
-      </div>
-    </section>
-    <!-- /SECTION:ESCAPARATE -->
-
-    <!-- SECTION:PLANES -->
-    <section class="planes" id="cotizacion">
-      <div class="container">
-        <div class="section-head reveal">
-          <h2 class="eyebrow">Cotización</h2>
-          <p class="section-head__lead">Cuéntanos qué te gustaría automatizar y te respondemos con una propuesta.</p>
-        </div>
-
-        <form class="cotizacion-form reveal" id="cotizacion-form" novalidate>
-          <div class="cotizacion-form__grid">
-            <div class="cotizacion-form__field">
-              <label for="cot-nombre">Nombre completo *</label>
-              <input type="text" id="cot-nombre" name="nombre" required autocomplete="name">
-            </div>
-            <div class="cotizacion-form__field">
-              <label for="cot-negocio">Negocio</label>
-              <input type="text" id="cot-negocio" name="negocio" autocomplete="organization">
-            </div>
-            <div class="cotizacion-form__field">
-              <label for="cot-email">Email *</label>
-              <input type="email" id="cot-email" name="email" required autocomplete="email">
-            </div>
-            <div class="cotizacion-form__field">
-              <label for="cot-telefono">Teléfono *</label>
-              <input type="tel" id="cot-telefono" name="telefono" required autocomplete="tel">
-            </div>
-            <div class="cotizacion-form__field cotizacion-form__field--full">
-              <label for="cot-necesidad">¿Qué te gustaría automatizar? *</label>
-              <textarea id="cot-necesidad" name="necesidad" rows="4" required></textarea>
-            </div>
-            <div class="cotizacion-form__field cotizacion-form__field--full">
-              <label for="cot-herramientas">Herramientas que ya usas</label>
-              <input type="text" id="cot-herramientas" name="herramientas" placeholder="Ej. Excel, WhatsApp Business, Notion...">
-            </div>
-          </div>
-          <div class="demo-form__hp" aria-hidden="true">
-            <label for="cot-empresa-web">No rellenar este campo</label>
-            <input type="text" id="cot-empresa-web" name="empresa_web" tabindex="-1" autocomplete="off">
-          </div>
-          <div class="cotizacion-form__actions">
-            <button type="submit" class="btn btn--primary" id="cotizacion-submit">Enviar solicitud</button>
-          </div>
-        </form>
-
-        <div class="demo-confirm" id="cotizacion-confirm" role="status" aria-live="polite" tabindex="-1" hidden>
-          <p class="demo-confirm__title">¡Listo! Hemos recibido tu solicitud y te responderemos con una propuesta.</p>
-          <p class="demo-confirm__note" id="cotizacion-note-sent">Recibimos tus datos correctamente. Si prefieres hablar ya, también puedes <a id="cotizacion-wa-sent" href="https://wa.me/34644888144" target="_blank" rel="noopener">escribirnos por WhatsApp</a> o <a href="mailto:melray@melraysystems.com">por email</a>.</p>
-          <div id="cotizacion-note-fallback" hidden>
-            <p class="demo-confirm__note">No pudimos enviar el formulario automáticamente, así que preparamos un mensaje de WhatsApp con tus datos. Envíalo para que lleguen a nuestro equipo.</p>
-            <a id="cotizacion-wa-fallback" class="btn btn--primary" href="https://wa.me/34644888144" target="_blank" rel="noopener">Abrir WhatsApp</a>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- /SECTION:PLANES -->
-
-    <!-- SECTION:SERVICIOS -->
-    <section class="servicios" id="servicios">
-      <div class="container">
-        <div class="section-head reveal">
-          <p class="eyebrow">Servicios</p>
-          <h2 class="section-head__lead">Construimos las herramientas digitales que tu negocio necesita, empezando por tu <em>automatización</em>.</h2>
-          <p>Cada herramienta resuelve un problema concreto de tu negocio, para que tu día a día sea más simple.</p>
-        </div>
-        <div class="servicios__grid">
-          <article class="servicios__card reveal">
-            <h3>Automatizaciones</h3>
-            <p>Conectamos herramientas y automatizamos procesos para reducir tareas manuales y hacer tus operaciones más eficientes.</p>
-          </article>
-          <article class="servicios__card reveal">
-            <h3>CRM</h3>
-            <p>Centraliza clientes, conversaciones y oportunidades para tener un proceso comercial claro y organizado.</p>
-          </article>
-          <article class="servicios__card reveal">
-            <h3>Websites</h3>
-            <p>Diseñamos y desarrollamos sitios web pensados para tu negocio, tu cliente y tus objetivos.</p>
-          </article>
-          <article class="servicios__card reveal">
-            <h3>Paneles e Inventarios</h3>
-            <p>Ordena tu stock, tus movimientos y tu catálogo en un panel simple que se actualiza en segundos.</p>
-          </article>
-        </div>
-        <div class="servicios__closing reveal">
-          <p class="section-closing">Agenda una demo con nosotras. Queremos ver cómo gestionas tu negocio hoy, contarte en qué estamos trabajando en Melray y pensar juntos cómo podemos ayudarte.</p>
-          <div class="booking-card">
-            <p class="booking-card__label">Calendly</p>
-            <h3 class="booking-card__title">Agenda una demo gratuita</h3>
-            <p class="booking-card__desc">Elige un horario con nosotras. Conversamos sobre tu negocio, qué te gustaría automatizar primero y los próximos pasos.</p>
-            <a href="https://calendly.com/charladeclaridad/demo-melray" class="btn btn--primary booking-card__cta" target="_blank" rel="noopener">Elegir horario <span aria-hidden="true">↗</span></a>
-            <p class="booking-card__note">Se abre en otra pestaña. Revisa tu zona horaria antes de confirmar.</p>
-            <p class="booking-card__fallback">¿Prefieres escribirnos? <a href="mailto:melray@melraysystems.com">melray@melraysystems.com</a></p>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- /SECTION:SERVICIOS -->
   </main>
 
-  <!-- SECTION:FOOTER -->
-  <footer class="site-footer">
-    <div class="container site-footer__inner">
-      <div class="site-footer__brand">
-        <span class="site-header__wordmark">melray</span>
-        <p>Automatiza lo repetitivo. Enfócate en crecer.</p>
+  <footer class="pie">
+    <div class="wrap pie__inner">
+      <div class="brand">
+        <img src="/assets/logo-llama-640.png" alt="Melray" width="28" height="38">
       </div>
-      <nav class="site-footer__links" aria-label="Enlaces legales">
-        <a href="mailto:melray@melraysystems.com">melray@melraysystems.com</a>
+      <nav class="pie__links" aria-label="Enlaces">
         <a href="https://www.instagram.com/melray.systems/" target="_blank" rel="noopener">Instagram</a>
         <a href="/pages/privacidad.html">Privacidad</a>
         <a href="/pages/terminos.html">Términos</a>
         <a href="/pages/cookies.html">Cookies</a>
       </nav>
-      <p class="site-footer__copy">&copy; <span id="footer-year"></span> Melray. Todos los derechos reservados.</p>
+      <p class="pie__copy">&copy; <span id="footer-year"></span> Melray. Video: Pexels.</p>
     </div>
   </footer>
-  <!-- /SECTION:FOOTER -->
 
   <div class="cookie-banner" id="cookie-banner" role="dialog" aria-live="polite" aria-label="Aviso de cookies" hidden>
-    <p>Usamos cookies técnicas necesarias para la web y el calendario de Calendly. Sin cookies de analítica ni publicidad. <a href="/pages/cookies.html">Más info</a>.</p>
-    <button type="button" class="btn btn--primary" id="cookie-banner-accept">Entendido</button>
+    <p>Usamos solo cookies técnicas necesarias para que la web funcione. <a href="/pages/cookies.html">Más info</a>.</p>
+    <button type="button" class="btn btn--small" id="cookie-banner-accept">Entendido</button>
   </div>
 
-  <script src="/js/main.js" defer></script>
+  <script src="/js/home.js" defer></script>
 </body>
 </html>

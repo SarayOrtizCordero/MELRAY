@@ -9,7 +9,9 @@
     { "source": "/automatizaciones.html", "destination": "/", "permanent": true },
     { "source": "/crm.html", "destination": "/", "permanent": true },
     { "source": "/websites.html", "destination": "/", "permanent": true },
-    { "source": "/inventario.html", "destination": "/", "permanent": true }
+    { "source": "/inventario.html", "destination": "/", "permanent": true },
+    { "source": "/tu-web.html", "destination": "/", "permanent": true },
+    { "source": "/pages/tu-web.html", "destination": "/", "permanent": true }
   ],
   "headers": [
     {
