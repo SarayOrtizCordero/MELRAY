@@ -135,10 +135,6 @@ h3 { font-family: var(--serif); font-weight: 400; font-size: clamp(22px, 2vw, 26
 }
 
 /* ---- Después de la portada: más cuerpo y movimiento ---- */
-.banda { overflow: hidden; background: var(--ink); color: #fff; padding: 18px 0; }
-.banda__pista { display: flex; align-items: center; gap: 28px; width: max-content; animation: banda 38s linear infinite; font-family: var(--serif); font-size: clamp(20px, 2.2vw, 28px); letter-spacing: -.01em; white-space: nowrap; }
-.banda__pista i { width: 9px; height: 9px; border-radius: 50%; background: linear-gradient(135deg, var(--orange), #20b8b0); flex: none; }
-@keyframes banda { to { transform: translateX(-50%); } }
 
 .hacemos { padding: clamp(80px, 10vw, 150px) 0; text-align: center; }
 .hacemos h2, .ejemplos h2, .pasos h2 { max-width: 16em; margin-inline: auto; }
@@ -225,3 +221,19 @@ h2.is-in .w > span, .rm .w > span, .no-js .w > span { transform: none; }
 .btn:hover::after { transform: translateX(120%); }
 @media (max-width: 900px) { .casos { grid-template-columns: 1fr; } }
 @media (prefers-reduced-motion: reduce) { .tinta { animation: none; } .flow { display: none; } }
+
+/* Cinta de palabras: sin franjas, sobre el fondo blanco translúcido */
+.banda { overflow: hidden; background: rgba(255, 255, 255, .6); padding: clamp(36px, 5vw, 80px) 0; display: grid; gap: clamp(8px, 1.4vw, 20px); }
+.banda__fila { overflow: hidden; }
+.banda__pista { display: flex; align-items: center; gap: clamp(22px, 3vw, 44px); width: max-content; white-space: nowrap; font-family: var(--serif); letter-spacing: -.03em; line-height: 1.05; }
+.banda__pista i { flex: none; width: clamp(10px, 1.2vw, 16px); height: clamp(10px, 1.2vw, 16px); border-radius: 50%; background: linear-gradient(135deg, var(--orange), #20b8b0); }
+.banda__pista--a { font-size: clamp(60px, 11vw, 168px); animation: gira 60s linear infinite; }
+.banda__pista--b { font-size: clamp(28px, 4.2vw, 62px); color: transparent; -webkit-text-stroke: 1px rgba(20, 23, 26, .55); animation: gira 70s linear infinite reverse; }
+.banda__pista .g { background: linear-gradient(90deg, #ea580c, #d62f1a, #cf2e6e, #0b8f88, #1b72c9, #ea580c); background-size: 300% 100%; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; animation: tinta 9s linear infinite; }
+@keyframes gira { to { transform: translateX(-50%); } }
+.hacemos { padding: clamp(50px, 6vw, 90px) 0 clamp(20px, 3vw, 40px); background: rgba(255, 255, 255, .78); }
+.pilar { min-height: 300px; }
+.pilar h3 { margin-bottom: 0; }
+.ejemplos { background: rgba(255, 255, 255, .78); padding-top: clamp(50px, 6vw, 90px); }
+.ejemplos .link { margin-top: 18px; }
+@media (prefers-reduced-motion: reduce) { .banda__pista--a, .banda__pista--b, .banda__pista .g { animation: none; } }

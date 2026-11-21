@@ -141,8 +141,10 @@
       state.open = ease(seg(p, 0.06, 0.42));
       state.wipe = ease(seg(p, 0.64, 0.97));
       web.style.opacity = p >= 0.62 ? '1' : '0';
-      logo.style.opacity = String(1 - seg(p, 0.08, 0.3));
-      logo.style.transform = 'scale(' + (1 + seg(p, 0.05, 0.3) * 0.35) + ')';
+      /* la llama se encoge y gira hacia el centro (sin desvanecerse) mientras de ella nace el color */
+      var k = ease(seg(p, 0.03, 0.14));
+      logo.style.opacity = p > 0.145 ? '0' : '1';
+      logo.style.transform = 'scale(' + (1 - k * 0.92) + ') rotate(' + (-k * 16) + 'deg)';
       hint.style.opacity = String(1 - seg(p, 0, 0.06));
     }
 
@@ -151,7 +153,7 @@
       var span = intro.offsetHeight - window.innerHeight;
       target = clamp(-rect.top / Math.max(span, 1), 0, 1);
       bar.classList.toggle('bar--solid', target >= 0.995);
-      bar.classList.toggle('bar--brand', target > 0.3);
+      bar.classList.toggle('bar--brand', target > 0.16);
       var visible = rect.bottom > 0;
       if (visible && !running) { running = true; requestAnimationFrame(loop); }
       if (!visible) running = false;
@@ -184,7 +186,7 @@
     var u = {};
     ['res', 'time', 'open', 'wipe'].forEach(function (n) { u[n] = gl.getUniformLocation(prog, n); });
 
-    var boost = 0, lastY = window.scrollY, tsum = 40, last = performance.now();
+    var boost = 0, lastY = window.scrollY, tsum = 40, last = performance.now(), drawn = false;
     function fit() {
       var s = window.innerWidth < 700 ? 0.28 : 0.4;
       var w = Math.max(2, Math.round(window.innerWidth * s)), h = Math.max(2, Math.round(window.innerHeight * s));
@@ -194,7 +196,7 @@
       requestAnimationFrame(frame);
       var dt = Math.min(now - last, 50); last = now;
       if (document.hidden) return;
-      if (intro.getBoundingClientRect().bottom > 0) return; /* la portada tiene su propio campo */
+      if (drawn && intro.getBoundingClientRect().bottom > 0) return; /* la portada tiene su propio campo */
       var y = window.scrollY; boost += Math.abs(y - lastY) * 0.004; lastY = y; boost *= 0.92;
       tsum += dt / 1000 * (0.35 + Math.min(boost, 3));
       fit();
@@ -203,6 +205,7 @@
       gl.uniform1f(u.open, 3.0);
       gl.uniform1f(u.wipe, 0.0);
       gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+      drawn = true;
     }
     requestAnimationFrame(frame);
   })();
