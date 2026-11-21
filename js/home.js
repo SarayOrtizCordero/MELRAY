@@ -40,33 +40,54 @@
     items.forEach(function (el, i) { el.style.transitionDelay = (i % 3) * 80 + 'ms'; io.observe(el); });
   })();
 
-  /* Portada: logo → se abre la playa → la marea (video real) sube y baja dos veces → la segunda bajada deja ver la web debajo */
+  /* Portada: logo → de la llama nace un campo de color en movimiento (motion graphic en tiempo real) → un iris blanco se abre en el centro y deja ver la web */
   (function () {
     var intro = document.getElementById('intro');
     var stage = intro && intro.querySelector('.intro__stage');
-    var video = document.getElementById('intro-video');
     var canvas = document.getElementById('intro-canvas');
     var logo = document.getElementById('intro-logo');
     var hint = document.getElementById('intro-hint');
     var bar = document.getElementById('bar');
     var web = document.getElementById('intro-web');
-    if (!intro || !video || !canvas) return;
-
-    video.pause();
+    if (!intro || !canvas) return;
     if (reduce) return;
 
-    /* WebGL: la arena del video se vuelve transparente cuando toca, y debajo queda la web */
     var gl = null;
     try { gl = canvas.getContext('webgl', { alpha: true, premultipliedAlpha: true, antialias: false }); } catch (e) {}
-    var prog, u = {}, tex;
+    var prog, u = {};
     if (gl) {
       var vs = 'attribute vec2 a; varying vec2 uv; void main(){ uv = vec2(a.x*.5+.5, .5-a.y*.5); gl_Position = vec4(a,0.,1.); }';
-      var fs = 'precision mediump float; varying vec2 uv; uniform sampler2D t; uniform vec2 cs; uniform float z; uniform float ty; uniform float key;' +
-        'void main(){ vec2 p = vec2(uv.x, (uv.y + ty)); p = vec2(0.5 + (p.x-0.5)/z, p.y/z);' +
-        ' vec2 v = vec2(0.5) + (p - vec2(0.5)) * cs;' +
-        ' if (v.y > 1.0 || v.y < 0.0 || v.x < 0.0 || v.x > 1.0) { gl_FragColor = vec4(0.); return; }' +
-        ' vec4 c = texture2D(t, v); float sand = smoothstep(0.03, 0.13, c.r - c.b); float a = 1.0 - key * sand;' +
-        ' gl_FragColor = vec4(c.rgb * a, a); }';
+      var fs = [
+        'precision highp float; varying vec2 uv; uniform vec2 res; uniform float time; uniform float open; uniform float wipe;',
+        'float hash(vec2 p){ p = fract(p*vec2(123.34, 456.21)); p += dot(p, p+45.32); return fract(p.x*p.y); }',
+        'float noise(vec2 p){ vec2 i = floor(p), f = fract(p); f = f*f*(3.-2.*f);',
+        ' return mix(mix(hash(i), hash(i+vec2(1.,0.)), f.x), mix(hash(i+vec2(0.,1.)), hash(i+vec2(1.,1.)), f.x), f.y); }',
+        'float fbm(vec2 p){ float v = 0., a = .5; for (int i = 0; i < 4; i++){ v += a*noise(p); p = p*2.02 + vec2(1.7, 9.2); a *= .5; } return v; }',
+        'vec3 palette(float t){',
+        ' vec3 c0 = vec3(1.00,.94,.78); vec3 c1 = vec3(1.00,.70,.22); vec3 c2 = vec3(.98,.42,.18);',
+        ' vec3 c3 = vec3(.99,.62,.55); vec3 c4 = vec3(.20,.78,.74); vec3 c5 = vec3(.52,.84,1.00);',
+        ' t = clamp(t, 0., 1.) * 5.;',
+        ' if (t < 1.) return mix(c0, c1, smoothstep(0.,1.,t));',
+        ' if (t < 2.) return mix(c1, c2, smoothstep(0.,1.,t-1.));',
+        ' if (t < 3.) return mix(c2, c3, smoothstep(0.,1.,t-2.));',
+        ' if (t < 4.) return mix(c3, c4, smoothstep(0.,1.,t-3.));',
+        ' return mix(c4, c5, smoothstep(0.,1.,t-4.)); }',
+        'void main(){',
+        ' vec2 p = (uv - .5) * vec2(res.x/res.y, 1.); float d = length(p);',
+        ' vec2 q = p*1.5; float t = time;',
+        ' vec2 w = vec2(fbm(q + vec2(0., t*.6)), fbm(q + vec2(5.2,1.3) - t*.5));',
+        ' vec2 w2 = vec2(fbm(q + 3.*w + vec2(1.7,9.2) + t*.3), fbm(q + 3.*w + vec2(8.3,2.8) - t*.25));',
+        ' float f = fbm(q + 3.*w2);',
+        ' float k = clamp(f*1.25 + .4*length(w2) - .12 + .12*sin(t + d*4.), 0., 1.);',
+        ' vec3 col = palette(k);',
+        ' col += .16 * pow(max(1. - d*1.2, 0.), 2.) * vec3(1., .85, .6);',
+        ' float R = open * 1.35;',
+        ' float a = 1. - smoothstep(R - .02, R + .02, d);',
+        ' float Wr = wipe * 1.45;',
+        ' float hole = wipe <= .001 ? 1. : smoothstep(Wr - .035, Wr + .035, d);',
+        ' a *= hole;',
+        ' gl_FragColor = vec4(col * a, a); }'
+      ].join('\n');
       var sh = function (type, src) { var s = gl.createShader(type); gl.shaderSource(s, src); gl.compileShader(s); return s; };
       prog = gl.createProgram();
       gl.attachShader(prog, sh(gl.VERTEX_SHADER, vs));
@@ -79,41 +100,50 @@
       var buf = gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER, buf);
       gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 1, -1, -1, 1, 1, 1]), gl.STATIC_DRAW);
       var loc = gl.getAttribLocation(prog, 'a'); gl.enableVertexAttribArray(loc); gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);
-      ['t', 'cs', 'z', 'ty', 'key'].forEach(function (n) { u[n] = gl.getUniformLocation(prog, n); });
-      tex = gl.createTexture(); gl.bindTexture(gl.TEXTURE_2D, tex);
-      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
-      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
-      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
-      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
+      ['res', 'time', 'open', 'wipe'].forEach(function (n) { u[n] = gl.getUniformLocation(prog, n); });
       gl.clearColor(0, 0, 0, 0);
-      stage.classList.add('gl');
+    } else {
+      /* sin WebGL: se muestra directamente la web */
+      web.style.opacity = '1'; logo.style.display = 'none'; hint.style.display = 'none'; canvas.style.display = 'none';
+      return;
     }
 
-    var cur = { z: 1, ty: 0, key: 0 };
+    var state = { open: 0, wipe: 0, p: 0 };
+    var running = false;
     function fit() {
-      var dpr = Math.min(window.devicePixelRatio || 1, 1.5);
-      var w = Math.round(stage.clientWidth * dpr), h = Math.round(stage.clientHeight * dpr);
+      var scale = 0.6;
+      var w = Math.max(2, Math.round(stage.clientWidth * scale)), h = Math.max(2, Math.round(stage.clientHeight * scale));
       if (canvas.width !== w || canvas.height !== h) { canvas.width = w; canvas.height = h; }
-      if (gl) gl.viewport(0, 0, canvas.width, canvas.height);
+      gl.viewport(0, 0, canvas.width, canvas.height);
     }
-    function draw() {
-      if (!gl || video.readyState < 2) return;
+    function draw(now) {
       fit();
-      var vw = video.videoWidth || 16, vh = video.videoHeight || 9;
-      var sa = canvas.width / canvas.height, va = vw / vh;
-      var cs = sa > va ? [1, va / sa] : [sa / va, 1];
-      gl.bindTexture(gl.TEXTURE_2D, tex);
-      try { gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, video); } catch (e) { return; }
-      gl.uniform1i(u.t, 0); gl.uniform2f(u.cs, cs[0], cs[1]);
-      gl.uniform1f(u.z, cur.z); gl.uniform1f(u.ty, cur.ty); gl.uniform1f(u.key, cur.key);
+      gl.uniform2f(u.res, canvas.width, canvas.height);
+      gl.uniform1f(u.time, now / 1000 * 0.55 + state.p * 2.5);
+      gl.uniform1f(u.open, state.open);
+      gl.uniform1f(u.wipe, state.wipe);
       gl.clear(gl.COLOR_BUFFER_BIT);
       gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
     }
-    video.addEventListener('seeked', draw);
-    video.addEventListener('loadeddata', function () { measure(); draw(); });
+    function loop(now) {
+      if (!running) return;
+      current += (target - current) * 0.12;
+      if (Math.abs(target - current) < 0.0004) current = target;
+      apply(current);
+      draw(now);
+      requestAnimationFrame(loop);
+    }
 
-    var current = 0, target = 0, ticking = false, lastT = -1;
-    var ZMAX = 2.1;
+    var current = 0, target = 0;
+    function apply(p) {
+      state.p = p;
+      state.open = ease(seg(p, 0.06, 0.42));
+      state.wipe = ease(seg(p, 0.64, 0.97));
+      web.style.opacity = p >= 0.62 ? '1' : '0';
+      logo.style.opacity = String(1 - seg(p, 0.08, 0.3));
+      logo.style.transform = 'scale(' + (1 + seg(p, 0.05, 0.3) * 0.35) + ')';
+      hint.style.opacity = String(1 - seg(p, 0, 0.06));
+    }
 
     function measure() {
       var rect = intro.getBoundingClientRect();
@@ -121,48 +151,15 @@
       target = clamp(-rect.top / Math.max(span, 1), 0, 1);
       bar.classList.toggle('bar--solid', target >= 0.995);
       bar.classList.toggle('bar--brand', target > 0.3);
-      if (!ticking) { ticking = true; requestAnimationFrame(frame); }
-    }
-
-    function render(p) {
-      var open = ease(seg(p, 0.08, 0.22));
-      canvas.style.clipPath = 'circle(' + (open * 78) + '% at 50% 50%)';
-      if (!gl) video.style.clipPath = canvas.style.clipPath;
-
-      /* marea: sube (el agua cubre), baja, sube otra vez; en la segunda bajada la arena es transparente y aparece la web */
-      var z = 1;
-      z += (ZMAX - 1) * ease(seg(p, 0.26, 0.40));
-      z -= (ZMAX - 1) * ease(seg(p, 0.40, 0.52));
-      z += (ZMAX - 1) * ease(seg(p, 0.52, 0.64));
-      z -= (ZMAX - 1) * ease(seg(p, 0.66, 0.78));
-      cur.z = z;
-      cur.key = p >= 0.64 ? 1 : 0;
-      cur.ty = ease(seg(p, 0.78, 0.97)) * 1.05;
-      if (!gl) video.style.opacity = String(1 - seg(p, 0.86, 0.98));
-
-      var dur = video.duration;
-      if (dur && isFinite(dur)) {
-        var t = seg(p, 0.1, 0.92) * (dur - 0.1);
-        if (Math.abs(t - lastT) > 0.03) { lastT = t; video.currentTime = t; }
-      }
-      draw();
-
-      web.style.opacity = p >= 0.6 ? '1' : '0';
-      logo.style.opacity = String(1 - seg(p, 0.06, 0.2));
-      logo.style.transform = 'scale(' + (1 + seg(p, 0.05, 0.2) * 0.25) + ')';
-      hint.style.opacity = String(1 - seg(p, 0, 0.06));
-    }
-
-    function frame() {
-      current += (target - current) * 0.14;
-      if (Math.abs(target - current) < 0.0005) current = target;
-      render(current);
-      if (current !== target) requestAnimationFrame(frame); else ticking = false;
+      var visible = rect.bottom > 0;
+      if (visible && !running) { running = true; requestAnimationFrame(loop); }
+      if (!visible) running = false;
     }
 
     window.addEventListener('scroll', measure, { passive: true });
-    window.addEventListener('resize', function () { fit(); measure(); });
+    window.addEventListener('resize', measure);
     measure();
+    apply(0);
   })();
 
   /* Formulario → /api/demo (SMTP) con WhatsApp de respaldo */
