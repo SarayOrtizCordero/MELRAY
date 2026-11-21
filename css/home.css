@@ -82,7 +82,7 @@ h3 { font-family: var(--serif); font-weight: 400; font-size: clamp(22px, 2vw, 26
 .nota { margin-top: 28px; font-size: 14px; color: var(--muted); }
 
 /* Contacto centrado */
-.contacto { background: var(--soft); padding: clamp(70px, 8vw, 120px) 0; }
+.contacto { background: transparent; padding: clamp(70px, 8vw, 120px) 0; }
 .contacto__box { width: min(640px, 100% - 2 * var(--margin)); margin-inline: auto; }
 .wa-card { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-top: 36px; padding: 18px 22px; background: #fff; border: 1px solid var(--line); border-radius: 14px; text-align: left; }
 .wa-card strong { display: block; font-size: 16px; }
@@ -133,3 +133,95 @@ h3 { font-family: var(--serif); font-weight: 400; font-size: clamp(22px, 2vw, 26
   .row { grid-template-columns: 1fr; gap: 0; }
   .wa-card { flex-direction: column; align-items: stretch; text-align: center; }
 }
+
+/* ---- Después de la portada: más cuerpo y movimiento ---- */
+.banda { overflow: hidden; background: var(--ink); color: #fff; padding: 18px 0; }
+.banda__pista { display: flex; align-items: center; gap: 28px; width: max-content; animation: banda 38s linear infinite; font-family: var(--serif); font-size: clamp(20px, 2.2vw, 28px); letter-spacing: -.01em; white-space: nowrap; }
+.banda__pista i { width: 9px; height: 9px; border-radius: 50%; background: linear-gradient(135deg, var(--orange), #20b8b0); flex: none; }
+@keyframes banda { to { transform: translateX(-50%); } }
+
+.hacemos { padding: clamp(80px, 10vw, 150px) 0; text-align: center; }
+.hacemos h2, .ejemplos h2, .pasos h2 { max-width: 16em; margin-inline: auto; }
+.hacemos .lead, .ejemplos .lead { margin-inline: auto; }
+.hacemos__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(16px, 2vw, 28px); margin-top: clamp(40px, 5vw, 70px); text-align: left; }
+.pilar { position: relative; overflow: hidden; border-radius: 20px; padding: 28px 28px 32px; min-height: 340px; display: flex; flex-direction: column; justify-content: flex-end; transition: transform .35s ease; }
+.pilar:hover { transform: translateY(-6px); }
+.pilar--1 { background: #ffe9d2; }
+.pilar--2 { background: #d6f3ef; }
+.pilar--3 { background: #dff0ff; }
+.pilar h3 { margin-bottom: 8px; }
+.pilar p { color: #3f464d; font-size: 16px; }
+.pilar__vis { position: absolute; inset: 0 0 auto 0; height: 55%; display: flex; align-items: center; justify-content: center; gap: 12px; }
+/* 1: muestras de color que laten */
+.pilar__vis b { width: 46px; height: 46px; border-radius: 50%; animation: late 3.4s ease-in-out infinite; }
+.pilar__vis b:nth-child(1) { background: #fb7b15; }
+.pilar__vis b:nth-child(2) { background: #df3314; animation-delay: .25s; }
+.pilar__vis b:nth-child(3) { background: #20b8b0; animation-delay: .5s; }
+.pilar__vis b:nth-child(4) { background: #7ccfff; animation-delay: .75s; }
+@keyframes late { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.28); } }
+/* 2: tres capas que se deslizan, como al scrollear */
+.pilar__vis s { width: 70px; height: 110px; border-radius: 12px; background: #fff; box-shadow: 0 6px 18px rgba(0,0,0,.08); animation: sube 3.6s ease-in-out infinite; }
+.pilar__vis s:nth-child(2) { animation-delay: .3s; background: #20b8b0; }
+.pilar__vis s:nth-child(3) { animation-delay: .6s; }
+@keyframes sube { 0%, 100% { transform: translateY(14px); } 50% { transform: translateY(-14px); } }
+/* 3: burbujas de mensaje */
+.pilar__vis { flex-direction: column; }
+.pilar--1 .pilar__vis, .pilar--2 .pilar__vis { flex-direction: row; }
+.pilar__vis em { display: block; height: 26px; border-radius: 14px; background: #fff; box-shadow: 0 4px 12px rgba(0,0,0,.07); animation: msj 4s ease-in-out infinite; }
+.pilar__vis em:nth-child(1) { width: 150px; align-self: flex-start; margin-left: 18%; }
+.pilar__vis em:nth-child(2) { width: 110px; align-self: flex-end; margin-right: 18%; background: #25a85a; animation-delay: .5s; }
+.pilar__vis em:nth-child(3) { width: 130px; align-self: flex-start; margin-left: 18%; animation-delay: 1s; }
+@keyframes msj { 0%, 100% { opacity: .35; transform: translateY(6px); } 40%, 70% { opacity: 1; transform: none; } }
+
+.ejemplos { padding: clamp(40px, 5vw, 70px) 0 clamp(60px, 8vw, 110px); text-align: center; }
+.marco { display: block; border-radius: 16px; background: #fff; box-shadow: 0 30px 70px -28px rgba(20, 23, 26, .45), 0 0 0 1px var(--line); overflow: hidden; transform: perspective(1200px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)); transition: transform .25s ease; will-change: transform; }
+.marco__barra { display: flex; align-items: center; gap: 7px; padding: 11px 14px; background: var(--soft); }
+.marco__barra i { width: 10px; height: 10px; border-radius: 50%; background: #d9d6cf; }
+.marco__barra i:nth-child(1) { background: #ff6b5e; } .marco__barra i:nth-child(2) { background: #ffbd44; } .marco__barra i:nth-child(3) { background: #28c840; }
+.marco__barra span { margin-left: 10px; padding: 3px 12px; border-radius: 99px; background: #fff; font-size: 12px; color: var(--muted); }
+.marco__pantalla { display: block; overflow: hidden; }
+.marco__pantalla img { width: 100%; height: auto; aspect-ratio: 16 / 10; object-fit: cover; transform: translateY(var(--py, 0px)) scale(1.08); transition: transform .1s linear; }
+
+.pasos { padding: clamp(60px, 8vw, 110px) 0; background: var(--soft); text-align: center; }
+.pasos__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(16px, 2.4vw, 36px); margin-top: clamp(36px, 5vw, 60px); text-align: left; counter-reset: paso; }
+.paso { position: relative; padding: 28px 26px 30px 26px; background: #fff; border-radius: 18px; border: 1px solid var(--line); }
+.paso::before { counter-increment: paso; content: counter(paso); display: grid; place-items: center; width: 38px; height: 38px; margin-bottom: 18px; border-radius: 50%; background: linear-gradient(135deg, var(--orange), var(--red)); color: #fff; font: 700 15px var(--sans); }
+.paso p { margin-top: 8px; color: var(--muted); font-size: 16px; }
+
+
+@media (max-width: 900px) {
+  .hacemos__grid, .pasos__grid { grid-template-columns: 1fr; }
+  .pilar { min-height: 300px; }
+  .casos { grid-template-columns: 1fr; }
+}
+@media (prefers-reduced-motion: reduce) { .banda__pista, .pilar__vis b, .pilar__vis s, .pilar__vis em { animation: none; } }
+
+/* Flujo de color por toda la web */
+.flow { position: fixed; inset: 0; width: 100%; height: 100%; z-index: -1; }
+.hacemos { background: rgba(255, 255, 255, .9); }
+.ejemplos { background: rgba(255, 255, 255, .9); }
+.pasos { background: rgba(250, 249, 246, .88); }
+.rio { height: clamp(150px, 30vh, 320px); }
+.contacto { background: transparent; }
+.contacto::after { content: ''; position: absolute; inset: 0; z-index: -1; background: rgba(255, 255, 255, .42); }
+.pie { position: relative; }
+.casos { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(24px, 3.4vw, 56px); margin-top: clamp(40px, 5vw, 70px); }
+.caso { text-align: center; }
+.caso h3 { margin: 22px 0 14px; }
+
+/* La tinta de la marca fluye por las palabras destacadas */
+.tinta { background: linear-gradient(90deg, #ea580c, #d62f1a, #cf2e6e, #0b8f88, #1b72c9, #ea580c); background-size: 300% 100%; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent; animation: tinta 9s linear infinite; }
+@keyframes tinta { to { background-position: -300% 0; } }
+
+/* Titulares: palabra por palabra */
+.js h2.reveal { opacity: 1; transform: none; }
+.w { display: inline-block; overflow: hidden; vertical-align: top; padding-bottom: .12em; }
+.w > span { display: inline-block; transform: translateY(115%); transition: transform .9s cubic-bezier(.2, .7, .2, 1); transition-delay: calc(var(--i) * 70ms); }
+h2.is-in .w > span, .rm .w > span, .no-js .w > span { transform: none; }
+
+/* Botones: brillo que cruza al pasar el mouse */
+.btn { position: relative; overflow: hidden; }
+.btn::after { content: ''; position: absolute; inset: 0; background: linear-gradient(110deg, transparent 30%, rgba(255,255,255,.35) 50%, transparent 70%); transform: translateX(-120%); transition: transform .7s ease; }
+.btn:hover::after { transform: translateX(120%); }
+@media (max-width: 900px) { .casos { grid-template-columns: 1fr; } }
+@media (prefers-reduced-motion: reduce) { .tinta { animation: none; } .flow { display: none; } }

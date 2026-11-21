@@ -40,6 +40,7 @@
 </head>
 <body>
   <a href="#contacto" class="skip-link">Ir al formulario</a>
+  <canvas class="flow" id="flow" aria-hidden="true"></canvas>
 
   <header class="bar" id="bar">
     <a href="#top" class="brand brand--small" aria-label="Melray — inicio">
@@ -69,37 +70,93 @@
     </section>
 
 
-    <section class="ejemplos center" id="ejemplos" aria-labelledby="ejemplos-t">
+    <div class="banda" aria-hidden="true">
+      <div class="banda__pista">
+        <span>Alojamientos</span><i></i><span>Consultorios</span><i></i><span>Estudios</span><i></i><span>Marcas personales</span><i></i><span>Restaurantes</span><i></i><span>Tiendas de barrio</span><i></i>
+        <span>Alojamientos</span><i></i><span>Consultorios</span><i></i><span>Estudios</span><i></i><span>Marcas personales</span><i></i><span>Restaurantes</span><i></i><span>Tiendas de barrio</span><i></i>
+      </div>
+    </div>
+
+    <section class="hacemos" id="hacemos" aria-labelledby="hacemos-t">
       <div class="wrap">
-        <h2 id="ejemplos-t" class="reveal">Así se ve una web de Melray.</h2>
+        <h2 id="hacemos-t" class="reveal">Una web que se siente como <span class="tinta">tu marca</span>.</h2>
+        <p class="lead reveal">Hacemos solo diseño web. Por eso cada detalle está pensado para que quien entra entienda rápido qué hacés y te escriba.</p>
+
+        <div class="hacemos__grid">
+          <article class="pilar pilar--1 reveal">
+            <div class="pilar__vis" aria-hidden="true"><b></b><b></b><b></b><b></b></div>
+            <h3>Diseño a medida</h3>
+            <p>Cada sitio parte de tu marca: tus fotos, tus colores y tu forma de hablar. Nada de plantillas que se parecen entre sí.</p>
+          </article>
+          <article class="pilar pilar--2 reveal">
+            <div class="pilar__vis" aria-hidden="true"><s></s><s></s><s></s></div>
+            <h3>Movimiento al scrollear</h3>
+            <p>Portadas que se abren, fotos grandes y reseñas que giran solas, como las de los ejemplos que ves más abajo.</p>
+          </article>
+          <article class="pilar pilar--3 reveal">
+            <div class="pilar__vis" aria-hidden="true"><em></em><em></em><em></em></div>
+            <h3>Hecha para que te escriban</h3>
+            <p>Botón de WhatsApp, formulario claro y tu información justo donde la persona la busca. Se ve bien en el celular.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <div class="rio" aria-hidden="true"></div>
+
+    <section class="ejemplos" id="ejemplos" aria-labelledby="ejemplos-t">
+      <div class="wrap">
+        <h2 id="ejemplos-t" class="reveal">Así se ve una web de <span class="tinta">Melray</span>.</h2>
         <p class="lead reveal">Dos ejemplos hechos de cero. Abrilos y recorrelos como lo haría tu cliente.</p>
 
-        <div class="ejemplos__grid">
-          <article class="ejemplo reveal">
-            <a href="https://cabanas-del-lago-ejemplo.vercel.app" target="_blank" rel="noopener" class="ejemplo__img" aria-label="Abrir el ejemplo de cabañas">
-              <img src="/assets/ejemplos/cabanas.webp" alt="Portada de una web de ejemplo para cabañas junto a un lago, con tres fotografías grandes y el título." width="1600" height="1000" loading="lazy">
+        <div class="casos">
+          <article class="caso reveal">
+            <a href="https://cabanas-del-lago-ejemplo.vercel.app" target="_blank" rel="noopener" class="marco" aria-label="Abrir el ejemplo de cabañas">
+              <span class="marco__barra"><i></i><i></i><i></i><span>cabanas-del-lago-ejemplo.vercel.app</span></span>
+              <span class="marco__pantalla"><img src="/assets/ejemplos/cabanas.webp" alt="Portada de una web de ejemplo para cabañas junto a un lago." width="1600" height="1000" loading="lazy"></span>
             </a>
             <h3>Cabañas del Lago</h3>
-            <p>Para alojamientos: fotos grandes, reseñas que giran solas y consultas directo a tu WhatsApp.</p>
-            <a class="link" href="https://cabanas-del-lago-ejemplo.vercel.app" target="_blank" rel="noopener">Abrir el ejemplo <span aria-hidden="true">→</span></a>
+            <a class="btn btn--small" href="https://cabanas-del-lago-ejemplo.vercel.app" target="_blank" rel="noopener">Abrir el ejemplo</a>
           </article>
 
-          <article class="ejemplo reveal">
-            <a href="https://odontologos-ejemplo.vercel.app" target="_blank" rel="noopener" class="ejemplo__img" aria-label="Abrir el ejemplo de clínica dental">
-              <img src="/assets/ejemplos/odontologos.webp" alt="Portada de una web de ejemplo para una clínica dental, con tres fotografías del equipo y del consultorio." width="1600" height="1000" loading="lazy">
+          <article class="caso reveal">
+            <a href="https://odontologos-ejemplo.vercel.app" target="_blank" rel="noopener" class="marco" aria-label="Abrir el ejemplo de clínica dental">
+              <span class="marco__barra"><i></i><i></i><i></i><span>odontologos-ejemplo.vercel.app</span></span>
+              <span class="marco__pantalla"><img src="/assets/ejemplos/odontologos.webp" alt="Portada de una web de ejemplo para una clínica dental." width="1600" height="1000" loading="lazy"></span>
             </a>
             <h3>Clínica Dental</h3>
-            <p>Para consultorios: tratamientos explicados con claridad, el equipo a la vista y turnos en un clic.</p>
-            <a class="link" href="https://odontologos-ejemplo.vercel.app" target="_blank" rel="noopener">Abrir el ejemplo <span aria-hidden="true">→</span></a>
+            <a class="btn btn--small" href="https://odontologos-ejemplo.vercel.app" target="_blank" rel="noopener">Abrir el ejemplo</a>
           </article>
         </div>
         <p class="nota reveal">Son muestras de diseño. Los datos y las fotos se cambian por los de tu marca.</p>
       </div>
     </section>
 
+    <div class="rio" aria-hidden="true"></div>
+
+    <section class="pasos" id="pasos" aria-labelledby="pasos-t">
+      <div class="wrap">
+        <h2 id="pasos-t" class="reveal">Cómo <span class="tinta">trabajamos</span>.</h2>
+        <div class="pasos__grid">
+          <article class="paso reveal">
+            <h3>Charlamos</h3>
+            <p>Nos contás de tu negocio, a quién le vendés y cómo querés que se vea tu marca.</p>
+          </article>
+          <article class="paso reveal">
+            <h3>Te mostramos tu web</h3>
+            <p>Armamos una muestra con tus fotos y tus colores para que la recorras antes de decidir.</p>
+          </article>
+          <article class="paso reveal">
+            <h3>La publicamos</h3>
+            <p>Ajustamos lo que haga falta y la dejamos online, lista para que te escriban.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
     <section class="contacto center" id="contacto" aria-labelledby="contacto-t">
       <div class="contacto__box">
-        <h2 id="contacto-t" class="reveal">Contanos tu proyecto.</h2>
+        <h2 id="contacto-t" class="reveal">Contanos tu <span class="tinta">proyecto</span>.</h2>
         <p class="lead reveal">Completá el formulario o escribinos directo. Te respondemos por WhatsApp o por mail.</p>
 
         <a class="wa-card reveal" href="https://wa.me/34644888144" target="_blank" rel="noopener">
