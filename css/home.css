@@ -149,3 +149,14 @@ ul, ol { list-style: none; }
   .steps { grid-template-columns: 1fr; gap: 10px; margin-top: 18px; } .steps li { padding: 14px 16px; } .steps li::before { margin-bottom: 8px; }
   .bn { gap: 14px; } .s5, .s8, .s10 { align-items: center; }
 }
+
+/* Ventana de ejemplos */
+.modal { position: fixed; inset: 0; z-index: 200; display: flex; align-items: center; justify-content: center; padding: 20px; background: rgba(20,23,26,.55); backdrop-filter: blur(6px); } .modal[hidden] { display: none; }
+.modal__box { position: relative; width: min(560px, 100%); background: #fff; color: var(--ink); border-radius: 20px; padding: clamp(24px, 4vw, 40px); box-shadow: 0 40px 90px -30px rgba(0,0,0,.55); }
+.modal__box h3 { font-family: var(--serif); font-weight: 400; font-size: clamp(26px, 3.4vw, 36px); line-height: 1.1; padding-right: 36px; } .modal__box p { margin-top: 10px; color: var(--muted); }
+.modal__x { position: absolute; top: 14px; right: 14px; width: 38px; height: 38px; border: 0; border-radius: 50%; background: var(--soft); font-size: 24px; line-height: 1; cursor: pointer; }
+.modal__list { display: grid; gap: 10px; margin-top: 22px; }
+.modal__list a { display: flex; align-items: baseline; gap: 12px; padding: 16px 18px; text-decoration: none; color: var(--ink); background: var(--soft); border-radius: 14px; transition: background .2s; } .modal__list a:hover { background: #ece9e1; }
+.modal__list b { font-family: var(--serif); font-weight: 400; font-size: 22px; } .modal__list small { flex: 1; font-size: 14px; color: var(--muted); } .modal__list i { font-style: normal; font-size: 13px; font-weight: 600; color: #fff; background: var(--red, #df3314); border-radius: 999px; padding: 6px 14px; }
+.modal__ig { display: inline-block; margin-top: 20px; font-size: 14px; font-weight: 600; color: var(--ink); }
+.sc .lead + .btn { margin-top: 28px; }

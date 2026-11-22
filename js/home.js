@@ -186,26 +186,22 @@
   vid.pause(); vid.addEventListener('loadedmetadata', function () { vdur = vid.duration; });
   tl.to(S, { soft: 0.93, duration: .8, ease: 'power2.inOut' }, t - .2);
   appear(s6, t + .3); words(s6, t + .3);
-  tl.from($('.lead', s6), { autoAlpha: 0, y: 24, duration: .6, ease: 'power2.out' }, t + 1.2)
-    .from($('#ver', s6), { autoAlpha: 0, y: 20, duration: .5, ease: 'power2.out' }, t + 1.6)
+  tl.from($('#ver', s6), { autoAlpha: 0, y: 20, duration: .5, ease: 'power2.out' }, t + 1.6)
     .fromTo($('.vf', s6), { y: 100, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 1, ease: 'power3.out' }, t + .5)
     .to(vst, { p: 1, duration: 4.4, onUpdate: function () { if (vdur) { var x = vst.p * (vdur - 0.05); if (Math.abs(x - vlast) > 0.02) { vlast = x; vid.currentTime = x; } } } }, t + .6);
   leave(s6, t + 4.6); tl.to(S, { soft: 0.14, duration: .8, ease: 'power2.inOut' }, t + 4.6);
 
   /* 6. 2027 */
   t += 5.2; var s8 = $('#s8');
-  appear(s8, t); words(s8, t); tl.from($('.lead', s8), { autoAlpha: 0, y: 24, duration: .6, ease: 'power2.out' }, t + 1);
+  appear(s8, t); words(s8, t);
   leave(s8, t + 2.8);
 
-  /* 7. Qué tiene tu web */
-  t += 3.2; var s9 = $('#s9');
-  appear(s9, t); words(s9, t); tl.from($$('.bn li', s9), { autoAlpha: 0, x: -70, stagger: .35, duration: .7, ease: 'power3.out' }, t + .6);
-  leave(s9, t + 3.5);
-
-  /* 8. Cómo empezamos */
-  t += 4.0; var s10 = $('#s10');
-  appear(s10, t); words(s10, t); tl.from($$('.steps li', s10), { autoAlpha: 0, y: 60, stagger: .35, duration: .7, ease: 'power3.out' }, t + .7);
-  leave(s10, t + 3.3);
+  /* 7. Urgencia antes del formulario */
+  t += 3.2; var s10 = $('#s10');
+  appear(s10, t); words(s10, t);
+  tl.from($('.lead', s10), { autoAlpha: 0, y: 24, duration: .6, ease: 'power2.out' }, t + 1.3)
+    .from($('#urg', s10), { autoAlpha: 0, y: 20, duration: .5, ease: 'power2.out' }, t + 1.8);
+  t += 3.4;
 
   /* Altura según la duración, barra de avance y barra superior */
   var PER = 60;
@@ -215,6 +211,15 @@
     animation: tl, trigger: film, start: 'top top', end: 'bottom bottom', scrub: 1.2,
     onUpdate: function (s) { if (prog) prog.style.transform = 'scaleX(' + s.progress + ')'; var seen = tl.time() > 4.2; bar.classList.toggle('bar--brand', seen); bar.classList.toggle('bar--solid', seen); }
   });
+
+  /* Ventana con tres ejemplos */
+  var modal = $('#modal'), ver = $('#ver');
+  function openModal() { modal.hidden = false; lenis.stop(); $('#modal-x').focus(); }
+  function closeModal() { modal.hidden = true; lenis.start(); if (ver) ver.focus(); }
+  if (ver) ver.addEventListener('click', openModal);
+  $('#modal-x').addEventListener('click', closeModal);
+  modal.addEventListener('click', function (e) { if (e.target === modal) closeModal(); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !modal.hidden) closeModal(); });
 
   /* Cierre: el color vuelve a pleno detrás del formulario */
   ScrollTrigger.create({
