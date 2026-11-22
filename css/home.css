@@ -142,7 +142,7 @@ ul, ol { list-style: none; }
 @media (max-width: 900px) {
   .sc .cols, .sc .cols--rev, .cta__g { grid-template-columns: 1fr; }
   .sc { padding-top: 13vh; align-items: flex-start; overflow: hidden; } .sc .cols { gap: 18px; }
-  .s6 .tx { display: flex; flex-direction: column; align-items: flex-start; gap: 34px; } .s6 .tx .btn { margin-top: 0; } .s6 .cols { gap: 40px; }
+  .s6 .cols { display: flex; flex-direction: column; align-items: stretch; gap: 26px; } .s6 .tx { display: contents; } .s6 .tx h2 { order: 1; } .s6 .mk { order: 2; } .s6 .tx .btn { order: 3; margin: 6px 0 0; width: 100%; text-align: center; padding: 18px 22px; }
   .sc .cols--rev .mk { order: 2; } .row { grid-template-columns: 1fr; gap: 0; }
   .phone { width: 210px; border-width: 7px; } .ph-body { min-height: 210px; padding: 10px; } .m { font-size: 12px; padding: 7px 9px; }
   .errs { height: 200px; } .win { width: 78%; } .win p { margin-top: 12px; font-size: 14px; } .w2 p { font-size: 32px; }
