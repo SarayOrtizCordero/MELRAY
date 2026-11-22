@@ -141,7 +141,7 @@ ul, ol { list-style: none; }
 
 @media (max-width: 900px) {
   .sc .cols, .sc .cols--rev, .cta__g { grid-template-columns: 1fr; }
-  .sc { padding-top: 9vh; align-items: flex-start; overflow: hidden; } .sc .cols { gap: 18px; }
+  .sc { padding-top: 13vh; align-items: flex-start; overflow: hidden; } .sc .cols { gap: 18px; }
   .sc .cols--rev .mk { order: 2; } .row { grid-template-columns: 1fr; gap: 0; }
   .phone { width: 210px; border-width: 7px; } .ph-body { min-height: 210px; padding: 10px; } .m { font-size: 12px; padding: 7px 9px; }
   .errs { height: 200px; } .win { width: 78%; } .win p { margin-top: 12px; font-size: 14px; } .w2 p { font-size: 32px; }
