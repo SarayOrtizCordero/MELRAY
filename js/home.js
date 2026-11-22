@@ -207,14 +207,6 @@
   appear(s10, t); words(s10, t); tl.from($$('.steps li', s10), { autoAlpha: 0, y: 60, stagger: .35, duration: .7, ease: 'power3.out' }, t + .7);
   leave(s10, t + 3.3);
 
-  /* 9. Ejemplos: una tira de ocho alojamientos que se desplaza */
-  t += 3.8; var s11 = $('#ejemplos'), rail = $('#rail');
-  tl.addLabel('ejemplos', t);
-  appear(s11, t); words(s11, t); tl.from($('.exh .lead', s11), { autoAlpha: 0, y: 24, duration: .6, ease: 'power2.out' }, t + .8)
-    .from($$('.ex', s11), { autoAlpha: 0, y: 30, stagger: .1, duration: .5, ease: 'power3.out' }, t + .6)
-    .from($('.exf', s11), { autoAlpha: 0, y: 20, duration: .5 }, t + 2.0);
-  t += 4.2;
-
   /* Altura según la duración, barra de avance y barra superior */
   var PER = 60;
   film.style.height = (tl.duration() * PER + 100) + 'vh';
@@ -222,14 +214,6 @@
   var st = ScrollTrigger.create({
     animation: tl, trigger: film, start: 'top top', end: 'bottom bottom', scrub: 1.2,
     onUpdate: function (s) { if (prog) prog.style.transform = 'scaleX(' + s.progress + ')'; var seen = tl.time() > 4.2; bar.classList.toggle('bar--brand', seen); bar.classList.toggle('bar--solid', seen); }
-  });
-
-  /* «Ver ejemplos» lleva a la tira de ejemplos */
-  var ver = $('#ver');
-  if (ver) ver.addEventListener('click', function (e) {
-    e.preventDefault();
-    var y = st.start + (tl.labels.ejemplos / tl.duration()) * (st.end - st.start);
-    lenis.scrollTo(y + 4, { duration: 2.2 });
   });
 
   /* Cierre: el color vuelve a pleno detrás del formulario */
