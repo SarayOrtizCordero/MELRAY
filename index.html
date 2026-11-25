@@ -1,17 +1,17 @@
 <!DOCTYPE html>
-<html lang="es-AR" class="no-js">
+<html lang="es" class="no-js">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Melray — Una web que muestra tu alojamiento sin mandar fotos por WhatsApp</title>
-  <meta name="description" content="Tus fotos y tus videos en una web que se recorre sola. Dejanos tus datos y en 48 horas hábiles te mostramos cómo se vería la tuya.">
+  <title>Melray | Diseño web e IA para negocios que quieren que los miren</title>
+  <meta name="description" content="Webs con movimiento y presencia online hechas con inteligencia artificial. Cuéntanos tu negocio y en 48 horas hábiles te enseñamos cómo se vería tu web.">
   <link rel="canonical" href="https://www.melraysystems.com/">
 
   <meta property="og:type" content="website">
-  <meta property="og:locale" content="es_AR">
+  <meta property="og:locale" content="es_ES">
   <meta property="og:site_name" content="Melray">
-  <meta property="og:title" content="Melray — Tu alojamiento en una web que se recorre sola">
-  <meta property="og:description" content="Dejanos tus datos y en 48 horas hábiles te mostramos cómo se vería tu web.">
+  <meta property="og:title" content="Melray | Diseño web e IA para negocios que quieren que los miren">
+  <meta property="og:description" content="Cuéntanos tu negocio y en 48 horas hábiles te enseñamos cómo se vería tu web.">
   <meta property="og:url" content="https://www.melraysystems.com/">
   <meta property="og:image" content="https://www.melraysystems.com/assets/logo-llama-640.png">
   <meta name="twitter:card" content="summary_large_image">
@@ -19,7 +19,7 @@
   <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
   <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
   <link rel="manifest" href="/manifest.json">
-  <meta name="theme-color" content="#ffffff">
+  <meta name="theme-color" content="#fbf9f6">
   <script src="/js/no-js.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -33,151 +33,141 @@
     "name": "Melray",
     "url": "https://www.melraysystems.com/",
     "logo": "https://www.melraysystems.com/assets/logo-llama-640.png",
-    "description": "Webs con scroll animado para alojamientos.",
+    "description": "Diseño web y presencia online con inteligencia artificial para negocios.",
     "sameAs": ["https://www.instagram.com/melray.systems/"]
   }
   </script>
 </head>
 <body>
-  <a href="#contacto" class="skip-link">Ir al formulario</a>
+  <a href="#demo" class="skip-link">Ir al formulario</a>
+  <canvas class="fog" id="fog" aria-hidden="true"></canvas>
 
   <header class="bar" id="bar">
-    <a href="#top" class="brand" aria-label="Melray — inicio"><img src="/assets/logo-llama-640.png" alt="" width="28" height="38"></a>
-    <a href="#contacto" class="btn btn--small">Quiero mi preview</a>
+    <a href="#top" class="brand" aria-label="Melray, inicio"><img src="/assets/logo-llama-640.png" alt="" width="28" height="38"></a>
+    <a href="#demo" class="btn btn--small">Quiero ver mi demo</a>
   </header>
 
   <main id="top">
-    <section class="film" id="film" aria-label="Recorrido">
-      <div class="stage" id="stage">
-        <canvas class="field" id="field" aria-hidden="true"></canvas>
-
-        <div class="hero" id="hero">
-          <h1>Te preguntan por tu alojamiento y arrancás a mandar fotos.</h1>
-          <p class="lead">Una por una, por WhatsApp, otra vez.</p>
-          <p class="seguir">Seguí bajando</p>
+    <section class="hero" id="hero" aria-label="Presentación">
+      <div class="hero__in">
+        <img class="hero__logo em" src="/assets/logo-llama-640.png" alt="Melray" width="640" height="856">
+        <p class="eyebrow em">Diseño web e IA</p>
+        <h1 class="em">Hay negocios buenísimos que nadie ve.</h1>
+        <p class="lead em">Pasa cuando la web se parece a todas las demás: la gente la abre, no siente nada y se va.</p>
+        <div class="hero__cta em">
+          <a href="#demo" class="btn">Quiero ver mi demo</a>
+          <a href="#webs" class="btn btn--ghost">Ver webs nuestras</a>
         </div>
+      </div>
+      <p class="seguir">Sigue bajando</p>
+    </section>
 
-        <div class="ilogo" id="ilogo"><img src="/assets/logo-llama-640.png" alt="Melray" width="640" height="856"></div>
-        <p class="hint0" id="hint0">Scrolleá para entrar</p>
-
-        <!-- 1. WhatsApp -->
-        <div class="sc s2" id="s2">
-          <div class="cols">
-            <div class="tx"><h2 class="sp">Cada consulta es la misma tanda de fotos y videos.</h2><p class="lead">El celular se llena y la conversación se enfría mientras esperás que termine de enviar.</p></div>
-            <div class="mk">
-              <div class="phone" aria-hidden="true">
-                <div class="ph-h"><i></i><b>Cliente</b><span>en línea</span></div>
-                <div class="ph-body">
-                  <div class="m in">Hola, ¿tenés más fotos de la cabaña?</div>
-                  <div class="m out"><div class="ph-photos"><img src="/assets/viaje/chat1.webp" alt=""><img src="/assets/viaje/chat2.webp" alt=""><img src="/assets/viaje/chat3.webp" alt=""><img src="/assets/viaje/chat4.webp" alt=""><img src="/assets/viaje/chat5.webp" alt=""><img src="/assets/viaje/chat6.webp" alt=""></div><span class="snd">Enviando 0 de 37…</span></div>
-                  <div class="m in">¿Y videos?</div>
-                </div>
-                <div class="stor"><div class="bar"><i></i></div><span>Almacenamiento casi lleno</span></div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- 2. Portales -->
-        <div class="sc s3" id="s3">
-          <div class="cols">
-            <div class="tx"><h2 class="sp">En los portales, tu alojamiento es uno más de la lista.</h2><p class="lead">Mismo formato y fotos chicas. Quien quiere ver más termina escribiéndote por WhatsApp.</p></div>
-            <div class="mk">
-              <div class="portal" aria-hidden="true">
-                <div class="pc"><span class="pi"></span><span class="pl"></span><span class="pl s"></span></div>
-                <div class="pc"><span class="pi"></span><span class="pl"></span><span class="pl s"></span></div>
-                <div class="pc"><span class="pi"></span><span class="pl"></span><span class="pl s"></span></div>
-                <div class="pc me"><em>Tu alojamiento</em><span class="pi"></span><span class="pl"></span><span class="pl s"></span></div>
-                <div class="pc"><span class="pi"></span><span class="pl"></span><span class="pl s"></span></div>
-                <div class="pc"><span class="pi"></span><span class="pl"></span><span class="pl s"></span></div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- 3. Web que ya tienen -->
-        <div class="sc s4" id="s4">
-          <div class="cols cols--rev">
-            <div class="mk">
-              <div class="errs" aria-hidden="true">
-                <div class="win w1"><div class="wd"><i></i><i></i><i></i></div><p>No se puede acceder a este sitio</p><small>ERR_CONNECTION_TIMED_OUT</small></div>
-                <div class="win w2"><div class="wd"><i></i><i></i><i></i></div><p>404</p><small>Esta página no existe</small></div>
-                <div class="chip"><span>Botón de WhatsApp</span><b>×</b></div>
-              </div>
-            </div>
-            <div class="tx"><h2 class="sp">Y la web que ya tenés se parece a todas las demás.</h2><p class="lead">Se traba, tira un error de vez en cuando o tiene un botón de WhatsApp que no abre.</p></div>
-          </div>
-        </div>
-
-        <!-- 4. Cambio de creencia -->
-        <div class="sc s5" id="s5">
-          <div class="center"><h2 class="sp big">Quien está por reservar quiere verlo todo en un solo lugar.</h2><p class="lead">Si tiene que pedirlo, ya hay una conversación de por medio. Si lo mira solo, te escribe para reservar.</p></div>
-        </div>
-
-        <!-- 5. La solución -->
-        <div class="sc s6 dark" id="s6">
-          <div class="cols">
-            <div class="tx"><h2 class="sp">Tus fotos y tus videos en una web que se recorre sola.</h2><button type="button" class="btn btn--light" id="ver">Así podría verse tu alojamiento online</button></div>
-            <div class="mk"><div class="vf"><video id="solvid" muted playsinline preload="auto" poster="/assets/viaje/solucion.jpg"><source src="/assets/viaje/solucion.mp4" type="video/mp4"></video></div></div>
-          </div>
-        </div>
-
-        <!-- 6. 2027 -->
-        <div class="sc s8" id="s8">
-          <div class="center"><h2 class="sp big">En casi 2027, tus clientes esperan una web donde puedan ver todo el alojamiento como si ya estuvieran ahí.</h2></div>
-        </div>
-
-        <!-- 8. Urgencia -->
-        <div class="sc s10" id="s10">
-          <div class="center"><h2 class="sp">Cada consulta que espera tus fotos es una reserva que puede irse a otro alojamiento.</h2>
-            <p class="lead">Mientras reenviás fotos por WhatsApp, quien quiere reservar ya está mirando otro lugar.</p>
-            <a href="#contacto" class="btn" id="urg">Quiero mi preview</a>
-          </div>
-        </div>
-
-        
-
-        <div class="progress"><i id="prog"></i></div>
+    <section class="beat" aria-label="El problema">
+      <div class="beat__in">
+        <h2 class="sp">En el móvil se decide rápido.</h2>
+        <p class="lead em">Quien llega desde Instagram o desde Google no lee: mira. Si lo que ve no le llama la atención, vuelve atrás.</p>
       </div>
     </section>
 
-    <section class="cta" id="contacto" aria-labelledby="cta-t">
-      <div class="wrap cta__g">
-        <div class="cta__tx rv-in">
-          <h2 id="cta-t">Empezá tu 2027 subiendo de nivel.</h2>
-          <p class="lead">Dejanos tus datos y en 48 horas hábiles te mandamos un preview de cómo se vería tu web.</p>
-          <div class="wa-card">
-            <span><strong>¿Preferís hablarlo?</strong><span>Escribinos por WhatsApp, respondemos más rápido.</span></span>
-            <a class="btn btn--dark btn--small" href="https://wa.me/34644888144?text=Hola!%20Quiero%20ver%20c%C3%B3mo%20quedar%C3%ADa%20la%20web%20de%20mi%20alojamiento." target="_blank" rel="noopener">WhatsApp</a>
-          </div>
+    <section class="beat" aria-label="Lo que no se recuerda">
+      <div class="beat__in">
+        <h2 class="sp">Lo que no se recuerda, no se elige.</h2>
+        <p class="lead em">Un negocio que pasa desapercibido pierde la consulta, aunque lo haga mejor que el de al lado.</p>
+      </div>
+    </section>
+
+    <section class="beat beat--ia" aria-label="La inteligencia artificial">
+      <div class="beat__in">
+        <h2 class="sp">La IA ya está aquí y se queda.</h2>
+        <p class="lead em">Puedes verla pasar desde lejos o ponerla de tu lado. Nosotras la usamos para diseñar con más detalle y más movimiento, y a ti te llega una web que parece de agencia grande.</p>
+      </div>
+    </section>
+
+    <section class="spiral" id="webs" aria-label="Webs nuestras">
+      <div class="spiral__stage" id="spiral">
+        <ul class="cards" id="cards">
+          <li class="card"><img src="/assets/demos/web-lumina-serenity.webp" alt="Diseño de web para un centro de bienestar" width="1000" height="625" loading="lazy"><span>Bienestar</span></li>
+          <li class="card"><img src="/assets/ejemplos/cabanas.webp" alt="Diseño de web para unas cabañas junto a un lago" width="1600" height="1000" loading="lazy"><span>Cabañas</span></li>
+          <li class="card"><img src="/assets/demos/web-cafe-esquina.webp" alt="Diseño de web para una cafetería" width="1000" height="625" loading="lazy"><span>Cafetería</span></li>
+          <li class="card"><img src="/assets/demos/web-serrano-vega.webp" alt="Diseño de web para una inmobiliaria" width="1000" height="625" loading="lazy"><span>Inmobiliaria</span></li>
+          <li class="card"><img src="/assets/ejemplos/arcos.webp" alt="Diseño de web para un hotel boutique" width="1600" height="1000" loading="lazy"><span>Hotel boutique</span></li>
+          <li class="card"><img src="/assets/demos/web-fogon-porteno.webp" alt="Diseño de web para un restaurante" width="1000" height="625" loading="lazy"><span>Restaurante</span></li>
+          <li class="card"><img src="/assets/demos/web-belle-body.webp" alt="Diseño de web para un centro de estética" width="1000" height="625" loading="lazy"><span>Estética</span></li>
+          <li class="card"><img src="/assets/demos/web-ribera-norte.webp" alt="Diseño de web para una promotora con vistas al agua" width="1000" height="625" loading="lazy"><span>Promotora</span></li>
+        </ul>
+        <div class="spiral__head">
+          <h2 class="sp">Webs que se recorren.</h2>
+          <p class="lead">Cada negocio, su propio movimiento.</p>
+        </div>
+        <p class="spiral__label" id="spiral-label" aria-live="polite"></p>
+      </div>
+    </section>
+
+    <section class="demo" id="demo" aria-labelledby="demo-t">
+      <div class="wrap demo__g">
+        <div class="demo__tx em">
+          <h2 id="demo-t">Mira cómo quedaría la tuya antes de decidir.</h2>
+          <p class="lead">Respóndenos tres cosas y en 48 horas hábiles te enseñamos tu demo. Primero la ves, después decides.</p>
+          <figure class="pv" id="pv" aria-live="polite">
+            <img id="pv-img" src="/assets/ejemplos/cabanas.webp" alt="" width="1600" height="1000" loading="lazy">
+            <figcaption id="pv-cap">Un ejemplo de lo que hacemos</figcaption>
+          </figure>
         </div>
 
-        <div class="panel rv-in">
-          <form id="contacto-form" novalidate>
+        <div class="panel em">
+          <form id="funnel" novalidate>
             <div class="hp" aria-hidden="true"><label>No completar <input type="text" name="empresa_web" tabindex="-1" autocomplete="off"></label></div>
-            <div class="row">
-              <div class="ff"><label for="f-nombre">Tu nombre *</label><input type="text" id="f-nombre" name="nombre" required autocomplete="name"></div>
-              <div class="ff"><label for="f-tel">WhatsApp *</label><input type="tel" id="f-tel" name="telefono" required autocomplete="tel" placeholder="Con código de país"></div>
-            </div>
-            <div class="ff"><label for="f-email">Email *</label><input type="email" id="f-email" name="email" required autocomplete="email"></div>
-            <div class="ff"><label for="f-ig">Instagram o web de tu alojamiento</label><input type="text" id="f-ig" name="instagram" placeholder="@tualojamiento"></div>
-            <div class="ff"><label for="f-link">Link a tus fotos y videos</label><input type="text" id="f-link" name="web" placeholder="Drive, Dropbox o WeTransfer (en HD o 4K si tenés)"></div>
-            <div class="ff"><label for="f-tipo">¿Qué tipo de alojamiento tenés?</label>
-              <select id="f-tipo" name="tipo"><option value="">Elegí una opción</option><option>Cabañas</option><option>Hotel o hostel</option><option>Apart o departamentos</option><option>Posada o casa de campo</option><option>Otro</option></select></div>
-            <div class="ff"><label for="f-msg">Contanos algo más</label><textarea id="f-msg" name="detalle" rows="3"></textarea></div>
-            <p class="form-error" id="form-error" role="alert" hidden>Completá tu nombre, tu WhatsApp y un email válido.</p>
-            <button type="submit" class="btn btn--block" id="form-submit">Quiero mi preview</button>
+            <p class="stepno" id="stepno">Paso 1 de 3</p>
+            <div class="dots" aria-hidden="true"><i class="on"></i><i></i><i></i></div>
+
+            <fieldset class="step" data-step="1">
+              <legend>¿Qué tipo de negocio tienes?</legend>
+              <div class="chips" role="group">
+                <button type="button" class="chip" data-v="Alojamiento" data-img="/assets/ejemplos/cabanas.webp">Alojamiento</button>
+                <button type="button" class="chip" data-v="Restaurante o café" data-img="/assets/demos/web-fogon-porteno.webp">Restaurante o café</button>
+                <button type="button" class="chip" data-v="Salud y estética" data-img="/assets/demos/web-belle-body.webp">Salud y estética</button>
+                <button type="button" class="chip" data-v="Inmobiliaria" data-img="/assets/demos/web-serrano-vega.webp">Inmobiliaria</button>
+                <button type="button" class="chip" data-v="Tienda online" data-img="/assets/demos/web-cafe-esquina.webp">Tienda online</button>
+                <button type="button" class="chip" data-v="Otro" data-img="/assets/demos/web-lumina-serenity.webp">Otro</button>
+              </div>
+            </fieldset>
+
+            <fieldset class="step" data-step="2" hidden>
+              <legend>¿Qué quieres que haga tu web?</legend>
+              <div class="chips" role="group">
+                <button type="button" class="chip" data-v="Que me escriban por WhatsApp">Que me escriban por WhatsApp</button>
+                <button type="button" class="chip" data-v="Que reserven">Que reserven</button>
+                <button type="button" class="chip" data-v="Que vean mis fotos y vídeos">Que vean mis fotos y vídeos</button>
+                <button type="button" class="chip" data-v="Que compren">Que compren</button>
+                <button type="button" class="chip" data-v="Que se acuerden de mí">Que se acuerden de mí</button>
+              </div>
+              <button type="button" class="back" data-back="1">Volver</button>
+            </fieldset>
+
+            <fieldset class="step" data-step="3" hidden>
+              <legend>¿Dónde te enseñamos la demo?</legend>
+              <div class="row">
+                <div class="ff"><label for="f-nombre">Tu nombre *</label><input type="text" id="f-nombre" name="nombre" required autocomplete="name"></div>
+                <div class="ff"><label for="f-tel">WhatsApp *</label><input type="tel" id="f-tel" name="telefono" required autocomplete="tel" placeholder="Con prefijo de país"></div>
+              </div>
+              <div class="ff"><label for="f-email">Email *</label><input type="email" id="f-email" name="email" required autocomplete="email"></div>
+              <div class="ff"><label for="f-ig">Instagram o web de tu negocio</label><input type="text" id="f-ig" name="instagram" placeholder="@tunegocio"></div>
+              <p class="form-error" id="form-error" role="alert" hidden>Completa tu nombre, tu WhatsApp y un email válido.</p>
+              <button type="submit" class="btn btn--block" id="form-submit">Quiero mi demo</button>
+              <button type="button" class="back" data-back="2">Volver</button>
+            </fieldset>
           </form>
 
           <div class="confirm" id="form-ok" hidden>
-            <h3>Recibimos tus datos.</h3>
-            <p>En 48 horas hábiles te mandamos tu preview. Si querés avanzar antes, escribinos por WhatsApp.</p>
+            <h3>Recibido.</h3>
+            <p>En 48 horas hábiles te enseñamos tu demo. Si quieres avanzar antes, escríbenos por WhatsApp.</p>
           </div>
           <div class="confirm" id="form-fallback" hidden>
             <h3>Casi listo.</h3>
-            <p>No pudimos enviarlo automáticamente. Mandanos el mensaje por WhatsApp y llega directo al equipo.</p>
+            <p>No hemos podido enviarlo automáticamente. Mándanos el mensaje por WhatsApp y llega directo al equipo.</p>
             <a id="form-wa" class="btn btn--dark" href="https://wa.me/34644888144" target="_blank" rel="noopener">Abrir WhatsApp</a>
           </div>
+          <p class="wa-line">¿Prefieres hablarlo? <a href="https://wa.me/34644888144?text=Hola%2C%20quiero%20ver%20c%C3%B3mo%20quedar%C3%ADa%20la%20web%20de%20mi%20negocio." target="_blank" rel="noopener">Escríbenos por WhatsApp</a>.</p>
         </div>
       </div>
     </section>
@@ -192,7 +182,7 @@
         <a href="/pages/terminos.html">Términos</a>
         <a href="/pages/cookies.html">Cookies</a>
       </nav>
-      <p class="pie__copy">&copy; <span id="footer-year"></span> Melray. Los ejemplos son muestras de diseño con alojamientos inventados.</p>
+      <p class="pie__copy">&copy; <span id="footer-year"></span> Melray. Los ejemplos son muestras de diseño con negocios inventados.</p>
     </div>
   </footer>
 
@@ -201,19 +191,6 @@
     <button type="button" class="btn btn--small" id="cookie-banner-accept">Entendido</button>
   </div>
 
-  <div class="modal" id="modal" hidden role="dialog" aria-modal="true" aria-labelledby="modal-t">
-    <div class="modal__box">
-      <button type="button" class="modal__x" id="modal-x" aria-label="Cerrar">&times;</button>
-      <h3 id="modal-t">Así podría verse tu alojamiento online</h3>
-      <p>Tres ejemplos para recorrer. Abrilos y scrolleá.</p>
-      <div class="modal__list">
-        <a href="https://melray-orion-apart.vercel.app" target="_blank" rel="noopener"><b>Apart Orión</b><small>Departamentos</small><i>Abrir</i></a>
-        <a href="https://melray-quillay-cabanas.vercel.app" target="_blank" rel="noopener"><b>Cabañas Quillay</b><small>Cabañas</small><i>Abrir</i></a>
-        <a href="https://melray-cenit-penthouse.vercel.app" target="_blank" rel="noopener"><b>Cenit Penthouse</b><small>Penthouse</small><i>Abrir</i></a>
-      </div>
-      <a class="modal__ig" href="https://www.instagram.com/melray.systems/" target="_blank" rel="noopener">Ver más en nuestro Instagram</a>
-    </div>
-  </div>
   <script src="/vendor/gsap.min.js"></script>
   <script src="/vendor/ScrollTrigger.min.js"></script>
   <script src="/vendor/lenis.min.js"></script>
