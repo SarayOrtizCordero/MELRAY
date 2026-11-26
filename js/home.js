@@ -18,31 +18,27 @@
     btn.addEventListener('click', function () { banner.hidden = true; try { localStorage.setItem(KEY, '1'); } catch (e) {} });
   })();
 
-  /* ───────── Embudo en tres pasos → /api/demo (correo por SMTP) con WhatsApp de respaldo ───────── */
+  /* ───────── Embudo en cuatro pasos → /api/demo (correo por SMTP) con WhatsApp de respaldo ───────── */
   (function () {
     var form = $('#funnel'); if (!form) return;
     var NUM = '34644888144', EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     var steps = $$('.step', form), dots = $$('.dots i', form), stepno = $('#stepno');
-    var ans = { tipo: '', objetivo: '' };
+    var ans = { tipo: '', web: '', cuando: '' };
     var err = $('#form-error'), ok = $('#form-ok'), fb = $('#form-fallback'), wa = $('#form-wa'), btn = $('#form-submit');
     var val = function (n) { return form.elements[n].value.trim(); };
     function go(n) {
       steps.forEach(function (s) { s.hidden = +s.getAttribute('data-step') !== n; });
       dots.forEach(function (d, i) { d.classList.toggle('on', i < n); });
-      stepno.textContent = 'Paso ' + n + ' de 3';
-      var first = $('.step[data-step="' + n + '"] .opt, .step[data-step="' + n + '"] input', form); if (first && n === 3) setTimeout(function () { first.focus({ preventScroll: true }); }, 50);
+      stepno.textContent = 'Paso ' + n + ' de 4';
+      var first = $('.step[data-step="' + n + '"] input', form); if (first && n === 4) setTimeout(function () { first.focus({ preventScroll: true }); }, 50);
     }
-    $$('.step[data-step="1"] .opt', form).forEach(function (c) {
-      c.addEventListener('click', function () {
-        $$('.step[data-step="1"] .opt', form).forEach(function (x) { x.classList.remove('sel'); }); c.classList.add('sel');
-        ans.tipo = c.getAttribute('data-v');
-        setTimeout(function () { go(2); }, 320);
-      });
-    });
-    $$('.step[data-step="2"] .opt', form).forEach(function (c) {
-      c.addEventListener('click', function () {
-        $$('.step[data-step="2"] .opt', form).forEach(function (x) { x.classList.remove('sel'); }); c.classList.add('sel');
-        ans.objetivo = c.getAttribute('data-v'); setTimeout(function () { go(3); }, 320);
+    [['1', 'tipo', 2], ['2', 'web', 3], ['3', 'cuando', 4]].forEach(function (p) {
+      var sel = '.step[data-step="' + p[0] + '"] .opt';
+      $$(sel, form).forEach(function (c) {
+        c.addEventListener('click', function () {
+          $$(sel, form).forEach(function (x) { x.classList.remove('sel'); }); c.classList.add('sel');
+          ans[p[1]] = c.getAttribute('data-v'); setTimeout(function () { go(p[2]); }, 320);
+        });
       });
     });
     $$('.back', form).forEach(function (b) { b.addEventListener('click', function () { go(+b.getAttribute('data-back')); }); });
@@ -51,15 +47,15 @@
       var nombre = val('nombre'), tel = val('telefono'), email = val('email');
       if (!nombre || tel.length < 6 || !EMAIL.test(email)) { err.hidden = false; return; }
       err.hidden = true; btn.disabled = true; btn.textContent = 'Enviando…';
-      var detalle = 'Negocio: ' + (ans.tipo || '—') + ' · Quiere que su web: ' + (ans.objetivo || '—');
-      var payload = { origen: 'demo', nombre: nombre, telefono: tel, email: email, instagram: val('instagram'), web: '', detalle: detalle, empresa_web: val('empresa_web') };
+      var detalle = 'Negocio: ' + (ans.tipo || '—') + ' · Web hoy: ' + (ans.web || '—') + ' · La necesita: ' + (ans.cuando || '—');
+      var payload = { origen: 'demo', nombre: nombre, telefono: tel, email: email, instagram: val('instagram'), web: val('web'), detalle: detalle, empresa_web: val('empresa_web') };
       var controller = new AbortController(), timer = setTimeout(function () { controller.abort(); }, 10000);
       fetch('/api/demo', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload), signal: controller.signal })
         .then(function (r) { return r.ok; }).catch(function () { return false; })
         .then(function (sent) {
           clearTimeout(timer); form.hidden = true;
           if (sent) { ok.hidden = false; return; }
-          var text = 'Hola, soy ' + nombre + '. Quiero ver cómo quedaría la web de mi negocio (' + (ans.tipo || 'sin especificar') + '). ' + (ans.objetivo ? 'Quiero que mi web: ' + ans.objetivo.toLowerCase() + '. ' : '') + (val('instagram') ? 'Instagram o web: ' + val('instagram') + '. ' : '') + 'Mi email: ' + email + '. WhatsApp: ' + tel + '.';
+          var text = 'Hola, soy ' + nombre + '. Quiero ver cómo quedaría la web de mi negocio (' + (ans.tipo || 'sin especificar') + '). ' + (ans.web ? ans.web + '. ' : '') + (ans.cuando ? 'La necesito: ' + ans.cuando.toLowerCase() + '. ' : '') + (val('instagram') ? 'Instagram o web: ' + val('instagram') + '. ' : '') + 'Mi email: ' + email + '. WhatsApp: ' + tel + '.';
           wa.href = 'https://wa.me/' + NUM + '?text=' + encodeURIComponent(text); fb.hidden = false;
         });
     });
@@ -171,7 +167,17 @@
     .to('#hero', { autoAlpha: 0, y: -40, duration: .7, ease: 'power2.in' }, 9.0);
 
   /* 2. Portales */
-  var t = 9.6, s3 = $('#s3');
+  var t = 9.6, s2 = $('#s2');
+  appear(s2, t); words(s2, t); tl.from($('.lead', s2), { autoAlpha: 0, y: 24, duration: .6, ease: 'power2.out' }, t + .9)
+    .fromTo($('.phone', s2), { y: 150, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 1, ease: 'power3.out' }, t + .3)
+    .from($$('.m', s2), { autoAlpha: 0, y: 24, stagger: .5, duration: .5, ease: 'power2.out' }, t + 1.2)
+    .from($$('.ph-files .fl', s2), { autoAlpha: 0, y: -20, stagger: .2, duration: .4, ease: 'power2.out' }, t + 1.9);
+  var cnt = { n: 0 }, snd = $('.snd', s2);
+  tl.to(cnt, { n: 37, duration: 1.6, onUpdate: function () { snd.textContent = 'Enviando ' + Math.round(cnt.n) + ' de 37…'; } }, t + 2)
+    .to($('.stor .bar i', s2), { width: '96%', duration: 1.6 }, t + 2);
+  leave(s2, t + 3.7);
+
+  t += 4.0; var s3 = $('#s3');
   appear(s3, t); words(s3, t); tl.from($('.lead', s3), { autoAlpha: 0, y: 24, duration: .6, ease: 'power2.out' }, t + .9)
     .from($$('.pc', s3), { autoAlpha: 0, y: 50, stagger: .12, duration: .6, ease: 'power3.out' }, t + .5)
     .fromTo($('.pc.me', s3), { boxShadow: '0 0 0 0 rgba(251,123,21,0)' }, { boxShadow: '0 0 0 10px rgba(251,123,21,.28)', duration: .7 }, t + 1.8);

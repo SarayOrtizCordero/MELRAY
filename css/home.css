@@ -196,3 +196,9 @@ ul, ol { list-style: none; }
   .cards { perspective-origin: 50% 46%; }
   .spiral__head { padding: 10px 14px; border-radius: 14px; background: rgba(255,255,255,.78); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); left: var(--margin); max-width: calc(100% - 2 * var(--margin)); top: 11vh; }
 }
+
+/* Apertura: nada de texto visible hasta que la película lo muestra */
+.hero { opacity: 0; visibility: hidden; }
+.no-js .hero, .rm .hero, .film.static .hero { opacity: 1; visibility: visible; }
+
+.ph-files { display: grid; grid-template-columns: 1fr 1fr; gap: 5px; } .fl { display: block; padding: 8px 8px 8px 26px; border-radius: 6px; background: #fff; font-size: 11.5px; font-weight: 600; color: #333; position: relative; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; } .fl::before { content: ''; position: absolute; left: 8px; top: 50%; width: 10px; height: 13px; margin-top: -7px; border-radius: 2px; background: #df3314; }
